@@ -83,9 +83,16 @@ module.exports = function override(config, env) {
             // parser : 'sugarss', // XXX!
             // plugins : postcssLoader.plugins,
             plugins : () => [
+              /*
+               * See plugins list: https://github.com/postcss/postcss/blob/master/docs/plugins.md
+               * TODO:
+               * - postcss-opacity
+               * - postcss-color-function // https://github.com/postcss/postcss-color-function
+               * - *alpha*
+               */
               require('postcss-flexbugs-fixes'),
-              require('postcss-nested')(),
-              require('postcss-utilities')(),
+              require('postcss-nested')(), // https://github.com/postcss/postcss-nested
+              require('postcss-utilities')(), // https://github.com/ismamz/postcss-utilities
               require('autoprefixer')({
                 browsers : [
                   '>1%',
