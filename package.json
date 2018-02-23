@@ -51,6 +51,7 @@
     }
   },
   "scripts": {
+    "stop-watch": "watchman shutdown-server",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "jest",
