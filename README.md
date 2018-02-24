@@ -18,8 +18,17 @@ Config templates:
 
 - `node_modules/react-scripts/config/`
 
+Samples:
+
+- `D:/Work/bem-tests/bem-react-core/tests`
+- `D:/Work/bem-react/redux-todomvc/src/components`
+
 Resuorces
 =========
+
+Site:
+
+- [github.io](https://lilliputten.github.io)
 
 Debug:
 
@@ -27,15 +36,22 @@ Debug:
 - [Inspect with Developer Tools](chrome://inspect)
 - [atom node-debugger](https://atom.io/packages/node-debugger)
 
+Debug issues:
+
+- [Can I debug source code instead of compiled one? · Issue #343 · facebook/create-react-app](https://github.com/facebook/create-react-app/issues/343)
+
 start TODO:
 - coloring: `chalk`
 - base config: `node_modules/react-scripts/config/webpackDevServer.config.js`
+
+Loading data:
+- [Loading and Using External Data in React - Media Temple Blog](http://mediatemple.net/blog/tips/loading-and-using-external-data-in-react/)
+- [AJAX Requests in React: How and Where to Fetch Data](https://daveceddia.com/ajax-requests-in-react/)
 
 Used modules:
 - `node_modules/bem-react-core/dist/react.min.js`
 
 bem-react-core:
-- Samples: `D:/Work/bem-tests/bem-react-core/tests`
 - [bem-react-core/docs/ru at master · bem/bem-react-core](https://github.com/bem/bem-react-core/tree/master/docs/ru)
 - [bem-react-core/REFERENCE.md at master · bem/bem-react-core](https://github.com/bem/bem-react-core/blob/master/docs/ru/REFERENCE.md)
 

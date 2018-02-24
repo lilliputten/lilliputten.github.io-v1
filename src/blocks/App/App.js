@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import { decl, Bem } from 'bem-react-core';
+import { decl/* , Bem */ } from 'bem-react-core';
 
 import Header from 'e:Header';
-import Test from 'b:Test';
+import View from 'b:View';
 
 export default decl({
   block: 'App',
@@ -14,11 +14,11 @@ export default decl({
         <Bem elem="Intro">
           To get started, edit <code>src/blocks/App/App.js</code> and save to reload.
         </Bem>
-        <Bem block="Test" mods={{m1:'v1'}}>
+        <Bem block="View" mods={{m1:'v1'}}>
         </Bem>
         */}
-        <Test mods={{m1:'v1'}}>
-        </Test>
+        <View mods={{m1:'v1'}}>
+        </View>
       </Fragment>
     );
   }
