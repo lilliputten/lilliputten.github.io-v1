@@ -5,7 +5,6 @@
 ORIGPATH=`pwd`
 
 # Patching root (finding this folder in parents recursively).
-ROOT="node_modules"
 while [ ! -d "$ROOT" ]; do
     echo "? $ROOT"
     ROOT="../$ROOT"

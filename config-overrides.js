@@ -55,6 +55,8 @@ module.exports = function override(config, env) {
   // fs.writeFileSync('config.module.rules.json', JSON.stringify(config.module.rules));
   // injectBabelPlugin('transform-decorators-legacy', config);
   // rewireStylus(config, env);
+  // console.log(config);
+  // debugger;
   // process.exit();
   /*}}}*/
 
