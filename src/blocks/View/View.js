@@ -5,55 +5,9 @@ import PropTypes from 'prop-types';
 
 import axios from 'axios';
 
-import 'm:mode=ready|loading|error';
+import path from 'path';
 
-// /*{{{ SAMPLE: Try to load local file (and detectig hot reload option from webpack)... */
-//
-// if ( false ) {
-//   try {
-//     let url = 'a.md';
-//     debugger;
-//     if ( module && module.hot && module.hot.active ) {
-//       let moduleName = String(module.i).replace(/^\.[/\\]/, ''),
-//         rootDepthRes = moduleName.match(/[/\\]/g),
-//         rootDepth = rootDepthRes ? rootDepthRes.length : 0,
-//         rootPrefix = '../'.repeat(rootDepth),
-//         rootUrl = rootPrefix + url
-//       ;
-//       let x = require('../../a.md');
-//       console.log(rootUrl, x);
-//       // let x = require(rootUrl);
-//     }
-//     debugger;
-//   }
-//   catch(err) {
-//     console.error(err);
-//     debugger;
-//   }
-// }
-//
-// /*}}}*/
-// /*{{{ SAMPLE: Testing url load: (+TODO) */
-//
-// // TODO: Check for loading in bundled version!
-//
-// let data = null;
-// let url = '/site/a.md';
-// // let url = '/server/site/a.md';
-// // let url = 'https://lilliputten.github.io/images/Docs/pdf.gif';
-// let getPromise = axios.get(url);
-// getPromise
-//   .then(function (response) {
-//     data = response.data;
-//     console.log('Loaded file:', response.data);
-//   })
-//   .catch(function (err) {
-//     console.error(err);
-//     debugger;
-//   })
-// ;
-//
-// /*}}}*/
+import 'm:mode=ready|loading|error';
 
 // TODO 2018.02.24, 03:22 -- Dynamically load file on state update.
 
@@ -74,8 +28,10 @@ export default decl({
 
   /** willInit ** {{{ */
   willInit() {
+    let hotLoad = !!( typeof module === 'object' && module.hot && module.hot.active );
     this.state = {
       mode : 'loading',
+      hotLoad : hotLoad,
     };
     // this.handleDoubleClick = this.handleDoubleClick.bind(this);
   },/*}}}*/
@@ -92,6 +48,7 @@ export default decl({
   /** mods ** {{{ Modifiers... */
   mods(self) {
     return { ...self.mods,
+      hotLoad : this.state.hotLoad,
       mode : this.state.mode,
     };
   },/*}}}*/
@@ -102,6 +59,13 @@ export default decl({
   loadFile() {
     // File url (TODO: m.b., from state?)
     let url = this.props.url; // '/site/a.md';
+    // Substitute real urls
+    // TODO: Use paths helper module
+    // TODO 2018.02.25, 23:00 -- Use config variables
+    if ( this.state.hotLoad ) {
+      url = path.join('/public-src', url);
+    }
+    debugger;
     // Start loading... (for dev derver see webpack config & patch for loading `/site/` urls...)
     return axios.get(url)
       .then(res => {
@@ -167,7 +131,7 @@ export default decl({
   },/*}}}*/
   /** defaultProps ** {{{ */
   defaultProps : {
-    url : '/site/test/a.md',
+    url : '/site/test/test.md',
     // data : '--NONE--',
   },/*}}}*/
 });
