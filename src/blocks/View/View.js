@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import axios from 'axios';
 
-import path from 'path';
+// import path from 'path';
 
 import 'm:mode=ready|loading|error';
 
@@ -62,10 +62,10 @@ export default decl({
     // Substitute real urls
     // TODO: Use paths helper module
     // TODO 2018.02.25, 23:00 -- Use config variables
-    if ( this.state.hotLoad ) {
-      url = path.join('/public-src', url);
-    }
-    debugger;
+    // if ( this.state.hotLoad ) {
+    //   url = path.join('/public-src', url);
+    // }
+    // debugger;
     // Start loading... (for dev derver see webpack config & patch for loading `/site/` urls...)
     return axios.get(url)
       .then(res => {

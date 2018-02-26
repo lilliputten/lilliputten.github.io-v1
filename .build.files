@@ -1,0 +1,13 @@
+build
+build/asset-manifest.json
+build/favicon.ico
+build/index.html
+build/index.ORIG.html
+build/manifest.json
+build/service-worker.js
+build/static
+build/static/js
+build/static/js/main.b2d5084b.js
+build/static/js/main.b2d5084b.js.map
+build/static/media
+build/static/media/App-Logo.49f98c8e.svg
