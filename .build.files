@@ -2,7 +2,6 @@ build
 build/asset-manifest.json
 build/favicon.ico
 build/index.html
-build/index.ORIG.html
 build/manifest.json
 build/service-worker.js
 build/static
