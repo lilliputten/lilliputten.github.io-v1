@@ -1,2 +1,3 @@
 #!/bin/sh
 unzip build.zip
+tar xzf build.tar.gz
