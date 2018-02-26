@@ -55,7 +55,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "install": "find build > .build.files && cp -Rvf build/* .",
-    "clean-local-install": "rm -Rf static asset-manifest.json manifest.json service-worker.js favicon.ico index*.html manifest.json",
+    "clean-install-local": "rm -Rf static asset-manifest.json manifest.json service-worker.js favicon.ico index*.html manifest.json",
     "clean-install": "git rm -rf static asset-manifest.json manifest.json service-worker.js favicon.ico index*.html manifest.json && git commit --amend --no-edit && git reflog expire --expire=now --all && git gc --prune=now --aggressive",
     "reinstall": "npm run clean-install || echo Skipped && npm run install",
     "make": "npm run build && npm run renstall",
