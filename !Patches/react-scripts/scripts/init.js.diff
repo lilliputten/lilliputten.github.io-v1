@@ -1,0 +1,20 @@
+--- init.ORIG.js	2018-02-27 21:54:32.931454900 +0300
++++ init.js	2018-02-27 22:01:32.383202200 +0300
+@@ -147,7 +147,7 @@
+   console.log(`Success! Created ${appName} at ${appPath}`);
+   console.log('Inside that directory, you can run several commands:');
+   console.log();
+-  console.log(chalk.cyan(`  ${displayedCommand} start`));
++  console.log(/*chalk.cyan(*/`  ${displayedCommand} start`/*)*/);
+   console.log('    Starts the development server.');
+   console.log();
+   console.log(
+@@ -155,7 +155,7 @@
+   );
+   console.log('    Bundles the app into static files for production.');
+   console.log();
+-  console.log(chalk.cyan(`  ${displayedCommand} test`));
++  console.log(/*chalk.cyan(*/`  ${displayedCommand} test`/*)*/);
+   console.log('    Starts the test runner.');
+   console.log();
+   console.log(

@@ -119,8 +119,10 @@ module.exports = function override(config, env) {
 /*}}}*/
 
   /** Add bem-loader in Babel scope ** {{{*/
-  const babelLoader = config.module.rules[1].oneOf[1];
-  config.module.rules[1].oneOf[1] = {
+  let rules = config.module.rules;
+  let rules1 = rules[1];
+  let babelLoader = rules1.oneOf[1];
+  rules1.oneOf[1] = {
     test : babelLoader.test,
     include : babelLoader.include,
     use : [
@@ -128,7 +130,6 @@ module.exports = function override(config, env) {
         loader : require.resolve('webpack-bem-loader'),
         options : {
           techs : ['js', 'css'],
-          // devtool : 'source-map',
         }
       },
       {
@@ -136,15 +137,16 @@ module.exports = function override(config, env) {
         options : Object.assign({}, babelLoader.options, {
           presets : [['es2015', {
             loose : true,
-            // retainLines : true,
-            // sourceMaps : true,
           }], 'react'],
-          plugins : ['transform-object-rest-spread'],
-          // devtool : 'source-map',
-          // sourceMaps : true,
-          // retainLines : true,
-          // sourceMaps : 'inline',
-          // retainLines : 'inline',
+          plugins : [
+            'transform-object-rest-spread',
+            // ['bem-import', {
+            //   'levels': [
+            //     './node_modules/bem-react-components/blocks',
+            //     './src/blocks',
+            //   ]
+            // }],
+          ],
         })
       }
     ]

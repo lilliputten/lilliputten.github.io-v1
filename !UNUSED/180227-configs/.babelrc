@@ -6,11 +6,7 @@
   "plugins": [
     "transform-object-rest-spread",
     ["bem-import", {
-      "techs": ["js"],
-      "levels": [
-        "./node_modules/bem-react-components/blocks",
-        "./src/blocks"
-      ]
-    } ]
+      "techs": ["js"]
+    }]
   ]
 }

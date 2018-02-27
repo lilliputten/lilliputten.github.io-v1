@@ -1,0 +1,14 @@
+--- start.ORIG.js	2018-02-27 21:54:32.712945900 +0300
++++ start.js	2018-02-27 22:01:32.337720600 +0300
+@@ -79,9 +79,9 @@
+         return console.log(err);
+       }
+       if (isInteractive) {
+-        clearConsole();
++        // clearConsole();
+       }
+-      console.log(chalk.cyan('Starting the development server...\n'));
++      console.log(/*chalk.cyan(*/'Starting the development server...\n'/*)*/);
+       openBrowser(urls.localUrlForBrowser);
+     });
+ 

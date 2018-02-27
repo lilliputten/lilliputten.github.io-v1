@@ -1,0 +1,73 @@
+--- WebpackDevServerUtils.ORIG.js	2017-10-21 17:21:42.000000000 +0300
++++ WebpackDevServerUtils.js	2018-02-27 22:16:53.103704700 +0300
+@@ -120,7 +120,7 @@
+   try {
+     compiler = webpack(config, handleCompile);
+   } catch (err) {
+-    console.log(chalk.red('Failed to compile.'));
++    console.log(/*chalk.red(*/'Failed to compile.'/*)*/);
+     console.log();
+     console.log(err.message || err);
+     console.log();
+@@ -133,7 +133,7 @@
+   // "invalid" is short for "bundle invalidated", it doesn't imply any errors.
+   compiler.plugin('invalid', () => {
+     if (isInteractive) {
+-      clearConsole();
++      // clearConsole();
+     }
+     console.log('Compiling...');
+   });
+@@ -144,7 +144,7 @@
+   // Whether or not you have warnings or errors, you will get this event.
+   compiler.plugin('done', stats => {
+     if (isInteractive) {
+-      clearConsole();
++      // clearConsole();
+     }
+ 
+     // We have switched off the default Webpack output in WebpackDevServer
+@@ -153,7 +153,7 @@
+     const messages = formatWebpackMessages(stats.toJson({}, true));
+     const isSuccessful = !messages.errors.length && !messages.warnings.length;
+     if (isSuccessful) {
+-      console.log(chalk.green('Compiled successfully!'));
++      console.log(/*chalk.green(*/'Compiled successfully!'/*)*/);
+     }
+     if (isSuccessful && (isInteractive || isFirstCompile)) {
+       printInstructions(appName, urls, useYarn);
+@@ -167,14 +167,14 @@
+       if (messages.errors.length > 1) {
+         messages.errors.length = 1;
+       }
+-      console.log(chalk.red('Failed to compile.\n'));
++      console.log(/*chalk.red(*/'Failed to compile.\n'/*)*/);
+       console.log(messages.errors.join('\n\n'));
+       return;
+     }
+ 
+     // Show warnings if no errors were found.
+     if (messages.warnings.length) {
+-      console.log(chalk.yellow('Compiled with warnings.\n'));
++      console.log(/*chalk.yellow(*/'Compiled with warnings.\n'/*)*/);
+       console.log(messages.warnings.join('\n\n'));
+ 
+       // Teach some ESLint tricks.
+@@ -392,7 +392,7 @@
+             ? `Admin permissions are required to run a server on a port below 1024.`
+             : `Something is already running on port ${defaultPort}.`;
+         if (isInteractive) {
+-          clearConsole();
++          // clearConsole();
+           const existingProcess = getProcessForPort(defaultPort);
+           const question = {
+             type: 'confirm',
+@@ -412,7 +412,7 @@
+             }
+           });
+         } else {
+-          console.log(chalk.red(message));
++          console.log(/*chalk.red(*/message/*)*/);
+           resolve(null);
+         }
+       }),

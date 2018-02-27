@@ -1,0 +1,29 @@
+--- build.ORIG.js	2018-02-27 21:54:32.776944200 +0300
++++ build.js	2018-02-27 22:10:48.856296900 +0300
+@@ -63,7 +63,7 @@
+   .then(
+     ({ stats, previousFileSizes, warnings }) => {
+       if (warnings.length) {
+-        console.log(chalk.yellow('Compiled with warnings.\n'));
++        console.log(/*chalk.yellow(*/'Compiled with warnings.\n'/*)*/);
+         console.log(warnings.join('\n\n'));
+         console.log(
+           '\nSearch for the ' +
+@@ -76,7 +76,7 @@
+             ' to the line before.\n'
+         );
+       } else {
+-        console.log(chalk.green('Compiled successfully.\n'));
++        console.log(/*chalk.green(*/'Compiled successfully.\n'/*)*/);
+       }
+ 
+       console.log('File sizes after gzip:\n');
+@@ -102,7 +102,7 @@
+       );
+     },
+     err => {
+-      console.log(chalk.red('Failed to compile.\n'));
++      console.log(/*chalk.red(*/'Failed to compile.\n'/*)*/);
+       printBuildError(err);
+       process.exit(1);
+     }

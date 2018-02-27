@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 
 import axios from 'axios';
 
+// import Button from 'b:Button';
+// import Icon from 'b:Icon';
+
 // import path from 'path';
 
 import 'm:mode=ready|loading|error';
@@ -57,15 +60,8 @@ export default decl({
    * @return {Promise}
    */
   loadFile() {
-    // File url (TODO: m.b., from state?)
+    // File url
     let url = this.props.url; // '/site/a.md';
-    // Substitute real urls
-    // TODO: Use paths helper module
-    // TODO 2018.02.25, 23:00 -- Use config variables
-    // if ( this.state.hotLoad ) {
-    //   url = path.join('/public-src', url);
-    // }
-    // debugger;
     // Start loading... (for dev derver see webpack config & patch for loading `/site/` urls...)
     return axios.get(url)
       .then(res => {
