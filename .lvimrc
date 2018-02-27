@@ -1,3 +1,5 @@
+" Local .vimrc file
+" See https://github.com/embear/vim-localvimrc
 
 let g:ale_linters = {
 \   'javascript': [ 'eslint' ],

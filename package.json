@@ -4,14 +4,14 @@
   "description": "lilliputten github pages site",
   "author": "lilliputten",
   "homepage_": "https://lilliputten.github.io/",
+  "main": "index.html",
+  "license": "ISC",
   "private": true,
   "keywords": [
     "lilliputten",
     "github",
     "pages"
   ],
-  "license": "ISC",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/lilliputten/lilliputten.github.io.git"
