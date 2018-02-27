@@ -16,5 +16,8 @@
 .env.test.local
 .env.production.local
 
+# gvim sessions
+*.session
+
 # logs
 *.log
