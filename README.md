@@ -32,12 +32,20 @@ bem-tools:
 - [bem-tools/bem-tools-create: bem create command](https://github.com/bem-tools/bem-tools-create)
 - [bem-tools / Toolbox / BEM](https://en.bem.info/toolbox/bem-tools/)
 
+Events:
+
+- [SyntheticEvent - React](https://reactjs.org/docs/events.html)
+- [mobxjs/mobx: Simple, scalable state management.](https://github.com/mobxjs/mobx)
+- [reactjs/redux: Predictable state container for JavaScript apps](https://github.com/reactjs/redux)
+
 Redux:
 
 - [Core Concepts - Redux](https://redux.js.org/introduction/core-concepts)
+- [gaearon/redux-devtools: DevTools for Redux with hot reloading, action replay, and customizable UI](https://github.com/gaearon/redux-devtools)
 - [Новый уровень React: Redux](https://getinstance.info/articles/react/learning-react-redux/)
 - [С 0 до 1. Разбираемся с Redux / Хабрахабр](https://habrahabr.ru/post/269831/)
 - [Что такое Redux простыми словами? — Toster.ru](https://toster.ru/q/424353)
+- [evgenyrodionov/redux-logger: Logger for Redux](https://github.com/evgenyrodionov/redux-logger)
 
 Site:
 
