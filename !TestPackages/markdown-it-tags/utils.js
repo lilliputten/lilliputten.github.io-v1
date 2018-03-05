@@ -8,7 +8,7 @@
  * Module dependencies.
  */
 
-var util = require('util')
+// var util = require('util')
 
 /**
  * Escape special characters in the given string of html.
