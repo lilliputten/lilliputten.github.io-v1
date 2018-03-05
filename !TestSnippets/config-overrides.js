@@ -1,11 +1,59 @@
-/**
- * @see [timarney/react-app-rewired : Override create-react-app webpack configs without ejecting](https://github.com/timarney/react-app-rewired)
- * @see README
- */
+// Requirements...
+
+const fs = require('fs-extra');
+const { injectBabelPlugin } = require('react-app-rewired');
+const autoprefixer = require('autoprefixer');
+const postcssNested = require('postcss-nested');
+
+// Helpers (used in examples):
+
+/** deepClone ** {{{ */
+function deepClone(object) {
+  return JSON.parse(JSON.stringify(object));
+}/*}}}*/
+/** getLoader ** {{{ */
+function getLoader(rules, matcher) {
+  let match;
+
+  rules.some(rule => {
+    return (match = matcher(rule)
+      ? { rules, rule }
+      : getLoader(rule.use || rule.oneOf || [], matcher));
+  });
+
+  return match;
+}/*}}}*/
+/** rewireStylus ** {{{ */
+function rewireStylus(config, env) {
+  const { rule: cssRule, rules } = getLoader(
+    config.module.rules,
+    rule => String(rule.test) === String(/\.css$/)
+  );
+
+  const stylusRule = deepClone(cssRule);
+  stylusRule.test = /\.styl$/;
+  if (env === 'production') {
+    stylusRule.loader.splice(3, 0, require.resolve('stylus-loader'));
+  } else {
+    stylusRule.use.splice(2, 0, require.resolve('stylus-loader'));
+  }
+  rules.splice(rules.indexOf(cssRule), 0, stylusRule);
+
+  return config;
+}/*}}}*/
 
 // Override...
 
 module.exports = function override(config, env) {
+
+  /*{{{ Examples... */
+  fs.writeFileSync('config.module.rules.json', JSON.stringify(config.module.rules));
+  injectBabelPlugin('transform-decorators-legacy', config);
+  rewireStylus(config, env);
+  // console.log(config);
+  // debugger;
+  // process.exit();
+  /*}}}*/
 
   /** Add/extend style loader ** {{{ */
 
@@ -103,3 +151,4 @@ module.exports = function override(config, env) {
   return config;
 
 }
+

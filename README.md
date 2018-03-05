@@ -27,6 +27,25 @@ Samples:
 Resuorces
 =========
 
+bem-react-components:
+
+- `node_modules/bem-react-components/blocks`
+
+markdown:
+
+- [jonschlinkert/remarkable: Markdown parser, done right. Commonmark support, extensions, syntax plugins, high speed - all in one. Gulp and metalsmith plugins are also available.](https://github.com/jonschlinkert/remarkable)
+- [remarkable/parser.md at master · jonschlinkert/remarkable](https://github.com/jonschlinkert/remarkable/blob/master/docs/parser.md)
+- [remarkable/plugins.md at master · jonschlinkert/remarkable](https://github.com/jonschlinkert/remarkable/blob/master/docs/plugins.md)
+- [lwhiteley/remarkable-codegroup: remarkable plugin to put code blocks into groups](https://github.com/lwhiteley/remarkable-codegroup)
+- [markdown-it/markdown-it: Markdown parser, done right. 100% CommonMark support, extensions, syntax plugins & high speed](https://github.com/markdown-it/markdown-it)
+- [rlidwka/markdown-it-regexp: make simple markdown-it plugins easier](https://github.com/rlidwka/markdown-it-regexp)
+
+
+- [markedjs/marked: A markdown parser and compiler. Built for speed.](https://github.com/markedjs/marked)
+- [marked/Using_Advanced](https://github.com/markedjs/marked/blob/master/USING_ADVANCED.md)
+- [marked/Using_Pro](https://github.com/markedjs/marked/blob/master/USING_PRO.md)
+- `!TestPackages/node_modules/markdown-parse/index.js`
+
 bem-tools:
 
 - [bem-tools/bem-tools-create: bem create command](https://github.com/bem-tools/bem-tools-create)
@@ -70,9 +89,11 @@ Loading data:
 - [AJAX Requests in React: How and Where to Fetch Data](https://daveceddia.com/ajax-requests-in-react/)
 
 Used modules:
+
 - `node_modules/bem-react-core/dist/react.min.js`
 
 bem-react-core:
+
 - [bem-react-core/docs/ru at master · bem/bem-react-core](https://github.com/bem/bem-react-core/tree/master/docs/ru)
 - [bem-react-core/REFERENCE.md at master · bem/bem-react-core](https://github.com/bem/bem-react-core/blob/master/docs/ru/REFERENCE.md)
 

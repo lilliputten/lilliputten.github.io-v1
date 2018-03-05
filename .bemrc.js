@@ -1,6 +1,6 @@
 module.exports = {
   levels: {
-    'node_modules/bem-react-components/blocks':  { scheme: 'nested', schemeOptions : 'react', naming : 'react' },
+    // 'node_modules/bem-react-components/blocks':  { scheme: 'nested', schemeOptions : 'react', naming : 'react' },
     'src/blocks': { scheme: 'nested', schemeOptions : 'react', naming : 'react' },
   },
   modules: {
