@@ -40,7 +40,6 @@ markdown:
 - [markdown-it/markdown-it: Markdown parser, done right. 100% CommonMark support, extensions, syntax plugins & high speed](https://github.com/markdown-it/markdown-it)
 - [rlidwka/markdown-it-regexp: make simple markdown-it plugins easier](https://github.com/rlidwka/markdown-it-regexp)
 
-
 - [markedjs/marked: A markdown parser and compiler. Built for speed.](https://github.com/markedjs/marked)
 - [marked/Using_Advanced](https://github.com/markedjs/marked/blob/master/USING_ADVANCED.md)
 - [marked/Using_Pro](https://github.com/markedjs/marked/blob/master/USING_PRO.md)
@@ -50,6 +49,8 @@ bem-tools:
 
 - [bem-tools/bem-tools-create: bem create command](https://github.com/bem-tools/bem-tools-create)
 - [bem-tools / Toolbox / BEM](https://en.bem.info/toolbox/bem-tools/)
+- TODO: Trace `templateFolder` in `node-debug C:\Users\Miheev\AppData\Roaming\npm\node_modules\bem-tools-core\index.js create xx__el`
+- TODO: Try to use editorconfig tab values?
 
 Events:
 
