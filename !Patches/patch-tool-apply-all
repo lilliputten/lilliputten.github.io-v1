@@ -3,7 +3,7 @@
 # @since 2018.03.05, 00:00
 # @version 2018.03.05, 00:22
 
-# Saving source path
+# Save source path
 ORIGPATH=`pwd`
 
 # Scan all `patch-config`s...

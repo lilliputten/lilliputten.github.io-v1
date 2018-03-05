@@ -24,7 +24,7 @@ Samples:
 - `/Work/bem-tests/bem-react-core/tests`
 - `/Work/bem-react/redux-todomvc/src/components`
 
-Resuorces
+Resources
 =========
 
 bem-react-components:
@@ -44,6 +44,14 @@ markdown:
 - [marked/Using_Advanced](https://github.com/markedjs/marked/blob/master/USING_ADVANCED.md)
 - [marked/Using_Pro](https://github.com/markedjs/marked/blob/master/USING_PRO.md)
 - `!TestPackages/node_modules/markdown-parse/index.js`
+
+ES6:
+
+- [Exploring ES6](http://exploringjs.com/es6/)
+- [16. Modules](http://exploringjs.com/es6/ch_modules.html)
+- [ES6 классы](http://jsraccoon.ru/es6-classes)
+- [Classes - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+- [extends - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/extends)
 
 bem-tools:
 

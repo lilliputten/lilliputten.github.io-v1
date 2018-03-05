@@ -8,7 +8,14 @@ map:
   orange: 2
 ---
 
+Hello @user some other text
+
+Looking for {{ some
+extra
+marked }} tag
+
 [codegroup]
+
 ```javascript
 var t = 1;
 console.log(t);
@@ -19,6 +26,7 @@ func application(_ application: UIApplication) -> Bool {
     return true
 }
 ```
+
 [/codegroup]
 
 [xxx]yyy
