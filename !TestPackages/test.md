@@ -10,11 +10,11 @@ map:
 
 Hello @user some other text
 
-Looking for {{ some
-extra
-marked }} tag
+Looking for {% some
+% -- {code}
 
-[codegroup]
+extra
+marked %} tag
 
 ```javascript
 var t = 1;
@@ -26,10 +26,6 @@ func application(_ application: UIApplication) -> Bool {
     return true
 }
 ```
-
-[/codegroup]
-
-[xxx]yyy
 
 # heading+
 

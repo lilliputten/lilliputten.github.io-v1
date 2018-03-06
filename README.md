@@ -33,6 +33,7 @@ bem-react-components:
 
 markdown:
 
+- [Choosing the Right Markdown Parser | CSS-Tricks](https://css-tricks.com/choosing-right-markdown-parser/)
 - [jonschlinkert/remarkable: Markdown parser, done right. Commonmark support, extensions, syntax plugins, high speed - all in one. Gulp and metalsmith plugins are also available.](https://github.com/jonschlinkert/remarkable)
 - [remarkable/parser.md at master · jonschlinkert/remarkable](https://github.com/jonschlinkert/remarkable/blob/master/docs/parser.md)
 - [remarkable/plugins.md at master · jonschlinkert/remarkable](https://github.com/jonschlinkert/remarkable/blob/master/docs/plugins.md)
@@ -44,6 +45,11 @@ markdown:
 - [marked/Using_Advanced](https://github.com/markedjs/marked/blob/master/USING_ADVANCED.md)
 - [marked/Using_Pro](https://github.com/markedjs/marked/blob/master/USING_PRO.md)
 - `!TestPackages/node_modules/markdown-parse/index.js`
+
+- [isagalaev/highlight.js: Javascript syntax highlighter](https://github.com/isagalaev/highlight.js/)
+- [markdown-it-highlight](https://www.npmjs.com/package/markdown-it-highlight)
+- [Building and testing — highlight.js 9.12.0 documentation](http://highlightjs.readthedocs.io/en/latest/building-testing.html)
+- [Using highlight.js with React.js · Issue #925 · isagalaev/highlight.js](https://github.com/isagalaev/highlight.js/issues/925)
 
 ES6:
 
