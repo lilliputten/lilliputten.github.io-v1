@@ -10,11 +10,11 @@ map:
 
 Hello @user some other text
 
-Looking for {% some
+Looking for <% some
 % -- {code}
 
 extra
-marked %} tag
+marked %> tag
 
 ```javascript
 var t = 1;

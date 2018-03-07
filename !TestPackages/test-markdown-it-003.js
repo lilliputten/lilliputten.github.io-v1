@@ -18,7 +18,7 @@ var Plugin = require('./markdown-it-tags/extra-tags');
 var regexpPlugin = new Plugin(
   // Regexp to match
   // /@(\w+)/gm,
-  /^{%\s*([\s\S]*?)\s*%}/gm,
+  /^<%\s*([\s\S]*?)\s*%>/gm,
   // This function will be called when something matches
   function(content, utils) {
     var extra = utils.escape(content);
