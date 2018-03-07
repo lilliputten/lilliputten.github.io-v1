@@ -62,26 +62,36 @@ class Plugin extends Function {
 
     let startPos = 0;
     if ( !this.looking ) {
-      startPos = strPart.indexOf('{%');
+      startPos = strPart.indexOf('<%');
 
-    if ( startPos === -1 ) {
-      return false;
+      if ( startPos === -1 ) {
+        return false;
+      }
+
+      startPos += 2;
     }
-    startPos += 2;
-    let endPos = strPart.indexOf('%}', startPos);
+
+    let endPos = strPart.indexOf('%>', startPos);
+    let nextPos = endPos + 2;
 
     // TODO: Continuous parsing (multiple chuncks)
+    // TODO: Use src instead strPart if looking?
 
     if ( endPos === -1 ) {
-      console.warn('No second pos');
-      return false;
-      // throw?
+      // Waiting for close tag...
+      this.looking = true;
+      endPos = nextPos = strPart.length;
+    }
+    else {
+      // Close tag found
+      this.looking = false;
     }
 
+    debugger;
     const content = strPart.substr(startPos, endPos - startPos);
 
     // valid match found, now we need to advance cursor
-    state.pos += endPos + 2;
+    state.pos += nextPos;
 
     // don't insert any tokens in silent mode
     if (silent) {
