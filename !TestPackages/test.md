@@ -12,7 +12,6 @@ Hello @user some other text
 
 Looking for <% some
 % -- {code}
-
 extra
 marked %> tag
 

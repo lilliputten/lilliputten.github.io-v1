@@ -7,42 +7,36 @@ var frontmatter = fm(content);
 // var mdSource = frontmatter.body;
 // var matterdata = frontmatter.attributes;
 
-var md = require('markdown-it');
+var MarkdownIt = require('markdown-it');
 // var Plugin = require('./markdown-it-tags/test-regexp');
 // var Plugin = require('./markdown-it-tags/test-regexp-class');
-var Plugin = require('./markdown-it-tags/extra-tags');
+var ExtraPlugin = require('./markdown-it-tags/extra-tags');
 
 // var hljs = require('highlight.js'); // https://highlightjs.org/
 // var hljsPlugin = require('markdown-it-highlight').default;
 
-var regexpPlugin = new Plugin(
-  // Regexp to match
-  // /@(\w+)/gm,
-  /^<%\s*([\s\S]*?)\s*%>/gm,
-  // This function will be called when something matches
-  function(content, utils) {
-    var extra = utils.escape(content);
-    return '<pre class="extraTag">'
-       + '---' + extra + '---'
-       + '</pre>'
-    ;
-  }
-);
+var extraPlugin = new ExtraPlugin((content, utils) => {
+  var extra = utils.escape(content);
+  return '<pre class="extraTag">'
+     + '---' + extra + '---'
+     + '</pre>'
+  ;
+});
 
 // Run...
-var html = md({
+var html = MarkdownIt({
     typographer : true,
     quotes : '«»‘’',
     // highlight: function (str, lang) {
     //   if (lang && hljs.getLanguage(lang)) {
     //     try {
     //       return hljs.highlight(lang, str).value;
-    //     } catch (__) {}
+    //     } catch (err) {}
     //   }
     //   return ''; // use external default escaping
     // },
   })
-  .use(regexpPlugin)
+  .use(extraPlugin)
   // .use(hljsPlugin)
   .render(frontmatter.body)
 ;

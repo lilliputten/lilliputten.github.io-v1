@@ -5,6 +5,8 @@
 
 // Override...
 
+const StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
+
 module.exports = function override(config, env) {
 
   /** Add/extend style loader ** {{{ */
@@ -93,6 +95,11 @@ module.exports = function override(config, env) {
             //     './src/blocks',
             //   ]
             // }],
+            // 'webpack-stats-plugin',
+            // new StatsWriterPlugin(),
+            // new StatsWriterPlugin({
+            //   filename: 'stats.json', // Default
+            // }),
           ],
         })
       }

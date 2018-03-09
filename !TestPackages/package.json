@@ -23,5 +23,8 @@
     "pygments": "git+https://github.com/pksunkara/pygments.js.git",
     "remarkable": "^1.7.1",
     "remarkable-codegroup": "0.0.4"
+  },
+  "devDependencies": {
+    "webpack-stats-plugin": "^0.2.1"
   }
 }

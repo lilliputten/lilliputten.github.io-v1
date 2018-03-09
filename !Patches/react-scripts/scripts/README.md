@@ -1,7 +1,8 @@
 > @since 2018.02.23, 23:35
 > @version 2018.02.23, 23:35
 
-Disabling some console enchancements.
+- Disabling some console enchancements.
+- Writing stats file.
 
 ## Changing:
 

@@ -12,6 +12,7 @@ Run command:
 
 - `npm run -s start`
 - `node-debug node_modules/react-app-rewired/scripts/start.js`
+- `node-debug node_modules/react-app-rewired/scripts/build.js`
 - `node node_modules/react-app-rewired/bin/index start`
 - `node-debug node_modules/react-app-rewired/bin/index start` (???)
 
@@ -144,4 +145,12 @@ SugarSS:
 rebem-css:
 
 - [Problems? POBEMS! PostCSS плагин для BEM · Issue #1061 · bem-site/bem-forum-content-ru](https://github.com/bem-site/bem-forum-content-ru/issues/1061)
+
+wbpack:
+
+- [Webpack Visualizer](http://chrisbateman.github.io/webpack-visualizer/)
+- [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer)
+- [Three simple ways to inspect a Webpack bundle – Jannik Hell – Medium](https://medium.com/@joeclever/three-simple-ways-to-inspect-a-webpack-bundle-7f6a8fe7195d)
+- `webpack-bundle-analyzer build/stats.json`
+- `webpack-bundle-analyzer -m static -r build/stats.html build/stats.json`
 

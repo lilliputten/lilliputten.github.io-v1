@@ -1,6 +1,6 @@
 /**
  *
- * @module regexp-class
+ * @module extra-tags
  *
  * Based on `markdown-it-regexp`.
  *
@@ -15,14 +15,14 @@ const utils = require('./utils');
 // Unique id counter
 let uniqueCounter = 0;
 
+debugger;
 class Plugin extends Function {
 
   /** constructor ** {{{ Create callable function object
-   * @param {RegExp} regexp
    * @param {Function} replacer
    * @return {Function}
    */
-  constructor(regexp, replacer) {
+  constructor(replacer) {
 
     // Returning function
     let self = function(md, options) {
@@ -60,34 +60,28 @@ class Plugin extends Function {
 
     const strPart = state.src.slice(state.pos);
 
-    let startPos = 0;
-    if ( !this.looking ) {
-      startPos = strPart.indexOf('<%');
+    let startPos = strPart.indexOf('<%');
 
-      if ( startPos === -1 ) {
-        return false;
-      }
-
-      startPos += 2;
+    if ( startPos === -1 ) {
+      return false;
     }
+
+    startPos += 2;
 
     let endPos = strPart.indexOf('%>', startPos);
     let nextPos = endPos + 2;
 
-    // TODO: Continuous parsing (multiple chuncks)
-    // TODO: Use src instead strPart if looking?
 
     if ( endPos === -1 ) {
+      return false;
+      // TODO: Continuous parsing (multiple chuncks)?
+      // TODO: Use src instead strPart if looking?
       // Waiting for close tag...
-      this.looking = true;
-      endPos = nextPos = strPart.length;
-    }
-    else {
-      // Close tag found
-      this.looking = false;
+      // this.looking = true;
     }
 
-    debugger;
+    endPos = nextPos = strPart.length;
+
     const content = strPart.substr(startPos, endPos - startPos);
 
     // valid match found, now we need to advance cursor

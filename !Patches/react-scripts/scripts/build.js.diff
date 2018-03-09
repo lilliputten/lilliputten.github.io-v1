@@ -1,5 +1,5 @@
---- build.ORIG.js	2018-02-27 21:54:32.776944200 +0300
-+++ build.js	2018-02-27 22:10:48.856296900 +0300
+--- build.js.orig	Sat Oct 28 18:15:21 2017
++++ build.js	Sat Mar 10 01:48:55 2018
 @@ -63,7 +63,7 @@
    .then(
      ({ stats, previousFileSizes, warnings }) => {
@@ -27,3 +27,18 @@
        printBuildError(err);
        process.exit(1);
      }
+@@ -115,6 +115,14 @@
+   let compiler = webpack(config);
+   return new Promise((resolve, reject) => {
+     compiler.run((err, stats) => {
++      // Writing stats file...
++      fs.writeFile('build/stats.json', JSON.stringify(stats.toJson({chunkModules: true}, true)), (err) => {
++        if (err) {
++          console.error(err);
++          return reject(err);
++        }
++        // console.info('build/stats.json saved');
++      });
+       if (err) {
+         return reject(err);
+       }
