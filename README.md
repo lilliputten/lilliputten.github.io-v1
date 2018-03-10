@@ -15,6 +15,7 @@ Run command:
 - `node-debug node_modules/react-app-rewired/scripts/build.js`
 - `node node_modules/react-app-rewired/bin/index start`
 - `node-debug node_modules/react-app-rewired/bin/index start` (???)
+- `node node_modules\jest\bin\jest.js`
 
 Config templates:
 
@@ -142,15 +143,21 @@ SugarSS:
 - [postcss/sugarss: Indent-based CSS syntax for PostCSS](https://github.com/postcss/sugarss)
 - [SugarSS syntax · Issue #495 · postcss/postcss](https://github.com/postcss/postcss/issues/495)
 
-rebem-css:
-
-- [Problems? POBEMS! PostCSS плагин для BEM · Issue #1061 · bem-site/bem-forum-content-ru](https://github.com/bem-site/bem-forum-content-ru/issues/1061)
-
-wbpack:
+Webpack:
 
 - [Webpack Visualizer](http://chrisbateman.github.io/webpack-visualizer/)
 - [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer)
 - [Three simple ways to inspect a Webpack bundle – Jannik Hell – Medium](https://medium.com/@joeclever/three-simple-ways-to-inspect-a-webpack-bundle-7f6a8fe7195d)
 - `webpack-bundle-analyzer build/stats.json`
 - `webpack-bundle-analyzer -m static -r build/stats.html build/stats.json`
+
+React & dom:
+
+- [Full DOM Rendering · Enzyme](http://airbnb.io/enzyme/docs/api/mount.html)
+- [javascript - ReactJS, find elements by classname in a React Component - Stack Overflow](https://stackoverflow.com/questions/42666140/reactjs-find-elements-by-classname-in-a-react-component)
+
+Testing:
+
+- [Testing React Apps · Jest](https://facebook.github.io/jest/docs/en/tutorial-react.html)
+- [Configuring Jest · Jest](https://facebook.github.io/jest/docs/en/configuration.html#modulenamemapper-object-string-string)
 

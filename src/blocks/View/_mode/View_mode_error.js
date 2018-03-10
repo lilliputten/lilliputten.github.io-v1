@@ -14,7 +14,7 @@ export default declMod(function(){ return this.state.mode === 'error' }, {
 
     return (
       <Fragment>
-        <Bem elem="Error" tag="p">{error}</Bem>
+        <Bem ref={(node) => { this._content = node; }} elem="Error" tag="p">{error}</Bem>
         {/* DEMO: comments, writing raw html: <span dangerouslySetInnerHTML={{ __html: '&gt;&lt;' }} /> */}
       </Fragment>
     );

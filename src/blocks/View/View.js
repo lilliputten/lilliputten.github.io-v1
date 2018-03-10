@@ -1,18 +1,19 @@
 import React, { Fragment } from 'react';
+// import ReactDom from 'react-dom';
 import { decl } from 'bem-react-core';
 // import { Bem } from 'bem-react-core';
 import PropTypes from 'prop-types';
 
 import axios from 'axios';
 
-// import Button from 'b:Button';
-// import Icon from 'b:Icon';
-
 // import path from 'path';
 
 import 'm:mode=ready|loading|error';
 
 // TODO 2018.02.24, 03:22 -- Dynamically load file on state update.
+
+import config from 'libs/config.js';
+import reactTools from 'libs/react-tools.js';
 
 export default decl({
 
@@ -31,10 +32,10 @@ export default decl({
 
   /** willInit ** {{{ */
   willInit() {
-    let hotLoad = !!( typeof module === 'object' && module.hot && module.hot.active );
+
     this.state = {
       mode : 'loading',
-      hotLoad : hotLoad,
+      devMode : config.devMode,
     };
     // this.handleDoubleClick = this.handleDoubleClick.bind(this);
   },/*}}}*/
@@ -46,12 +47,15 @@ export default decl({
 
   /** componentDidMount ** {{{ */
   componentDidMount() {
+    // DEBUG: Finding App component
+    this.App = reactTools.findParentComponent(this, 'App');
+    // console.log(config, this.App && this.App.testMethod());
   },/*}}}*/
 
   /** mods ** {{{ Modifiers... */
   mods(self) {
     return { ...self.mods,
-      hotLoad : this.state.hotLoad,
+      devMode : this.state.devMode,
       mode : this.state.mode,
     };
   },/*}}}*/
@@ -112,7 +116,7 @@ export default decl({
     return (
       <Fragment>
         {/* DEMO: comments, writing raw html... */}
-        <span dangerouslySetInnerHTML={{ __html: '&gt;&lt;' }} />
+        <span ref={(node) => { this._content = node; }} dangerouslySetInnerHTML={{ __html: '&gt;&lt;' }} />
       </Fragment>
     );
 

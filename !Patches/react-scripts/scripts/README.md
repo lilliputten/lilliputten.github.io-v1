@@ -2,7 +2,7 @@
 > @version 2018.02.23, 23:35
 
 - Disabling some console enchancements.
-- Writing stats file.
+- Writing stats file (`build.js`).
 
 ## Changing:
 

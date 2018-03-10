@@ -115,6 +115,14 @@ function build(previousFileSizes) {
   let compiler = webpack(config);
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
+      // Writing stats file...
+      fs.writeFile('build/stats.json', JSON.stringify(stats.toJson({chunkModules: true}, true)), (err) => {
+        if (err) {
+          console.error(err);
+          return reject(err);
+        }
+        // console.info('build/stats.json saved');
+      });
       if (err) {
         return reject(err);
       }

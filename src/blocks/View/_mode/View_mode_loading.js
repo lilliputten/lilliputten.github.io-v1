@@ -10,7 +10,7 @@ export default declMod(function(){ return this.state.mode === 'loading' }, {
   content() {
 
     return (
-      <Bem elem="Status" tag="p">
+      <Bem ref={(node) => { this._content = node; }} elem="Status" tag="p">
         Loading...
       </Bem>
     );

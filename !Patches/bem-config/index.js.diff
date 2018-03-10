@@ -1,0 +1,20 @@
+--- index.js.ORIG	Sat Mar 10 19:43:17 2018
++++ index.js	Sat Mar 10 19:46:56 2018
+@@ -18,7 +18,7 @@
+ function BemConfig(options) {
+     this._options = options || {};
+     // TODO: use cwd for resolver
+-    this._options.cwd || (this._options.cwd = process.cwd());
++    this._options.cwd || (this._options.cwd = process.cwd().replace(/\\/g,'/'));
+     // TODO: use cache
+     // this._cache = {};
+ }
+@@ -239,7 +239,7 @@
+  */
+ BemConfig.prototype.levelMapSync = function() {
+     var config = this.getSync(),
+-        projectLevels = config.levels,
++        projectLevels = Object.keys(config.levels).reduce(function(levels,key) { levels[key.replace(/\\/g,'/')] = config.levels[key]; return levels; }, {}), // config.levels,
+         libNames = config.libs ? Object.keys(config.libs) : [];
+ 
+     var libLevels = libNames.map(function(libName) {

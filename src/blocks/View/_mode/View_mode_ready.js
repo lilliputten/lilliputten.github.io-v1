@@ -13,7 +13,7 @@ export default declMod(function(){ return this.state.mode === 'ready' }, {
     const data = String(this.state.data).trim();
     return (
       <Fragment>
-        <Bem elem="Content" tag="pre" dangerouslySetInnerHTML={{ __html: '&lt;' + data + '&gt;' }}></Bem>
+        <Bem ref={(node) => { this._content = node; }} elem="Content" tag="pre" dangerouslySetInnerHTML={{ __html: '&lt;' + data + '&gt;' }}></Bem>
         {/* DEMO: comments, writing raw html: <span dangerouslySetInnerHTML={{ __html: '&gt;&lt;' }} /> */}
       </Fragment>
     );
