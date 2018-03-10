@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
-// const ReactDOM = require('react-dom');
-import { decl/* , Bem */ } from 'bem-react-core';
+import React, { Fragment } from 'react'
+// const ReactDOM = require('react-dom')
+import { decl/* , Bem */ } from 'bem-react-core'
 
-import Header from 'e:Header';
-import View from 'b:View';
+import Header from 'e:Header'
+import View from 'b:View'
 
 export default decl({
 
@@ -26,13 +26,6 @@ export default decl({
     return (
       <Fragment>
         <Header/>
-        {/*
-        <Bem elem="Intro">
-          To get started, edit <code>src/blocks/App/App.js</code> and save to reload.
-        </Bem>
-        <Bem block="View" mods={{m1:'v1'}}>
-        </Bem>
-        */}
         <View mods={{m1 : 'v1'}}>
         </View>
       </Fragment>

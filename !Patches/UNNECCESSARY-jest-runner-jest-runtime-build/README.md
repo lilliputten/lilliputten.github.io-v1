@@ -1,6 +1,8 @@
 > @since 2018.02.23, 23:35
 > @version 2018.02.23, 23:35
 
+UNNECCESSARY: Не является обязательным (2018.03.10, 22:07)!
+
 ## Changing:
 
 Pathing root: `node_modules`

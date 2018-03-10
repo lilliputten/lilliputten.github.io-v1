@@ -1,0 +1,19 @@
+--- node_modules/jest-runner/node_modules/jest-runtime/build/index.js.ORIG	Thu Jan 11 12:38:56 2018
++++ node_modules/jest-runner/node_modules/jest-runtime/build/index.js	Sat Mar 10 19:34:26 2018
+@@ -306,6 +306,7 @@
+     if (!modulePath) {
+       modulePath = this._resolveModule(from, moduleName);
+     }
++    modulePath = modulePath.replace(/\\/g, '/');
+ 
+     if (!moduleRegistry[modulePath]) {
+       // We must register the pre-allocated module object first so that any
+@@ -383,7 +384,7 @@
+       manualMock = true;
+       modulePath = potentialManualMock;
+     }
+-
++    modulePath = modulePath.replace(/\\/g, '/');
+     if (manualMock) {
+       const localModule = {
+         children: [],

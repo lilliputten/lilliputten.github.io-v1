@@ -76,6 +76,7 @@
     "stats": "webpack-bundle-analyzer -m static -r build/stats.html build/stats.json",
     "pack": "rm -f build.zip && cd build && zip -r ../build *",
     "test": "jest",
+    "jest-clear": "jest --clearCache",
     "eject": "react-scripts eject"
   }
 }

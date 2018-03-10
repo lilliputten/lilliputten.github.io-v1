@@ -15,7 +15,6 @@ Run command:
 - `node-debug node_modules/react-app-rewired/scripts/build.js`
 - `node node_modules/react-app-rewired/bin/index start`
 - `node-debug node_modules/react-app-rewired/bin/index start` (???)
-- `node node_modules\jest\bin\jest.js`
 
 Config templates:
 
@@ -160,4 +159,7 @@ Testing:
 
 - [Testing React Apps · Jest](https://facebook.github.io/jest/docs/en/tutorial-react.html)
 - [Configuring Jest · Jest](https://facebook.github.io/jest/docs/en/configuration.html#modulenamemapper-object-string-string)
+- `node node_modules\jest-cli\bin\jest.js --clearCache`
+- `node node_modules\jest\bin\jest.js`
+- `node node_modules\jest-cli\bin\jest.js --clearCache && node node_modules\jest-cli\bin\jest.js`
 

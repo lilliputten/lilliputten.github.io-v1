@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
-import { decl, Bem } from 'bem-react-core';
+import React, { Fragment } from 'react'
+import { decl, Bem } from 'bem-react-core'
 
-import 'e:Logo';
-import logoSvg from '../Logo/App-Logo.svg';
+import 'e:Logo'
+import logoSvg from '../Logo/App-Logo.svg'
 
 export default decl({
   block: 'App',
