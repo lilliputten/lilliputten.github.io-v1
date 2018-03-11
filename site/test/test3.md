@@ -1,3 +1,7 @@
+---
+pageParam: test
+---
+
 # Test file content
 
 ( <% extra tag content %> )
