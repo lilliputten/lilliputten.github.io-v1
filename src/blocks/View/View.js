@@ -1,19 +1,25 @@
-import React, { Fragment } from 'react';
-// import ReactDom from 'react-dom';
-import { decl } from 'bem-react-core';
-// import { Bem } from 'bem-react-core';
-import PropTypes from 'prop-types';
+/**
+ * @module View
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2018.02.26, 02:42
+ * @version 2018.03.11, 04:44
+ *
+ * TODO:
+ *
+ *  - 2018.03.11, 04:42 -- Move pages loading & parsing to separate modules.
+ *  - 2018.02.24, 03:22 -- Dynamically load file on state update.
+ *
+ */
+import React, { Fragment } from 'react'
+import { decl } from 'bem-react-core'
+import PropTypes from 'prop-types'
 
-import axios from 'axios';
+import axios from 'axios'
 
-// import path from 'path';
+import 'm:mode=ready|loading|error'
 
-import 'm:mode=ready|loading|error';
-
-// TODO 2018.02.24, 03:22 -- Dynamically load file on state update.
-
-import config from 'libs/config.js';
-import reactTools from 'libs/react-tools.js';
+import config from 'libs/config'
+import reactTools from 'libs/react-tools'
 
 export default decl({
 
@@ -35,7 +41,7 @@ export default decl({
 
     this.state = {
       mode : 'loading',
-      devMode : config.devMode,
+      DEBUG : config.DEBUG,
     };
     // this.handleDoubleClick = this.handleDoubleClick.bind(this);
   },/*}}}*/
@@ -48,14 +54,14 @@ export default decl({
   /** componentDidMount ** {{{ */
   componentDidMount() {
     // DEBUG: Finding App component
-    this.App = reactTools.findParentComponent(this, 'App');
+    this.App = reactTools.findParentBlock(this, 'App');
     // console.log(config, this.App && this.App.testMethod());
   },/*}}}*/
 
   /** mods ** {{{ Modifiers... */
   mods(self) {
     return { ...self.mods,
-      devMode : this.state.devMode,
+      DEBUG : this.state.DEBUG,
       mode : this.state.mode,
     };
   },/*}}}*/
@@ -65,8 +71,8 @@ export default decl({
    */
   loadFile() {
     // File url
-    let url = this.props.url; // '/site/a.md';
-    // Start loading... (for dev derver see webpack config & patch for loading `/site/` urls...)
+    let url = this.props.url;
+    // Start loading... (for dev server see webpack config & patch for loading `/site/` urls...)
     return axios.get(url)
       .then(res => {
         return res.data;

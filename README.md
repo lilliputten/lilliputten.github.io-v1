@@ -158,7 +158,9 @@ React & dom:
 Testing:
 
 - [Testing React Apps · Jest](https://facebook.github.io/jest/docs/en/tutorial-react.html)
+- [Jest CLI Options · Jest](https://facebook.github.io/jest/docs/en/cli.html)
 - [Configuring Jest · Jest](https://facebook.github.io/jest/docs/en/configuration.html#modulenamemapper-object-string-string)
+- [Using Matchers · Jest](https://facebook.github.io/jest/docs/en/using-matchers.html)
 - `node node_modules\jest-cli\bin\jest.js --clearCache`
 - `node node_modules\jest\bin\jest.js`
 - `node node_modules\jest-cli\bin\jest.js --clearCache && node node_modules\jest-cli\bin\jest.js`

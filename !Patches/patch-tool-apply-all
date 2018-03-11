@@ -7,7 +7,7 @@
 ORIGPATH=`pwd`
 
 # Scan all `patch-config`s...
-DIRS=`find_ . -name "patch-config*" \
+DIRS=`find_ . -name "patch-config.sh" \
   | sed 's/[\\]/\//g;s/\/[^\/]*$//g'`
 
 # Process all found folders...

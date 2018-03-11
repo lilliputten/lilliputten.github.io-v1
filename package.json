@@ -37,6 +37,9 @@
     "bem-react-core": "^1.0.0-rc.6",
     "bem-tools-core": "0.0.3",
     "bem-tools-create": "^2.2.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.1",
     "eslint": "4.4.1",
     "fs-extra": "^5.0.0",
     "jest-cli": "^22.0.6",
@@ -63,6 +66,9 @@
       "src",
       "node_modules"
     ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "verbose": false
   },
   "scripts": {
@@ -76,7 +82,8 @@
     "stats": "webpack-bundle-analyzer -m static -r build/stats.html build/stats.json",
     "pack": "rm -f build.zip && cd build && zip -r ../build *",
     "test": "jest",
-    "jest-clear": "jest --clearCache",
-    "eject": "react-scripts eject"
+    "test-update-snapshots": "npm run test -- --updateSnapshot",
+    "test-clear-cache": "npm run test -- --clearCache",
+    "--eject--": "react-scripts eject"
   }
 }
