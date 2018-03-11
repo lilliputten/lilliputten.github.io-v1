@@ -1,6 +1,6 @@
 /**
  *
- * @module extra-tags
+ * @module extra-tags-plugin
  *
  * Based on `markdown-it-regexp`.
  *
@@ -17,13 +17,14 @@ const utils = require('./utils');
 let uniqueCounter = 0;
 
 class Plugin extends Function {
-// const Plugin_proto = /** @lends Plugin.prototype */{
 
   /** constructor ** {{{ Create callable function object
    * @param {Function} replacer
    * @return {Function}
    */
   constructor(replacer) {
+
+    super();
 
     // Returning function
     let self = function(md, options) {
@@ -61,16 +62,16 @@ class Plugin extends Function {
 
     const strPart = state.src.slice(state.pos);
 
-    let startPos = strPart.indexOf('<%');
+    const foundPos = strPart.indexOf('<%');
 
-    if ( startPos === -1 ) {
+    if ( foundPos === -1 ) {
       return false;
     }
 
-    startPos += 2;
+    const startPos = foundPos + 2;
 
-    let endPos = strPart.indexOf('%>', startPos);
-    let nextPos = endPos + 2;
+    const endPos = strPart.indexOf('%>', startPos);
+    const nextPos = endPos + 2;
 
     if ( endPos === -1 ) {
       return false;
@@ -79,8 +80,6 @@ class Plugin extends Function {
       // Waiting for close tag...
       // this.looking = true;
     }
-
-    endPos = nextPos = strPart.length;
 
     const content = strPart.substr(startPos, endPos - startPos);
 

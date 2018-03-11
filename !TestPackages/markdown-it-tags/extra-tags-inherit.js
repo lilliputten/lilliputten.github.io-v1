@@ -9,21 +9,23 @@
  *
  */
 
+// import inherit from 'inherit'
+const inherit = require('inherit')
+
 // Escaping html entities utility
 // import utils from './utils'
-const utils = require('./utils');
+const utils = require('./utils')
 
 // Unique id counter
 let uniqueCounter = 0;
 
-class Plugin extends Function {
-// const Plugin_proto = /** @lends Plugin.prototype */{
+const Plugin_proto = /** @lends Plugin.prototype */{
 
-  /** constructor ** {{{ Create callable function object
+  /** __constructor ** {{{ Create callable function object
    * @param {Function} replacer
    * @return {Function}
    */
-  constructor(replacer) {
+  __constructor : function (replacer) {
 
     // Returning function
     let self = function(md, options) {
@@ -31,7 +33,7 @@ class Plugin extends Function {
       self.init(md);
     };
 
-    Object.setPrototypeOf(self, Plugin.prototype);
+    Object.setPrototypeOf(self, Plugin.prototype); // Plugin_proto);
 
     // Copy init options
     self.replacer = replacer;
@@ -42,22 +44,22 @@ class Plugin extends Function {
 
     return self;
 
-  }/*}}}*/
+  },/*}}}*/
 
   /** init ** {{{ Function that registers plugin with markdown-it */
-  init(md) {
+  init : function (md) {
 
     md.inline.ruler.push(this.id, this.parse.bind(this));
     md.renderer.rules[this.id] = this.render.bind(this);
 
-  }/*}}}*/
+  },/*}}}*/
 
   /** parse ** {{{ Parse string
    * @param {Object} state
    * @param {Boolean} silent
    * @return {Boolean}
    */
-  parse(state, silent) {
+  parse : function (state, silent) {
 
     const strPart = state.src.slice(state.pos);
 
@@ -97,7 +99,7 @@ class Plugin extends Function {
 
     return true;
 
-  }/*}}}*/
+  },/*}}}*/
 
   /** render ** {{{ Make replacement
    * @param {Object[]} tokens
@@ -106,14 +108,12 @@ class Plugin extends Function {
    * @param {Object} env
    * @return {String}
    * */
-  render(tokens, id, options, env) {
-
+  render : function (tokens, id, options, env) {
     const content = tokens[id].meta.content;
     return this.replacer(content, utils);
-
-  }/*}}}*/
+  },/*}}}*/
 
 }
 
-// module.exports = inherit(Function, Plugin);
+const Plugin = inherit(Function, Plugin_proto);
 module.exports = Plugin;

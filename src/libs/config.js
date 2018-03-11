@@ -1,5 +1,5 @@
 /**
- * @module react-tools
+ * @module config
  * @overview Application config
  * @author lilliputten <lilliputten@yandex.ru>
  * @since 2018.03.10, 02:05
@@ -18,6 +18,9 @@ const config = {
   hotMode : hotMode,
   // Development mode? (webpack server in hot mode)
   DEBUG : DEBUG,
+
+  // Site content root url prefix
+  siteRootPrefix : '/site',
 
   // App start time
   startTime : Date.now(), // ( DEBUG === 'test' ) ? 0 : Date.now(),

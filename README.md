@@ -63,6 +63,7 @@ ES6:
 bem-tools:
 
 - [bem-tools/bem-tools-create: bem create command](https://github.com/bem-tools/bem-tools-create)
+- `npm i -g bem-tools-core bem-tools-create`
 - [bem-tools / Toolbox / BEM](https://en.bem.info/toolbox/bem-tools/)
 - TODO: Trace `templateFolder` in `node-debug C:\Users\Miheev\AppData\Roaming\npm\node_modules\bem-tools-core\index.js create xx__el`
 - TODO: Try to use editorconfig tab values?

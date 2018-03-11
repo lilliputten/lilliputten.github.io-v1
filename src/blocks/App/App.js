@@ -8,7 +8,7 @@ import React, { Fragment } from 'react'
 import { decl/* , Bem */ } from 'bem-react-core'
 
 // import config from 'libs/config'
-import reactTools from 'libs/react-tools'
+// import reactTools from 'libs/reactTools'
 
 import Header from 'e:Header'
 import View from 'b:View'
@@ -25,7 +25,7 @@ export default decl({
   /** componentDidMount ** {{{ */
   componentDidMount() {
     // DEBUG: Finding View component
-    this.View = reactTools.findChildBlock(this, 'View');
+    // this.View = reactTools.findChildBlock(this, 'View');
     // console.log(config, this.View);
   },/*}}}*/
 

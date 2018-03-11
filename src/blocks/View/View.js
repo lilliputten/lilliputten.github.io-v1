@@ -8,20 +8,21 @@
  *
  *  - 2018.03.11, 04:42 -- Move pages loading & parsing to separate modules.
  *  - 2018.02.24, 03:22 -- Dynamically load file on state update.
- *
  */
-import React, { Fragment } from 'react'
+
+// import React, { Fragment } from 'react'
 import { decl } from 'bem-react-core'
 import PropTypes from 'prop-types'
-
-import axios from 'axios'
 
 import 'm:mode=ready|loading|error'
 
 import config from 'libs/config'
-import reactTools from 'libs/react-tools'
+// import reactTools from 'libs/reactTools'
+import fileLoader from 'libs/fileLoader'
 
-export default decl({
+import PagesParser from 'libs/PagesParser'
+
+const View_proto = /** @lends View.prototype */{
 
   block: 'View',
 
@@ -39,24 +40,33 @@ export default decl({
   /** willInit ** {{{ */
   willInit() {
 
+    this.parser = new PagesParser();
+
     this.state = {
       mode : 'loading',
       DEBUG : config.DEBUG,
     };
+
     // this.handleDoubleClick = this.handleDoubleClick.bind(this);
+
   },/*}}}*/
 
   /** componentWillMount ** {{{ */
   componentWillMount() {
+    // Initial content...
     this.updateContent();
   },/*}}}*/
 
-  /** componentDidMount ** {{{ */
-  componentDidMount() {
-    // DEBUG: Finding App component
-    this.App = reactTools.findParentBlock(this, 'App');
-    // console.log(config, this.App && this.App.testMethod());
-  },/*}}}*/
+  // /** componentDidMount ** {{{ */
+  // componentDidMount() {
+  //   // DEBUG: Finding App component
+  //   // this.App = reactTools.findParentBlock(this, 'App');
+  //   console.log('View componentDidMount');
+  // },/*}}}*/
+  // /** componentDidUpdate ** {{{ */
+  // componentDidUpdate() {
+  //   console.log('View componentDidUpdate');
+  // },/*}}}*/
 
   /** mods ** {{{ Modifiers... */
   mods(self) {
@@ -66,79 +76,113 @@ export default decl({
     };
   },/*}}}*/
 
-  /** loadFile ** {{{ Load file
-   * @return {Promise}
+  /** changeUrl ** {{{ Set new url
+   * @param {String} url
    */
-  loadFile() {
-    // File url
-    let url = this.props.url;
-    // Start loading... (for dev server see webpack config & patch for loading `/site/` urls...)
-    return axios.get(url)
-      .then(res => {
-        return res.data;
-      }, this)
-    ;
+  changeUrl(url) {
+    return this.updateContent(url);
   },/*}}}*/
 
-  /** updateContent ** {{{ */
-  updateContent() {
+  /** updateContent ** {{{ Update page content on url changing
+   * @param {String} [url] - Url to show
+   * @return {Promise}
+   */
+  updateContent(url) {
+
+    url = url || this.props.defaultUrl;
 
     // Mode: loading
     this.setState({ mode : 'loading' });
 
-    Promise.resolve(null)
+    return Promise.resolve(null)
 
-    // Debugging delay...
-    .then(() => this._delay(1000))
+      // Debugging delay...
+      .then(() => this._delay(1000))
 
-    // Loading file...
-    .then(() => this.loadFile())
+      // Loading file...
+      .then(() => fileLoader.load(url))
 
-    // Processing data...
-    .then(data => {
-      this.setState({
-        mode : 'ready',
-        data : data,
-      });
-    }, this)
+      // Parsing content...
+      .then((content) => this.parser.parse(content))
 
-    // Error...
-    .catch(err => {
-      console.error(err);
-      /*DEBUG*/debugger;
-      this.setState({
-        mode : 'error',
-        error : err,
-      });
-    }, this)
+      // Check data...
+      .then(data => {
+        let err;
+        if (!data || typeof data !== 'object') {
+          err = 'Parsed data must be an object!';
+        }
+        else if (data.html == null || typeof data.html !== 'string') {
+          err = 'Parsed data.html must be a string!';
+        }
+        // Throwing error...
+        if (err) {
+          console.error(err);
+          /*DEBUG*/debugger;
+          // throw new Error(err);
+          return Promise.reject(err);
+        }
+        // Pass data if ok...
+        return data;
+      })
+
+      // Processing verified data...
+      .then(data => {
+        if ( typeof window === 'object' && window.location ) {
+          // console.log(window.location);
+          // debugger;
+          window.location.hash = url;
+        }
+        this.setState({
+          url : url,
+          mode : 'ready',
+          // data : data,
+          attributes: data.attributes || {},
+          html : data.html,
+        });
+      })
+
+      // Error...
+      .catch(err => {
+        console.error(err);
+        /*DEBUG*/debugger;
+        this.setState({
+          mode : 'error',
+          error : err,
+        });
+      })
 
     ;
 
   },/*}}}*/
 
-  /** content ** {{{ */
-  content() {
+  // /** content ** {{{ */
+  // content() {
+  //
+  //   // NOT USED -- main content types defined in modifiers
+  //   // return (
+  //   //   <Fragment>
+  //   //     {/* DEMO: comments, writing raw html... */}
+  //   //     <span ref={(node) => { this._content = node; }} dangerouslySetInnerHTML={{ __html: '&gt;&lt;' }} />
+  //   //   </Fragment>
+  //   // );
+  //
+  // },/*}}}*/
 
-    return (
-      <Fragment>
-        {/* DEMO: comments, writing raw html... */}
-        <span ref={(node) => { this._content = node; }} dangerouslySetInnerHTML={{ __html: '&gt;&lt;' }} />
-      </Fragment>
-    );
+}
 
-  },/*}}}*/
+export default decl(View_proto, /* @lends View */{
 
-},
-{
   /** propTypes ** {{{ */
   propTypes : {
-    url : PropTypes.string,
-    // data : PropTypes.string,
+    defaultUrl : PropTypes.string,
+    // html : PropTypes.string,
   },/*}}}*/
+
   /** defaultProps ** {{{ */
   defaultProps : {
-    url : '/site/test/test.md',
-    // data : '--NONE--',
+    defaultUrl : '/site/test/test.md',
+    // html : '--NONE--',
   },/*}}}*/
+
 });
 

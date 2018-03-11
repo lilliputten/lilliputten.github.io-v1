@@ -8,12 +8,7 @@ import Adapter from 'enzyme-adapter-react-16'
 
 import App from 'b:App'
 
-// import reactTools from 'libs/react-tools'
-
 Enzyme.configure({ adapter: new Adapter() })
-
-// import config from 'libs/config.js'
-// import reactTools from 'libs/react-tools.js'
 
 describe('App', () => {
 

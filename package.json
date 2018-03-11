@@ -21,12 +21,15 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "front-matter": "^2.3.0",
+    "inherit": "^2.2.6",
     "jquery": "^3.3.1",
     "markdown-it": "^8.4.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
+    "axios-mock-adapter": "^1.14.1",
     "babel-jest": "^22.4.1",
     "babel-plugin-bem-import": "^1.4.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -85,6 +88,7 @@
     "test": "jest",
     "test-update-snapshots": "npm run test -- --updateSnapshot",
     "test-clear-cache": "npm run test -- --clearCache",
+    "create": "bem create",
     "--eject--": "react-scripts eject"
   }
 }

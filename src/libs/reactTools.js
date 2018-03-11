@@ -1,5 +1,5 @@
 /**
- * @module react-tools
+ * @module reactTools
  * @author lilliputten <lilliputten@yandex.ru>
  * @since 2018.03.10, 03:56
  * @version 2018.03.10, 04:44
@@ -13,11 +13,13 @@
 
 import React from 'react'
 import ReactDom from 'react-dom'
-import jQuery from 'jquery'
+import jquery from 'jquery'
 
 const isArray = Array.isArray
 
 const reactTools = {
+
+  // Traverse:
 
   /** findParentBlock ** {{{ Find closest parent component
    * @param {ReactObject} comp
@@ -48,6 +50,8 @@ const reactTools = {
     return foundComp;
   },/*}}}*/
 
+  // DOM:
+
   /** applyQuerySelector ** {{{ Apply querySelector lookup method
    * @param {Enzyme:ReactWrapper|ReactComponent|jQueryCollection} target
    * @param {String} op - querySelector operator (eg, `find`, `closest`)
@@ -56,9 +60,9 @@ const reactTools = {
    */
   applyQuerySelector : function (target, op, selector) {
     let dom = this.getComponentDom(target) // (typeof target.getDOMNode === 'function') ? target.getDOMNode : (target instanceof React.Component) ? ReactDom.findDOMNode(target) : target
-    const isJQuery = dom instanceof jQuery;
+    const isJQuery = dom instanceof jquery;
     if (!isJQuery) {
-      dom = jQuery(dom)
+      dom = jquery(dom)
     }
     if (typeof dom[op] === 'function') {
       return dom[op].call(dom, selector)
@@ -87,7 +91,7 @@ const reactTools = {
   getDomComponent : function (dom) {
     if (dom && dom != null && typeof dom === 'object') {
       // Array|Collection...
-      if (isArray(dom) || dom instanceof jQuery) {
+      if (isArray(dom) || dom instanceof jquery) {
         dom = dom[0];
       }
       // enzyme ReactWrapper...
@@ -106,6 +110,20 @@ const reactTools = {
         }
       }
     }
+  },/*}}}*/
+
+  // url:
+
+  /** getRelativeUrl ** {{{ Get url relative to current document
+   * @param {String} url
+   * @return {String}
+   */
+  getRelativeUrl : function (url) {
+    if (typeof window === 'object' && window.location && window.location.origin && url.startsWith(window.location.origin)) {
+      const len = window.location.origin.length;
+      url = url.substr(len);
+    }
+    return url;
   },/*}}}*/
 
 };

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import { declMod } from 'bem-react-core'
-import { Bem } from 'bem-react-core';
-// import TodoTextInput from './TodoTextInput'
+import { declMod/* , Bem */ } from 'bem-react-core'
+
+import Content from 'e:Content'
 
 export default declMod(function(){ return this.state.mode === 'ready' }, {
 
@@ -10,11 +10,14 @@ export default declMod(function(){ return this.state.mode === 'ready' }, {
   /** content ** {{{ */
   content() {
 
-    const data = String(this.state.data).trim();
     return (
       <Fragment>
-        <Bem ref={(node) => { this._content = node; }} elem="Content" tag="pre" dangerouslySetInnerHTML={{ __html: '&lt;' + data + '&gt;' }}></Bem>
-        {/* DEMO: comments, writing raw html: <span dangerouslySetInnerHTML={{ __html: '&gt;&lt;' }} /> */}
+        <Content
+          changeUrl={this.changeUrl.bind(this)}
+          url={this.state.url}
+          html={this.state.html}
+          attributes={this.state.attributes}
+        />
       </Fragment>
     );
 
