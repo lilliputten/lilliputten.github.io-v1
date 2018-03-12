@@ -1,24 +1,16 @@
-/* vim: ft=scss */
 .App {
-  text-align: center;
   // display: flex;
   // flex-direction: row;
   // align-items: center;
+  &-Header {
+    text-align: center;
+  }
   &-Title {
-    font-size: 1.5em;
-    // border: 1px solid red;
+    font-size: 1.25em;
   }
   &-Intro {
     font-size: large;
   }
 }
 
-/*
- * .App-Title {
- *   font-size: 1.5em;
- * }
- *
- * .App-Intro {
- *   font-size: large;
- * }
- */
+// vim: ft=scss

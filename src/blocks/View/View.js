@@ -16,6 +16,8 @@ import PropTypes from 'prop-types'
 
 import 'm:mode=ready|loading|error'
 
+import 'm:hashChange'
+
 import config from 'libs/config'
 // import reactTools from 'libs/reactTools'
 import fileLoader from 'libs/fileLoader'
@@ -40,10 +42,13 @@ const View_proto = /** @lends View.prototype */{
   /** willInit ** {{{ */
   willInit() {
 
+    this.__base.apply(this, arguments);
+
     this.parser = new PagesParser();
 
     this.state = {
       mode : 'loading',
+      // hashChange : true,
       DEBUG : config.DEBUG,
     };
 
@@ -53,18 +58,24 @@ const View_proto = /** @lends View.prototype */{
 
   /** componentWillMount ** {{{ */
   componentWillMount() {
+
+    this.__base.apply(this, arguments);
+
     // Initial content...
     this.updateContent();
+
   },/*}}}*/
 
   // /** componentDidMount ** {{{ */
   // componentDidMount() {
+  //   this.__base.apply(this, arguments);
   //   // DEBUG: Finding App component
   //   // this.App = reactTools.findParentBlock(this, 'App');
   //   console.log('View componentDidMount');
   // },/*}}}*/
   // /** componentDidUpdate ** {{{ */
   // componentDidUpdate() {
+  //   this.__base.apply(this, arguments);
   //   console.log('View componentDidUpdate');
   // },/*}}}*/
 
@@ -76,11 +87,19 @@ const View_proto = /** @lends View.prototype */{
     };
   },/*}}}*/
 
-  /** changeUrl ** {{{ Set new url
+  /** onHashChange ** {{{ Hash change event
    * @param {String} url
    */
-  changeUrl(url) {
+  onHashChange(url) {
     return this.updateContent(url);
+  },/*}}}*/
+
+  /** onLinkClick ** {{{ Set new url
+   * @param {String} url
+   */
+  onLinkClick(url) {
+    this.setHashUrl && this.setHashUrl(url);
+    // window.location.hash = url;
   },/*}}}*/
 
   /** updateContent ** {{{ Update page content on url changing
@@ -89,7 +108,7 @@ const View_proto = /** @lends View.prototype */{
    */
   updateContent(url) {
 
-    url = url || this.props.defaultUrl;
+    url = url || (this.getHashUrl && this.getHashUrl()) || this.props.defaultUrl;
 
     // Mode: loading
     this.setState({ mode : 'loading' });
@@ -130,7 +149,7 @@ const View_proto = /** @lends View.prototype */{
         if ( typeof window === 'object' && window.location ) {
           // console.log(window.location);
           // debugger;
-          window.location.hash = url;
+          // window.location.hash = url;
         }
         this.setState({
           url : url,

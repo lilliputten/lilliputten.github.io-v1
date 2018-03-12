@@ -32,6 +32,11 @@ bem-react-components:
 
 - `node_modules/bem-react-components/blocks`
 
+Disable hot reload (temporary):
+
+- Developer Tools -> Console (Esc) -> Request Blocking -> Add URI:
+  `localhost:3000/sockjs-node/*`
+
 markdown:
 
 - [Choosing the Right Markdown Parser | CSS-Tricks](https://css-tricks.com/choosing-right-markdown-parser/)

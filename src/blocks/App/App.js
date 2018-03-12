@@ -4,11 +4,9 @@
  * @since 2018.01.28, 23:51
  * @version 2018.03.11, 04:42
  */
+
 import React, { Fragment } from 'react'
 import { decl/* , Bem */ } from 'bem-react-core'
-
-// import config from 'libs/config'
-// import reactTools from 'libs/reactTools'
 
 import Header from 'e:Header'
 import View from 'b:View'
@@ -41,7 +39,7 @@ export default decl({
     return (
       <Fragment>
         <Header/>
-        <View mods={{m1 : 'v1'}}>
+        <View mods={{hashChange : true}}>
         </View>
       </Fragment>
     );

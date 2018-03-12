@@ -6,13 +6,16 @@
  */
 
 import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { decl, Bem } from 'bem-react-core';
 
 import config from 'libs/config'
 import reactTools from 'libs/reactTools'
 import jquery from 'jquery'
 
-export default decl({
+import 'e:ContentWrapper'
+
+const __Content_proto = /** @lends View-Content.prototype */{
 
   block : 'View',
   elem : 'Content',
@@ -23,12 +26,14 @@ export default decl({
 
   /** componentDidMount ** {{{ */
   componentDidMount() {
+    this.__base.apply(this, arguments);
     console.log('View-Content componentDidMount', this._wrapper);
     this.onContentCreated();
   },/*}}}*/
 
   // /** componentDidUpdate ** {{{ */
   // componentDidUpdate() {
+  //   this.__base.apply(this, arguments);
   //   console.log('View-Content componentDidUpdate');
   //   this.onContentCreated();
   // },/*}}}*/
@@ -41,7 +46,7 @@ export default decl({
     if ( url.startsWith(config.siteRootPrefix) ) {
       console.log('View-Content link clicked', url);
       // Call parent for change url...
-      this.props.changeUrl(url);
+      this.props.onLinkClick && this.props.onLinkClick(url);
       return false;
     }
     return true;
@@ -64,13 +69,26 @@ export default decl({
       <Fragment>
         <Bem
           elem="ContentWrapper"
-          tag="pre"
           ref={(node) => { this._wrapper = node; }}
           dangerouslySetInnerHTML={{ __html : this.props.html }}
         />
       </Fragment>
     );
 
+  },/*}}}*/
+
+}
+
+export default decl(__Content_proto, /** @lends View-Content */{
+
+  /** propTypes ** {{{ */
+  propTypes : {
+    onLinkClick : PropTypes.func,
+  },/*}}}*/
+
+  /** defaultProps ** {{{ */
+  defaultProps : {
+    // getLocationHash : null,
   },/*}}}*/
 
 });

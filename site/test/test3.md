@@ -1,8 +1,4 @@
----
-pageParam: test
----
-
-# Test file content
+# Test 3
 
 ( <% extra tag content %> )
 

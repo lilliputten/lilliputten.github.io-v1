@@ -7,7 +7,6 @@
  */
 
 import inherit from 'inherit'
-// import ZeroClass from 'libs/ZeroClass'
 
 import FrontMatter from 'front-matter'
 import Markdown from 'markdown-it'
