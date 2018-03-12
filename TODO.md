@@ -1,4 +1,5 @@
 
+- Strip `.md` and `index` (`README`?) from urls
 - 2018.03.13, 02:40 -- Cache parsed (loaded?) pages.
 - 2018.03.13, 02:39 -- Tests for `View*`.
 - 2018.03.12, 03:11 -- Store last opened page?
