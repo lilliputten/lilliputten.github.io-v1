@@ -180,7 +180,7 @@ export default decl(View_proto, /* @lends View */{
 
   /** defaultProps ** {{{ */
   defaultProps : {
-    defaultUrl : '/site/test/test.md',
+    defaultUrl : '/site/test/test2.md',
     // html : '--NONE--',
   },/*}}}*/
 
