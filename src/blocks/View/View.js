@@ -155,19 +155,6 @@ const View_proto = /** @lends View.prototype */{
 
   },/*}}}*/
 
-  // /** content ** {{{ */
-  // content() {
-  //
-  //   // NOT USED -- main content types defined in modifiers
-  //   // return (
-  //   //   <Fragment>
-  //   //     {/* DEMO: comments, writing raw html... */}
-  //   //     <span ref={(node) => { this._content = node; }} dangerouslySetInnerHTML={{ __html: '&gt;&lt;' }} />
-  //   //   </Fragment>
-  //   // );
-  //
-  // },/*}}}*/
-
 }
 
 export default decl(View_proto, /* @lends View */{
@@ -180,7 +167,7 @@ export default decl(View_proto, /* @lends View */{
 
   /** defaultProps ** {{{ */
   defaultProps : {
-    defaultUrl : '/site/test/test2.md',
+    defaultUrl : '/site/test/test.md',
     // html : '--NONE--',
   },/*}}}*/
 
