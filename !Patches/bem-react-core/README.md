@@ -1,7 +1,7 @@
 > @since 2018.02.23, 23:35
 > @version 2018.02.23, 23:35
 
-# Pathcing for dev version of react
+# Pathcing for use dev version of react
 
 Modifiyng the `main` entry in `package.json`.
 

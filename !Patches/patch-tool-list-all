@@ -1,7 +1,7 @@
 #!/sbin/sh
-# @overview Apply all available patches
-# @since 2018.03.05, 00:00
-# @version 2018.03.05, 00:22
+# @overview List all active patches
+# @since 2018.03.13, 00:12
+# @version 2018.03.13, 00:12
 
 # Save source path
 ORIGPATH=`pwd`
@@ -13,8 +13,6 @@ DIRS=`find_ . -name "patch-config.sh" \
 # Process all found folders...
 for D in $DIRS; do
   echo ""
-  echo "Processing $D..."
-  cd "$D"
-  sh "$ORIGPATH/patch-tool-apply"
-  cd "$ORIGPATH"
+  echo "$D:"
+  find_ $D -name "*.diff"
 done

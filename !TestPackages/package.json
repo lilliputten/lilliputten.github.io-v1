@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-plugin-bem-import": "^1.5.2",
     "front-matter": "^2.3.0",
     "highlight.js": "^9.12.0",
     "inherit": "^2.2.6",
