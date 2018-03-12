@@ -6,4 +6,6 @@ pageParam: test
 
 ( <% extra tag content %> )
 
-[Link test](/site/test/test2.md)
+[Link test 1](/site/test/test.md)
+
+[Link test 2](/site/test/test2.md)
