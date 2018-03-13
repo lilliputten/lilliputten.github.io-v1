@@ -45,6 +45,14 @@ UI:
 - [Third-Party Libraries - Ant Design](http://beta.ant.design/docs/react/recommendation)
 - [Material-UI](http://www.material-ui.com/)
 
+React-static:
+
+- [wix/react-templates: Light weight templates for react](https://github.com/wix/react-templates)
+- [hello-react-templates sample](https://github.com/wix/hello-react-templates/tree/master/src)
+- [iansinnott/react-static-boilerplate: A boilerplate for building static sites with Webpack 2, React and React Router](https://github.com/iansinnott/react-static-boilerplate)
+- [react-static-webpack-plugin](https://www.npmjs.com/package/react-static-webpack-plugin)
+- [How we switched our template rendering engine to React](https://medium.com/@Pinterest_Engineering/how-we-switched-our-template-rendering-engine-to-react-a799a3d540b0)
+
 Markdown:
 
 - [Choosing the Right Markdown Parser | CSS-Tricks](https://css-tricks.com/choosing-right-markdown-parser/)
