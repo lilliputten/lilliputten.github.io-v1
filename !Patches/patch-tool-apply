@@ -1,10 +1,22 @@
 #!/sbin/sh
 # @overview Patch utility script
 # @since 2018.02.23, 23:35
-# @version 2018.03.05, 00:22
+# @version 2018.03.14, 13:30
+
+# Test for config file existing
+PATCHCONFIG="./patch-config.sh"
+if [ ! -f $PATCHCONFIG ]; then
+    echo "Not found patch config file!"
+    exit 1
+fi
 
 # Loading configuration (PATCHCD etc)
-. "patch-config.sh"
+. $PATCHCONFIG
+
+# Importing from config variables:
+#   - ROOTCD: Root path for looking up in folders tree
+#   - PATCHCD: Path relative to ROOT -- working path
+#   - POSTCMD: Command to run after all patches applied
 
 # Root path from config
 echo "ROOTCD: $ROOTCD"
@@ -54,8 +66,17 @@ for NAME in $DIFFS; do
   echo ""
   echo "Patching with $NAME ..."
   cp -vf "$SRCPATH/$NAME" .
-  patch -lb --verbose < "$NAME"
+  patch -lb --verbose < "$NAME" || FAIL=1
+  if [ ! -z $FAIL ]; then
+    echo "Patch '$NAME' failed!"
+    exit 1
+  fi
 done
+
+if [ ! -z "$POSTCMD" ]; then
+    echo "Postcmd applying: $POSTCMD"
+    eval $POSTCMD
+fi
 
 # Returning path to original path
 cd $SRCPATH
