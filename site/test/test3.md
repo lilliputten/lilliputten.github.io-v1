@@ -1,3 +1,7 @@
+---
+fm: test
+---
+
 # Test 3
 
 ( <% extra tag content %> )
