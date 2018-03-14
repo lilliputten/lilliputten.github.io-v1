@@ -1,7 +1,7 @@
 #!/sbin/sh
 # @overview Patch utility script
 # @since 2018.02.23, 23:35
-# @version 2018.03.14, 13:30
+# @version 2018.03.14, 13:44
 
 # Test for config file existing
 PATCHCONFIG="./patch-config.sh"
@@ -75,7 +75,13 @@ done
 
 if [ ! -z "$POSTCMD" ]; then
     echo "Postcmd applying: $POSTCMD"
-    eval $POSTCMD
+    eval $POSTCMD || POSTCMDFAIL=1
+    if [ $POSTCMDFAIL ]; then
+        echo "Postcmd failed!"
+        exit 1
+    else
+        echo "Postcmd applied"
+    fi
 fi
 
 # Returning path to original path
