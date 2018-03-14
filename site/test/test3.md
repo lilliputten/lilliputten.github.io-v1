@@ -1,5 +1,5 @@
 ---
-fm: test
+fm: "test"
 ---
 
 # Test 3
