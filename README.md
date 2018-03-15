@@ -73,6 +73,11 @@ Markdown:
 - [Building and testing — highlight.js 9.12.0 documentation](http://highlightjs.readthedocs.io/en/latest/building-testing.html)
 - [Using highlight.js with React.js · Issue #925 · isagalaev/highlight.js](https://github.com/isagalaev/highlight.js/issues/925)
 
+Server-side & SEO:
+
+- [Making AJAX applications crawlable  |  AJAX Crawling (Deprecated)  |  Google Developers](https://developers.google.com/webmasters/ajax-crawling/docs/learn-more?csw=1)
+- [isolani - Javascript: Breaking the Web with hash-bangs](http://isolani.co.uk/blog/javascript/BreakingTheWebWithHashBangs)
+
 ES6:
 
 - [Exploring ES6](http://exploringjs.com/es6/)

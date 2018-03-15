@@ -43,7 +43,7 @@ const __Content_proto = /** @lends View-Content.prototype */{
     const link = e.currentTarget;
     const url = reactTools.getRelativeUrl(link.href);
     // If url starts with content root prefix...
-    if ( url.startsWith(config.siteRootPrefix) ) {
+    if ( url.startsWith(config.site.rootPrefix) ) {
       console.log('View-Content link clicked', url);
       // Call parent for change url...
       this.props.onLinkClick && this.props.onLinkClick(url);

@@ -24,6 +24,8 @@ import fileLoader from 'libs/fileLoader'
 
 import PagesParser from 'libs/PagesParser'
 
+import hashTools from 'libs/hashTools'
+
 const View_proto = /** @lends View.prototype */{
 
   block: 'View',

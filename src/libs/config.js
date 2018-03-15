@@ -10,17 +10,31 @@ const testMode = (typeof jest === 'object');
 const hotMode = !!(typeof module === 'object' && module.hot && module.hot.active);
 const DEBUG = testMode ? 'test' : hotMode;
 
-const config = {
+const config = /** @lends config */{
 
-  // Test mode?
+  /** Is test mode? */
   testMode : testMode,
-  // Hot dev-server mode?
+  /** Is hot dev-server mode? */
   hotMode : hotMode,
-  // Development mode? (webpack server in hot mode)
+  /** Is DEBUG mode? (webpack server in hot mode) */
   DEBUG : DEBUG,
 
-  // Site content root url prefix
-  siteRootPrefix : '/site',
+  /** Site properties */
+  site : {
+
+    /** Site content root url prefix */
+    rootPrefix : '/site',
+
+    /** Default site folder index (if url like `/some/folder/`) */
+    defaultIndex : 'index',
+
+    /** Default site page extension */
+    defaultExtension : '.md',
+
+    /** Default site extensions to strip from url */
+    defaultExtensions : ['.md', '.json'],
+
+  },
 
   // App start time
   startTime : Date.now(), // ( DEBUG === 'test' ) ? 0 : Date.now(),

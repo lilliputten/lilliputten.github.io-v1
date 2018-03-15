@@ -52,12 +52,13 @@ const _hashChange_proto = /** @lends View_hashChange.prototype */{
 
     url = url || this.props.getLocationHash();
 
+    debugger;
     if (url.startsWith('#')) {
       url = url.substr(1);
     }
 
-    if (!url.startsWith(config.siteRootPrefix) && url.startsWith('/')) {
-      url = config.siteRootPrefix + url;
+    if (!url.startsWith(config.site.rootPrefix) && url.startsWith('/')) {
+      url = config.site.rootPrefix + url;
     }
 
     return url;
@@ -69,8 +70,8 @@ const _hashChange_proto = /** @lends View_hashChange.prototype */{
    */
   setHashUrl(url) {
 
-    if (url.startsWith(config.siteRootPrefix)) {
-      url = url.substr(config.siteRootPrefix.length);
+    if (url.startsWith(config.site.rootPrefix)) {
+      url = url.substr(config.site.rootPrefix.length);
     }
 
     window.location.hash = url;

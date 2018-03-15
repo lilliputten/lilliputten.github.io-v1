@@ -8,7 +8,7 @@
 
 import inherit from 'inherit'
 
-import FrontMatter from 'front-matter'
+// import FrontMatter from 'front-matter'
 import Markdown from 'markdown-it'
 
 import ExtraPlugin from 'libs/markdown/extra-tags-plugin'
@@ -57,8 +57,8 @@ const PagesParserProto = /** @lends PagesParser.prototype */{
    */
   parse(content) {
 
-    let data = FrontMatter(content);
-    data.html = this.mdParser.render(data.body);
+    let data = {}; // FrontMatter(content);
+    data.html = this.mdParser.render(content);
     return data;
 
   },/*}}}*/

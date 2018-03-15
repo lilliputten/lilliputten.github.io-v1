@@ -62,8 +62,11 @@
       "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/node_modules/react-scripts/config/jest/fileTransform.js",
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest"
     },
-    "unmockedModulePathPatterns": [
-      "<rootDir>/src"
+    "testPathIgnorePatterns": [
+      "<rootDir>/(!.*|build|public|site|static)/"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/(!.*|build|public|site|static)/"
     ],
     "moduleDirectories": [
       "src",
