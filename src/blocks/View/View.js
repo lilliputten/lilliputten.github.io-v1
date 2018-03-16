@@ -13,6 +13,13 @@
 // import React, { Fragment } from 'react'
 import { decl } from 'bem-react-core'
 import PropTypes from 'prop-types'
+// import { connect } from 'react-redux'
+import connector from 'state/connector'
+
+// import { setHash } from 'redux/actions/hashActions'
+
+import * as actions from './Actions/View-Actions'
+import reducer from './Reducer/View-Reducer'
 
 import 'm:mode=ready|loading|error'
 
@@ -21,10 +28,8 @@ import 'm:hashChange'
 import config from 'libs/config'
 // import reactTools from 'libs/reactTools'
 import fileLoader from 'libs/fileLoader'
-
 import PagesParser from 'libs/PagesParser'
-
-import hashTools from 'libs/hashTools'
+// import hashTools from 'libs/hashTools'
 
 const View_proto = /** @lends View.prototype */{
 
@@ -89,12 +94,12 @@ const View_proto = /** @lends View.prototype */{
     };
   },/*}}}*/
 
-  /** onHashChange ** {{{ Hash change event
-   * @param {String} url
-   */
-  onHashChange(url) {
-    return this.updateContent(url);
-  },/*}}}*/
+  // /** onHashChange ** {{{ Hash change event
+  //  * @param {String} url
+  //  */
+  // onHashChange(url) {
+  //   return this.updateContent(url);
+  // },/*}}}*/
 
   /** onLinkClick ** {{{ Set new url
    * @param {String} url
@@ -110,7 +115,7 @@ const View_proto = /** @lends View.prototype */{
    */
   updateContent(url) {
 
-    url = url || (this.getHashUrl && this.getHashUrl()) || this.props.defaultUrl;
+    url = url || this.props.defaultUrl;
 
     // Mode: loading
     this.setState({ mode : 'loading' });
@@ -148,11 +153,6 @@ const View_proto = /** @lends View.prototype */{
 
       // Processing verified data...
       .then(data => {
-        if ( typeof window === 'object' && window.location ) {
-          // console.log(window.location);
-          // debugger;
-          // window.location.hash = url;
-        }
         this.setState({
           url : url,
           mode : 'ready',
@@ -178,7 +178,7 @@ const View_proto = /** @lends View.prototype */{
 
 }
 
-export default decl(View_proto, /* @lends View */{
+const View_static = /* @lends View */{
 
   /** propTypes ** {{{ */
   propTypes : {
@@ -192,5 +192,21 @@ export default decl(View_proto, /* @lends View */{
     // html : '--NONE--',
   },/*}}}*/
 
-});
+}
+
+export default decl(View_proto, View_static, connector({
+  actions,
+  reducer,
+  stateToProps : state => ({
+    current : state.view.name
+  })
+}));
+
+// function mapStateToProps(state) {
+//   const { value } = state.hash;
+//   return { value };
+// }
+//
+// debugger;
+// export default connect(mapStateToProps)(View_decl);
 

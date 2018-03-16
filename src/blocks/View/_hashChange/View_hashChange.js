@@ -52,7 +52,6 @@ const _hashChange_proto = /** @lends View_hashChange.prototype */{
 
     url = url || this.props.getLocationHash();
 
-    debugger;
     if (url.startsWith('#')) {
       url = url.substr(1);
     }

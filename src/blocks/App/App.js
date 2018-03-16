@@ -7,9 +7,14 @@
 
 import React, { Fragment } from 'react'
 import { decl/* , Bem */ } from 'bem-react-core'
+// import { connect } from 'react-redux'
 
 import Header from 'e:Header'
 import View from 'b:View'
+
+import store from 'state/store'
+
+// const СView = connect(View)
 
 export default decl({
 
@@ -39,7 +44,7 @@ export default decl({
     return (
       <Fragment>
         <Header/>
-        <View mods={{hashChange : true}}>
+        <View mods={{store, hashChange : true}}>
         </View>
       </Fragment>
     );

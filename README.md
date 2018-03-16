@@ -102,6 +102,15 @@ Events:
 
 Redux:
 
+- [bem-contrib/bem-redux-todo-example: Todo example for bem-redux](https://github.com/bem-contrib/bem-redux-todo-example)
+- [bem-contrib/bem-redux: Redux for BEM projects](https://github.com/bem-contrib/bem-redux)
+
+- [redux и БЭМ · Issue #968 · bem-site/bem-forum-content-ru](https://github.com/bem-site/bem-forum-content-ru/issues/968)
+- [Issues · bem-site/bem-forum-content-ru](https://github.com/bem-site/bem-forum-content-ru/issues?utf8=%E2%9C%93&q=redux)
+
+- [Connect to state (bem-react-core)](https://gist.github.com/awinogradov/e8f9ea51a9c44b6cc0ae911e3851c2ea#file-connector-js)
+- [React.js: собираем с нуля изоморфное / универсальное приложение. Часть 2: добавляем bootstrap, страницы и роутинг / Хабрахабр](https://habrahabr.ru/post/310284/)
+
 - [Core Concepts - Redux](https://redux.js.org/introduction/core-concepts)
 - [gaearon/redux-devtools: DevTools for Redux with hot reloading, action replay, and customizable UI](https://github.com/gaearon/redux-devtools)
 - [Новый уровень React: Redux](https://getinstance.info/articles/react/learning-react-redux/)
