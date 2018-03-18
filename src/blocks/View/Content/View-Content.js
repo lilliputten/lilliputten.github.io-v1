@@ -2,58 +2,56 @@
  * @module View-Content
  * @author lilliputten <lilliputten@yandex.ru>
  * @since 2018.03.12, 01:29
- * @version 2018.03.12, 01:29
+ * @version 2018.03.19, 02:53
  */
 
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { decl, Bem } from 'bem-react-core';
-
-import config from 'libs/config'
+import { connect } from 'react-redux'
 import reactTools from 'libs/reactTools'
+// import fileLoader from 'libs/fileLoader'
+// import MdParser from 'libs/MdParser'
+import hashTools from 'libs/hashTools'
+// import config from 'config'
 import jquery from 'jquery'
+
+import { setPage } from 'redux/actions/pageActions'
 
 import 'e:ContentWrapper'
 
 const __Content_proto = /** @lends View-Content.prototype */{
 
-  block : 'View',
-  elem : 'Content',
-
-  // /** willInit ** {{{ */
-  // willInit() {
-  // },/*}}}*/
+  block: 'View',
+  elem: 'Content',
 
   /** componentDidMount ** {{{ */
   componentDidMount() {
     this.__base.apply(this, arguments);
-    console.log('View-Content componentDidMount', this._wrapper);
-    this.onContentCreated();
+    this.onContentPlaced();
   },/*}}}*/
 
   // /** componentDidUpdate ** {{{ */
   // componentDidUpdate() {
   //   this.__base.apply(this, arguments);
-  //   console.log('View-Content componentDidUpdate');
-  //   this.onContentCreated();
+  //   this.onContentPlaced();
   // },/*}}}*/
 
   /** onLinkClick ** {{{ Event on link clicked */
   onLinkClick(e) {
     const link = e.currentTarget;
     const url = reactTools.getRelativeUrl(link.href);
-    // If url starts with content root prefix...
-    if ( url.startsWith(config.site.rootPrefix) ) {
-      console.log('View-Content link clicked', url);
-      // Call parent for change url...
-      this.props.onLinkClick && this.props.onLinkClick(url);
+    const pageId = hashTools.getPageId(url);
+    if ( pageId != null ) {
+      // console.log('View-Content link clicked', url, '->', pageId);
+      this.props.dispatch(setPage(pageId));
       return false;
     }
     return true;
   },/*}}}*/
 
-  /** onContentCreated ** {{{ When content created or updated */
-  onContentCreated() {
+  /** onContentPlaced ** {{{ When content created or updated */
+  onContentPlaced() {
     const dom = reactTools.getComponentDom(this._wrapper);
     // Initializing events on all links in wrapper...
     jquery(dom).find('a')
@@ -70,7 +68,7 @@ const __Content_proto = /** @lends View-Content.prototype */{
         <Bem
           elem="ContentWrapper"
           ref={(node) => { this._wrapper = node; }}
-          dangerouslySetInnerHTML={{ __html : this.props.html }}
+          dangerouslySetInnerHTML={{ __html: this.props.html }}
         />
       </Fragment>
     );
@@ -79,16 +77,19 @@ const __Content_proto = /** @lends View-Content.prototype */{
 
 }
 
-export default decl(__Content_proto, /** @lends View-Content */{
+/** __Content_static ** {{{ */
+const __Content_static = /** @lends View-Content */{
 
-  /** propTypes ** {{{ */
-  propTypes : {
-    onLinkClick : PropTypes.func,
-  },/*}}}*/
+  propTypes: {
+    dispatch : PropTypes.func.isRequired,
+    page : PropTypes.string.isRequired,
+    html : PropTypes.string.isRequired,
+  },
 
-  /** defaultProps ** {{{ */
-  defaultProps : {
-    // getLocationHash : null,
-  },/*}}}*/
+};/*}}}*/
 
-});
+function mapStateToProps(state) {
+  const { page } = state.page || {};
+  return { page };
+}
+export default decl(__Content_proto, __Content_static, connect(mapStateToProps));

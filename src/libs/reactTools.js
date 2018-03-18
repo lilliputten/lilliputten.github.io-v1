@@ -126,6 +126,22 @@ const reactTools = {
     return url;
   },/*}}}*/
 
+  // utils:
+
+  /** delay ** {{{ DEBUG: Timeout
+   * TODO: Move to `commonTools`
+   * @param {Number} [timeout=1000]
+   * @return {Promise}
+   */
+  delay(timeout=1000){
+    return new Promise(function(resolve, reject){
+      setTimeout(function(){
+        resolve();
+      }, timeout)
+    });
+  },/*}}}*/
+
+
 };
 
 export default reactTools;

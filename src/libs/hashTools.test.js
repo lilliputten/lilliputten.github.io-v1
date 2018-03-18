@@ -1,9 +1,53 @@
 
-import config from 'libs/config'
+import config from 'config'
 
 import hashTools from './hashTools'
 
 describe('hashTools', () => {
+
+  /*{{{*/describe('isCorrectHash', () => {
+
+    it('Correct: <EMPTY>', () => {
+      expect(hashTools.isCorrectHash('')).toBe(true);
+    })
+
+    it('Correct: #!hash/string', () => {
+      expect(hashTools.isCorrectHash('#!hash/string')).toBe(true);
+    })
+
+    it('Invalid: <null>', () => {
+      expect(hashTools.isCorrectHash(null)).toBe(false);
+    })
+
+    it('Invalid: https://somewhere.com', () => {
+      expect(hashTools.isCorrectHash('https://somewhere.com')).toBe(false);
+    })
+
+    it('Invalid: http://localhost/some/page#hash/string', () => {
+      expect(hashTools.isCorrectHash('http://localhost/some/page#hash/string')).toBe(false);
+    })
+
+    it('Invalid: /some/page#hash/string', () => {
+      expect(hashTools.isCorrectHash('/some/page#hash/string')).toBe(false);
+    })
+
+  })/*}}}*/
+
+  /*{{{*/describe('toPageId', () => {
+
+    it('<EMPTY> -> <EMPTY>', () => {
+      expect(hashTools.toPageId('')).toBe('');
+    })
+
+    it('#!hash/string -> hash/string', () => {
+      expect(hashTools.toPageId('#!hash/string')).toBe('hash/string');
+    })
+
+    it('(invalid) #hash/string -> hash/string', () => {
+      expect(hashTools.toPageId('#hash/string')).toBe('hash/string');
+    })
+
+  })/*}}}*/
 
   /*{{{*/describe('toUrl', () => {
 
@@ -30,11 +74,11 @@ describe('hashTools', () => {
   /*{{{*/describe('fromUrl', () => {
 
     const rootPrefix = config.site.rootPrefix;
-    const defaultExt = config.site.defaultExtensions[0];
+    const defaultExt = config.site.defaultExts[0];
     const extStr = rootPrefix + '/hash/string' + defaultExt;
     it(extStr + ' -> #!hash/string', () => {
       return expect(hashTools.fromUrl(extStr)).toBe('#!hash/string');
-      // config.site.defaultExtensions.map((ext) => {
+      // config.site.defaultExts.map((ext) => {
       //   return expect(hashTools.fromUrl('#!hash/string' + ext)).toBe('/hash/string');
       // });
     })
@@ -47,6 +91,49 @@ describe('hashTools', () => {
     const rootIndexStr = rootPrefix + '/' + config.site.defaultIndex;
     it(rootIndexStr + ' -> <EMPTY>', () => {
       expect(hashTools.fromUrl(rootIndexStr)).toBe('');
+    })
+
+  })/*}}}*/
+
+  /*{{{*/describe('getPageId', () => {
+
+    it('<EMPTY> -> <EMPTY>', () => {
+      expect(hashTools.getPageId('')).toBe('');
+    })
+
+    it('#!hash/string -> hash/string', () => {
+      expect(hashTools.getPageId('#!hash/string')).toBe('hash/string');
+    })
+
+    const rootPrefix = config.site.rootPrefix;
+    it(rootPrefix + '/hash/string -> hash/string', () => {
+      expect(hashTools.getPageId(rootPrefix + '/hash/string')).toBe('hash/string');
+    })
+
+    const defaultExt = config.site.defaultExts[0];
+    it(rootPrefix + '/hash/string' + defaultExt +' -> hash/string', () => {
+      expect(hashTools.getPageId(rootPrefix + '/hash/string' + defaultExt)).toBe('hash/string');
+    })
+
+    const defaultIndex = config.site.defaultIndex;
+    it(rootPrefix + '/hash/string/' + defaultIndex + defaultExt +' -> hash/string/', () => {
+      expect(hashTools.getPageId(rootPrefix + '/hash/string/' + defaultIndex + defaultExt)).toBe('hash/string/');
+    })
+
+    it('Fail: null -> <null>', () => {
+      expect(hashTools.getPageId(null)).toBe(null);
+    })
+
+    it('Fail: https://somewhere.com -> null', () => {
+      expect(hashTools.getPageId('https://somewhere.com')).toBe(null);
+    })
+
+    it('Fail: http://localhost/some/page#hash/string -> null', () => {
+      expect(hashTools.getPageId('http://localhost/some/page#hash/string')).toBe(null);
+    })
+
+    it('Fail: /some/page#hash/string -> null', () => {
+      expect(hashTools.getPageId('/some/page#hash/string')).toBe(null);
     })
 
   })/*}}}*/

@@ -1,5 +1,5 @@
 /**
- * @module PagesParser
+ * @module MdParser
  * @overview Parse md-bases loaded pages
  * @author lilliputten <lilliputten@yandex.ru>
  * @since 2018.03.11, 21:44
@@ -16,6 +16,7 @@ import ExtraPlugin from 'libs/markdown/extra-tags-plugin'
 // var hljs = require('highlight.js'); // https://highlightjs.org/
 // var hljsPlugin = require('markdown-it-highlight').default;
 
+// TODO: Create parsers for custom tags...
 var extraPlugin = new ExtraPlugin((content, utils) => {
   var extra = utils.escape(content);
   return '<span class="extraTag">'
@@ -24,7 +25,7 @@ var extraPlugin = new ExtraPlugin((content, utils) => {
   ;
 });
 
-const PagesParserProto = /** @lends PagesParser.prototype */{
+const MdParser_proto = /** @lends MdParser.prototype */{
 
   /** __constructor ** {{{ */
   __constructor() {
@@ -57,13 +58,11 @@ const PagesParserProto = /** @lends PagesParser.prototype */{
    */
   parse(content) {
 
-    let data = {}; // FrontMatter(content);
-    data.html = this.mdParser.render(content);
-    return data;
+    return this.mdParser.render(content);
 
   },/*}}}*/
 
 };
 
-export default inherit(Object, PagesParserProto);
+export default inherit(Object, MdParser_proto);
 

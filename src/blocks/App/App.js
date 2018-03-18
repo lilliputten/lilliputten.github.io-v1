@@ -2,23 +2,25 @@
  * @module App
  * @author lilliputten <lilliputten@yandex.ru>
  * @since 2018.01.28, 23:51
- * @version 2018.03.11, 04:42
+ * @version 2018.03.19, 02:53
  */
 
 import React, { Fragment } from 'react'
 import { decl/* , Bem */ } from 'bem-react-core'
 // import { connect } from 'react-redux'
+// import { Provider } from 'react-redux'
+import configureStore from 'redux/configureStore'
 
 import Header from 'e:Header'
 import View from 'b:View'
 
-import store from 'state/store'
+const initialState = window.REDUX_INITIAL_STATE || {};
 
-// const СView = connect(View)
+const store = configureStore(initialState);
 
 export default decl({
 
-  block : 'App',
+  block: 'App',
 
   /** willInit ** {{{ */
   willInit() {
@@ -44,8 +46,7 @@ export default decl({
     return (
       <Fragment>
         <Header/>
-        <View mods={{store, hashChange : true}}>
-        </View>
+        <View store={store} mods={{hashChange: true}} />
       </Fragment>
     );
   },/*}}}*/

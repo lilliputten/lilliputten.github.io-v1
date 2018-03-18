@@ -11,7 +11,7 @@ import PropTypes from 'prop-types'
 // import { Bem } from 'bem-react-core';
 // import TodoTextInput from './TodoTextInput'
 
-import config from 'libs/config'
+import config from 'config'
 
 const getLocationHash = () => {
   return window.location.hash;

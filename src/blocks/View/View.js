@@ -2,7 +2,7 @@
  * @module View
  * @author lilliputten <lilliputten@yandex.ru>
  * @since 2018.02.26, 02:42
- * @version 2018.03.11, 04:44
+ * @version 2018.03.19, 02:53
  *
  * TODO:
  *
@@ -13,53 +13,43 @@
 // import React, { Fragment } from 'react'
 import { decl } from 'bem-react-core'
 import PropTypes from 'prop-types'
-// import { connect } from 'react-redux'
-import connector from 'state/connector'
+import { connect } from 'react-redux'
 
-// import { setHash } from 'redux/actions/hashActions'
-
-import * as actions from './Actions/View-Actions'
-import reducer from './Reducer/View-Reducer'
+// import { setPage } from 'redux/actions/pageActions'
 
 import 'm:mode=ready|loading|error'
 
 import 'm:hashChange'
 
-import config from 'libs/config'
+// import config from 'config'
 // import reactTools from 'libs/reactTools'
-import fileLoader from 'libs/fileLoader'
-import PagesParser from 'libs/PagesParser'
+// import fileLoader from 'libs/fileLoader'
+// import MdParser from 'libs/MdParser'
 // import hashTools from 'libs/hashTools'
+import PageLoader from 'libs/PageLoader'
 
 const View_proto = /** @lends View.prototype */{
 
   block: 'View',
-
-  /** _delay ** {{{ DEBUG: Timeout
-   * @return {Promise}
-   */
-  _delay(timeout=1000){
-    return new Promise(function(resolve, reject){
-      setTimeout(function(){
-        resolve();
-      }, timeout)
-    });
-  },/*}}}*/
 
   /** willInit ** {{{ */
   willInit() {
 
     this.__base.apply(this, arguments);
 
-    this.parser = new PagesParser();
+    // Create page loader
+    this.pageLoader = new PageLoader();
 
     this.state = {
       mode : 'loading',
-      // hashChange : true,
-      DEBUG : config.DEBUG,
     };
 
-    // this.handleDoubleClick = this.handleDoubleClick.bind(this);
+    // ??? Subscribe to store for page changing... (Correct redux method to update?)
+    this.props.store.subscribe(() => {
+      const state = this.props.store.getState();
+      const pageId = state.page.page;
+      this.placePage(pageId);
+    });
 
   },/*}}}*/
 
@@ -68,8 +58,8 @@ const View_proto = /** @lends View.prototype */{
 
     this.__base.apply(this, arguments);
 
-    // Initial content...
-    this.updateContent();
+    // Place initial page (default or saved)
+    this.placePage();
 
   },/*}}}*/
 
@@ -86,78 +76,26 @@ const View_proto = /** @lends View.prototype */{
   //   console.log('View componentDidUpdate');
   // },/*}}}*/
 
-  /** mods ** {{{ Modifiers... */
-  mods(self) {
-    return { ...self.mods,
-      DEBUG : this.state.DEBUG,
-      mode : this.state.mode,
-    };
-  },/*}}}*/
-
-  // /** onHashChange ** {{{ Hash change event
-  //  * @param {String} url
-  //  */
-  // onHashChange(url) {
-  //   return this.updateContent(url);
-  // },/*}}}*/
-
-  /** onLinkClick ** {{{ Set new url
-   * @param {String} url
-   */
-  onLinkClick(url) {
-    this.setHashUrl && this.setHashUrl(url);
-    // window.location.hash = url;
-  },/*}}}*/
-
-  /** updateContent ** {{{ Update page content on url changing
-   * @param {String} [url] - Url to show
+  /** placePage ** {{{ Update page content on url changing
+   * @param {String} [pageId] - Url to show
    * @return {Promise}
    */
-  updateContent(url) {
+  placePage(pageId) {
 
-    url = url || this.props.defaultUrl;
+    pageId = pageId || this.props.page; // pageId || config.site.defaultPage;
 
     // Mode: loading
     this.setState({ mode : 'loading' });
 
-    return Promise.resolve(null)
-
-      // Debugging delay...
-      .then(() => this._delay(1000))
-
-      // Loading file...
-      .then(() => fileLoader.load(url))
-
-      // Parsing content...
-      .then((content) => this.parser.parse(content))
-
-      // Check data...
-      .then(data => {
-        let err;
-        if (!data || typeof data !== 'object') {
-          err = 'Parsed data must be an object!';
-        }
-        else if (data.html == null || typeof data.html !== 'string') {
-          err = 'Parsed data.html must be a string!';
-        }
-        // Throwing error...
-        if (err) {
-          console.error(err);
-          /*DEBUG*/debugger;
-          // throw new Error(err);
-          return Promise.reject(err);
-        }
-        // Pass data if ok...
-        return data;
-      })
+    this.pageLoader.resolve(pageId)
 
       // Processing verified data...
       .then(data => {
         this.setState({
-          url : url,
+          pageId : pageId,
           mode : 'ready',
           // data : data,
-          attributes: data.attributes || {},
+          attributes: data.attributes,
           html : data.html,
         });
       })
@@ -176,37 +114,29 @@ const View_proto = /** @lends View.prototype */{
 
   },/*}}}*/
 
+  /** mods ** {{{ Modifiers... */
+  mods(self) {
+    return { ...self.mods,
+      DEBUG : this.state.DEBUG,
+      mode : this.state.mode,
+    };
+  },/*}}}*/
+
 }
 
+/** View_static ** {{{ */
 const View_static = /* @lends View */{
 
-  /** propTypes ** {{{ */
   propTypes : {
-    defaultUrl : PropTypes.string,
-    // html : PropTypes.string,
-  },/*}}}*/
+    dispatch : PropTypes.func.isRequired,
+    page : PropTypes.string.isRequired,
+  },
 
-  /** defaultProps ** {{{ */
-  defaultProps : {
-    defaultUrl : '/site/test/test.md',
-    // html : '--NONE--',
-  },/*}}}*/
+}/*}}}*/
 
+function mapStateToProps(state) {
+  const { page } = state.page || {};
+  return { page };
 }
-
-export default decl(View_proto, View_static, connector({
-  actions,
-  reducer,
-  stateToProps : state => ({
-    current : state.view.name
-  })
-}));
-
-// function mapStateToProps(state) {
-//   const { value } = state.hash;
-//   return { value };
-// }
-//
-// debugger;
-// export default connect(mapStateToProps)(View_decl);
+export default decl(View_proto, View_static, connect(mapStateToProps));
 

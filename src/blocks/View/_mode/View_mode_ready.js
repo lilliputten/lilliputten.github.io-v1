@@ -2,7 +2,7 @@
  * @module View_mode_ready
  * @author lilliputten <lilliputten@yandex.ru>
  * @since 2018.02.26, 02:42
- * @version 2018.03.13, 02:14
+ * @version 2018.03.19, 02:53
  */
 
 import React, { Fragment } from 'react';
@@ -20,8 +20,8 @@ const _mode_ready = /** @lends View_mode_ready.prototype */ {
     return (
       <Fragment>
         <Content
-          onLinkClick={this.onLinkClick.bind(this)}
-          url={this.state.url}
+          store={this.props.store}
+          page={this.props.page}
           html={this.state.html}
           attributes={this.state.attributes}
         />

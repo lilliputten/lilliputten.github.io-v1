@@ -1,3 +1,24 @@
+/**
+ * @module configureStore
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2018.03.18, 02:42
+ * @version 2018.03.19, 02:53
+ */
+
+import { applyMiddleware, combineReducers, createStore } from 'redux'
+import thunk from 'redux-thunk'
+import pageReducer from './reducers/pageReducer'
+
+export default function configureStore(initialState = {}) {
+  const rootReducer = combineReducers({
+    page : pageReducer
+  });
+
+  return createStore(rootReducer, initialState, applyMiddleware(thunk));
+}
+
+/*{{{ Sample code
+
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
@@ -33,3 +54,4 @@ export default function configureStore(initialState = {}) {
   }
   return store;
 }
+}}}*/

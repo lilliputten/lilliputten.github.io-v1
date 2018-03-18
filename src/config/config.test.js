@@ -3,7 +3,7 @@
 const fakeTime = 1520000000000;
 Date.now = jest.fn(() => fakeTime);
 
-const config = require('./config').default;
+const config = require('./index').default;
 
 // ??? Clear mocks?
 // jest.clearAllMocks();
