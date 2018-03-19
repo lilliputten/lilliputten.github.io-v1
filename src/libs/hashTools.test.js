@@ -93,13 +93,18 @@ describe('hashTools', () => {
       expect(hashTools.fromUrl(rootIndexStr)).toBe('');
     })
 
+    const defaultStr = rootPrefix + '/' + config.site.defaultPage;
+    it(defaultStr + ' -> <EMPTY>', () => {
+      expect(hashTools.fromUrl(defaultStr)).toBe('');
+    })
+
+    const invalidUrl = 'https://google.com/';
+    it('(invalid) ' + invalidUrl + ' -> <null>', () => {
+      expect(hashTools.fromUrl(invalidUrl)).toBe(null);
+    })
   })/*}}}*/
 
   /*{{{*/describe('getPageId', () => {
-
-    it('<EMPTY> -> <EMPTY>', () => {
-      expect(hashTools.getPageId('')).toBe('');
-    })
 
     it('#!hash/string -> hash/string', () => {
       expect(hashTools.getPageId('#!hash/string')).toBe('hash/string');
@@ -120,7 +125,17 @@ describe('hashTools', () => {
       expect(hashTools.getPageId(rootPrefix + '/hash/string/' + defaultIndex + defaultExt)).toBe('hash/string/');
     })
 
-    it('Fail: null -> <null>', () => {
+    // See below -> returns default page for empty url
+    // it('<EMPTY> -> <EMPTY>', () => {
+    //   expect(hashTools.getPageId('')).toBe('');
+    // })
+
+    const defaultPage = config.site.defaultPage;
+    it('<EMPTY> -> ' + defaultPage + ' (default)', () => {
+      expect(hashTools.getPageId('')).toBe(defaultPage);
+    })
+
+    it('Fail: null -> null', () => {
       expect(hashTools.getPageId(null)).toBe(null);
     })
 

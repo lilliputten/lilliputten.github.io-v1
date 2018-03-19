@@ -60,7 +60,7 @@ const PageLoader_proto = /** @lends PageLoader.prototype */{
     return Promise.resolve(null)
 
       // Debugging delay...
-      .then(() => reactTools.delay(1000))
+      .then(() => reactTools.delay(300))
 
       // Loading file...
       .then(() => fileLoader.load(url))

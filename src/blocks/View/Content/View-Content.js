@@ -2,7 +2,7 @@
  * @module View-Content
  * @author lilliputten <lilliputten@yandex.ru>
  * @since 2018.03.12, 01:29
- * @version 2018.03.19, 02:53
+ * @version 2018.03.20, 00:59
  */
 
 import React, { Fragment } from 'react'
@@ -10,13 +10,8 @@ import PropTypes from 'prop-types'
 import { decl, Bem } from 'bem-react-core';
 import { connect } from 'react-redux'
 import reactTools from 'libs/reactTools'
-// import fileLoader from 'libs/fileLoader'
-// import MdParser from 'libs/MdParser'
 import hashTools from 'libs/hashTools'
-// import config from 'config'
 import jquery from 'jquery'
-
-import { setPage } from 'redux/actions/pageActions'
 
 import 'e:ContentWrapper'
 
@@ -39,12 +34,14 @@ const __Content_proto = /** @lends View-Content.prototype */{
 
   /** onLinkClick ** {{{ Event on link clicked */
   onLinkClick(e) {
+    // Try to get hash from link...
     const link = e.currentTarget;
     const url = reactTools.getRelativeUrl(link.href);
-    const pageId = hashTools.getPageId(url);
-    if ( pageId != null ) {
-      // console.log('View-Content link clicked', url, '->', pageId);
-      this.props.dispatch(setPage(pageId));
+    const hash = hashTools.fromUrl(url);
+    // If correct hash...
+    if (hashTools.isCorrectHash(hash)) {
+      // See hash handler in `:hashChange`
+      hashTools.setToWindow(hash);
       return false;
     }
     return true;

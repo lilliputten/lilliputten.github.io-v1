@@ -9,9 +9,18 @@ import config from 'config'
 
 const hashTools = {
 
-  /** getFromWindow ** {{{ */
+  /** getFromWindow ** {{{ Get hash from window location */
   getFromWindow : function () {
     return ( typeof window === 'object' && window.location && window.location.hash ) || '';
+  },/*}}}*/
+
+  /** setToWindow ** {{{ Set hash to window location
+   * @param {String} hash
+   */
+  setToWindow : function (hash) {
+    if ( typeof window === 'object' && window.location ) {
+      window.location.hash = hash;
+    }
   },/*}}}*/
 
   /** getPageIdFromWindow ** {{{ Get page id from window location hash
@@ -92,36 +101,54 @@ const hashTools = {
    */
   fromUrl : function (url) {
 
+    var hash = url;
+
     // Removing default extensions and index
     const stripAtEnd = config.site.defaultExts.concat(config.site.defaultIndex);
     stripAtEnd.map((tail) => {
-      if (url.endsWith(tail)) {
-        url = url.substr(0, url.length - tail.length);
+      if (hash.endsWith(tail)) {
+        hash = hash.substr(0, hash.length - tail.length);
       }
-      return url;
+      return hash;
     });
 
     // Removing root prefix
-    if (url.startsWith(config.site.rootPrefix)) {
-      url = url.substr(config.site.rootPrefix.length);
+    if (hash.startsWith(config.site.rootPrefix)) {
+      hash = hash.substr(config.site.rootPrefix.length);
+    }
+    // Invalid url
+    else {
+      return null;
     }
 
     // Removing leading slash
-    if (url.startsWith('/')) {
-      url = url.substr(1);
+    if (hash.startsWith('/')) {
+      hash = hash.substr(1);
     }
 
-    return url && '#!' + url;
+    // Return empty value if default page
+    if (hash === config.site.defaultPage) {
+      hash = '';
+    }
+
+    return hash && '#!' + hash;
 
   },/*}}}*/
 
   /** getPageId ** {{{ Get page id from hash/url
    * @param {String} urlOrHash - Hash (#!/dir/page) or url (<rootPrefix>/dire/page)
+   * NOTE: Highest level method on `toPageId`.
    * @return {null|String) - Return null if can't fing page id.
    */
   getPageId : function (urlOrHash) {
 
-    if (urlOrHash != null) {
+    if (urlOrHash == null) {
+      return null;
+    }
+    else if (urlOrHash === '') {
+      return config.site.defaultPage;
+    }
+    else {
       if (urlOrHash.startsWith(config.site.rootPrefix)) {
         urlOrHash = this.fromUrl(urlOrHash);
       }

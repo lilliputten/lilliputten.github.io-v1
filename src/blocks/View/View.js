@@ -15,17 +15,10 @@ import { decl } from 'bem-react-core'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-// import { setPage } from 'redux/actions/pageActions'
-
 import 'm:mode=ready|loading|error'
 
 import 'm:hashChange'
 
-// import config from 'config'
-// import reactTools from 'libs/reactTools'
-// import fileLoader from 'libs/fileLoader'
-// import MdParser from 'libs/MdParser'
-// import hashTools from 'libs/hashTools'
 import PageLoader from 'libs/PageLoader'
 
 const View_proto = /** @lends View.prototype */{
@@ -94,7 +87,6 @@ const View_proto = /** @lends View.prototype */{
         this.setState({
           pageId : pageId,
           mode : 'ready',
-          // data : data,
           attributes: data.attributes,
           html : data.html,
         });
