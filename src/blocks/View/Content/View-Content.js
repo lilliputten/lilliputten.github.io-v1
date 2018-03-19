@@ -34,17 +34,24 @@ const __Content_proto = /** @lends View-Content.prototype */{
 
   /** onLinkClick ** {{{ Event on link clicked */
   onLinkClick(e) {
+
     // Try to get hash from link...
     const link = e.currentTarget;
     const url = reactTools.getRelativeUrl(link.href);
     const hash = hashTools.fromUrl(url);
+
+    // DEBUG
+    console.log('View-Content:onLinkClick', link, '->', url, '->', hash);
+
     // If correct hash...
     if (hashTools.isCorrectHash(hash)) {
       // See hash handler in `:hashChange`
       hashTools.setToWindow(hash);
       return false;
     }
+
     return true;
+
   },/*}}}*/
 
   /** onContentPlaced ** {{{ When content created or updated */

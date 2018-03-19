@@ -21,6 +21,9 @@ const _hashChange_proto = /** @lends View_hashChange.prototype */{
     const hash = hashTools.getFromWindow();
     const pageId = hashTools.getPageId(hash);
 
+    // DEBUG
+    console.log('View:hashChange:handleHashChange', hash, '->', pageId);
+
     if (pageId != null) {
       this.props.dispatch(setPage(pageId));
     }

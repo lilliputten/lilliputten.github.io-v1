@@ -103,6 +103,11 @@ const hashTools = {
 
     var hash = url;
 
+    // Hash at root url
+    if (hash.startsWith('/#!')) {
+      return hash.substr(1);
+    }
+
     // Removing default extensions and index
     const stripAtEnd = config.site.defaultExts.concat(config.site.defaultIndex);
     stripAtEnd.map((tail) => {
@@ -116,14 +121,17 @@ const hashTools = {
     if (hash.startsWith(config.site.rootPrefix)) {
       hash = hash.substr(config.site.rootPrefix.length);
     }
+    // Removing leading slash
+    else if (hash.startsWith('/')) {
+      hash = hash.substr(1);
+    }
     // Invalid url
     else {
       return null;
     }
 
-    // Removing leading slash
-    if (hash.startsWith('/')) {
-      hash = hash.substr(1);
+    if (this.isCorrectHash(hash)){
+      hash = this.toPageId(hash);
     }
 
     // Return empty value if default page

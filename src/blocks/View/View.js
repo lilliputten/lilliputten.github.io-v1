@@ -80,6 +80,9 @@ const View_proto = /** @lends View.prototype */{
     // Mode: loading
     this.setState({ mode : 'loading' });
 
+    // DEBUG
+    console.log('View:placePage', pageId);
+
     this.pageLoader.resolve(pageId)
 
       // Processing verified data...
