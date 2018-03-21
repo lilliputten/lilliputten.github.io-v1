@@ -75,7 +75,9 @@ const View_proto = /** @lends View.prototype */{
    */
   placePage(pageId) {
 
-    pageId = pageId || this.props.page; // pageId || config.site.defaultPage;
+    if (pageId == null ) {
+      pageId = this.props.page; // pageId || config.site.defaultPage;
+    }
 
     // Mode: loading
     this.setState({ mode : 'loading' });
@@ -83,9 +85,10 @@ const View_proto = /** @lends View.prototype */{
     // DEBUG
     console.log('View:placePage', pageId);
 
+    // Load or resolve page data...
     this.pageLoader.resolve(pageId)
 
-      // Processing verified data...
+      // Set page data...
       .then(data => {
         this.setState({
           pageId : pageId,

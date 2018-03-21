@@ -40,6 +40,12 @@ const __Content_proto = /** @lends View-Content.prototype */{
     const url = reactTools.getRelativeUrl(link.href);
     const hash = hashTools.fromUrl(url);
 
+    // If default hash, set empty
+    if (hashTools.isDefaultHash(hash)) {
+      hashTools.setToWindow('');
+      return false;
+    }
+
     // DEBUG
     console.log('View-Content:onLinkClick', link, '->', url, '->', hash);
 

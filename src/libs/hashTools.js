@@ -101,7 +101,7 @@ const hashTools = {
    */
   fromUrl : function (url) {
 
-    var hash = url;
+    let hash = url;
 
     // Hash at root url
     if (hash.startsWith('/#!')) {
@@ -118,15 +118,18 @@ const hashTools = {
     });
 
     // Removing root prefix
+    let found = false;
     if (hash.startsWith(config.site.rootPrefix)) {
       hash = hash.substr(config.site.rootPrefix.length);
+      found = true;
     }
     // Removing leading slash
-    else if (hash.startsWith('/')) {
+    if (hash.startsWith('/')) {
       hash = hash.substr(1);
+      found = true;
     }
     // Invalid url
-    else {
+    if (!found) {
       return null;
     }
 
@@ -161,12 +164,24 @@ const hashTools = {
         urlOrHash = this.fromUrl(urlOrHash);
       }
       if (this.isCorrectHash(urlOrHash)) {
-        return this.toPageId(urlOrHash);
+        const pageId = this.toPageId(urlOrHash);
+        if (pageId === config.site.defaultPage) {
+          return '';
+        }
+        return pageId;
       }
     }
 
     return null;
 
+  },/*}}}*/
+
+  /** isDefaultHash ** {{{
+   * @param {String} hash - Hash (#!/dir/page)
+   * @return {Boolean}
+   */
+  isDefaultHash : function (hash) {
+    return hash === '#!' + config.site.defaultPage;
   },/*}}}*/
 
 };
