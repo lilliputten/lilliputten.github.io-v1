@@ -1,6 +1,6 @@
 /**
  * @module PageLoader
- * @overview Parse md-bases loaded pages
+ * @overview Load, parse & cache md-pages
  * @author lilliputten <lilliputten@yandex.ru>
  * @since 2018.03.11, 21:44
  * @version 2018.03.11, 21:44
@@ -12,7 +12,6 @@ import fileLoader from 'libs/fileLoader'
 import MdParser from 'libs/MdParser'
 import hashTools from 'libs/hashTools'
 import reactTools from 'libs/reactTools'
-// import axios from 'axios'
 
 const PageLoader_proto = /** @lends PageLoader.prototype */{
 
@@ -32,7 +31,7 @@ const PageLoader_proto = /** @lends PageLoader.prototype */{
   /** resolve ** {{{ Resolve page data
    * @param {String} pageId - Page id (in form `dir/file` for real file `/site/dir/file.md`)
    * @return {Promise(Object)} data
-   * @return {Object} data.attributes - Page properties
+   * @return {Object} data.data - Page properties
    * @return {String} data.body - Raw markdown content
    * @return {String} data.html - Parsed markdown content
    */
@@ -49,45 +48,71 @@ const PageLoader_proto = /** @lends PageLoader.prototype */{
   /** load ** {{{ Load file from server
    * @param {String} pageId - Page id (in form `dir/file` for real file `/site/dir/file.md`)
    * @return {Object} data
-   * @return {Object} data.attributes - Page properties
+   * @return {Object} data.data - Page properties
    * @return {String} data.body - Raw markdown content
    * @return {String} data.html - Parsed markdown content
    */
   load(pageId) {
 
-    const url = hashTools.toUrl(pageId, config.site.defaultExt);
+    const pageUrl = hashTools.toUrl(pageId, config.site.defaultExt);
+    const paramsUrl = hashTools.toUrl(pageId, '.json');
 
-    return Promise.resolve(null)
+    const pagePromise = fileLoader.load(pageUrl);
+    const paramsPromise = fileLoader.load(paramsUrl);
 
-      // Debugging delay...
-      .then(() => reactTools.delay(300))
+    // Resulting page object
+    let data = {
+      params: {pageId, pageUrl, paramsUrl},
+    };
 
-      // Loading file...
-      .then(() => fileLoader.load(url))
+    return new Promise((resolve, reject) => {
 
-      // Processing verified data...
-      .then(body => {
-        const html = this.mdParser.parse(body);
-        const data = {
-          body,
-          html,
-          attributes : {
-            pageId
-            // TODO: Fetch params from json file
-          }
-        };
+      // Use `all` for independent params load...
+      // Don't use catching error for params file!
+      Promise.all([paramsPromise, pagePromise])
+        .then((args) => {
+          const [params] = args;
+          Object.assign(data.params, params);
+        })
+      ;
+
+      // Load page data with failure control...
+      pagePromise
+
+        // DEBUG: Delay...
+        .then((result) => reactTools.delay(300, result))
+
+        // Processing loaded page...
+        .then(body => {
+          data.body = body;
+          data.html = this.mdParser.parse(body);
+          resolve(data);
+        })
+
+        // Error!
+        .catch(err => {
+          console.error(err);
+          /*DEBUG*/debugger;
+          reject(err);
+        })
+
+      ;
+
+    })
+
+      // Save data to cache on success...
+      .then(() => {
         // Save data to cache
         this.pageCache[pageId] = data;
-        // ...and resolve page data
         return data;
       })
 
-      // Error...
-      .catch(err => {
-        console.error(err);
-        /*DEBUG*/debugger;
-        return Promise.reject(err);
-      })
+      // // Error!
+      // .catch((err) => {
+      //   console.error(err);
+      //   /*DEBUG*/debugger;
+      //   return Promise.reject(err);
+      // })
 
     ;
 

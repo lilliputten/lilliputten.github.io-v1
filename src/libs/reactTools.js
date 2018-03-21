@@ -131,12 +131,13 @@ const reactTools = {
   /** delay ** {{{ DEBUG: Timeout
    * TODO: Move to `commonTools`
    * @param {Number} [timeout=1000]
+   * @param {*} [data]
    * @return {Promise}
    */
-  delay(timeout=1000){
+  delay(timeout=1000, data){
     return new Promise(function(resolve, reject){
       setTimeout(function(){
-        resolve();
+        resolve(data);
       }, timeout)
     });
   },/*}}}*/

@@ -10,4 +10,6 @@
 
 [Test 4](#!test/test4/)
 
+[Invalid link](#!test/testXXX/)
+
 [google](https://google.com/)

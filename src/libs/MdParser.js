@@ -51,10 +51,7 @@ const MdParser_proto = /** @lends MdParser.prototype */{
 
   /** parse ** {{{ Parse file content
    * @param {String} content - Expecting frontmatter+markdown format
-   * @return {Object} data
-   * @return {Object} data.attributes - Frontmatter properties
-   * @return {String} data.body - Raw markdown content
-   * @return {String} data.html - Parsed markdown content
+   * @return {String} html
    */
   parse(content) {
 
