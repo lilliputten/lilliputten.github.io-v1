@@ -3,23 +3,34 @@ import MockAdapter from 'axios-mock-adapter'
 
 import fileLoader from './fileLoader'
 
+const mock = new MockAdapter(axios);
+
 describe('fileLoader', () => {
 
-  /** load ** {{{ */
-  describe('load', () => {
+  /*{{{*/describe('load', () => {
 
     const url = '/test'
-    const resp = 'test response'
+    const urlData = 'test response'
 
-    beforeAll(() => {
-      const mock = new MockAdapter(axios);
-      mock.onGet(url).reply(200, resp);
-    })
+    mock.onGet(url).reply(200, urlData);
 
     it('must load content', (done) => {
       return fileLoader.load(url)
         .then(data => {
-          expect(data).toEqual(resp);
+          expect(data).toEqual(urlData);
+          done();
+        })
+      ;
+    })
+
+    const failUrl = '/testFail'
+
+    mock.onGet(failUrl).reply(404);
+
+    it('must fail', (done) => {
+      return fileLoader.load(failUrl)
+        .catch(err => {
+          expect(err.response.status).toBe(404);
           done();
         })
       ;

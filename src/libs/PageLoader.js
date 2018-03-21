@@ -28,6 +28,30 @@ const PageLoader_proto = /** @lends PageLoader.prototype */{
 
   },/*}}}*/
 
+  /** isCached ** {{{ Is page cached?
+ * @param {String} pageId - Page id (in form `dir/file` for real file `/site/dir/file.md`)
+   * @return {Boolean}
+   */
+  isCached(pageId) {
+    return !!(this.pageCache[pageId]);
+  },/*}}}*/
+
+  /** getCached ** {{{ Get cached page
+ * @param {String} pageId - Page id (in form `dir/file` for real file `/site/dir/file.md`)
+   * @return {Object|null}
+   */
+  getCached(pageId) {
+    return this.pageCache[pageId];
+  },/*}}}*/
+
+  /** dropCached ** {{{ Delete page from cache
+ * @param {String} pageId - Page id (in form `dir/file` for real file `/site/dir/file.md`)
+   * @return {Object|null}
+   */
+  dropCached(pageId) {
+    delete this.pageCache[pageId];
+  },/*}}}*/
+
   /** resolve ** {{{ Resolve page data
    * @param {String} pageId - Page id (in form `dir/file` for real file `/site/dir/file.md`)
    * @return {Promise(Object)} data
@@ -37,10 +61,12 @@ const PageLoader_proto = /** @lends PageLoader.prototype */{
    */
   resolve(pageId) {
 
-    if (this.pageCache[pageId]) {
-      return Promise.resolve(this.pageCache[pageId]);
+    // If page cached then get from cache...
+    if (this.isCached(pageId) ) {
+      return Promise.resolve(this.getCached(pageId));
     }
 
+    // Else load...
     return this.load(pageId);
 
   },/*}}}*/
@@ -54,9 +80,11 @@ const PageLoader_proto = /** @lends PageLoader.prototype */{
    */
   load(pageId) {
 
+    // Urls
     const pageUrl = hashTools.toUrl(pageId, config.site.defaultExt);
-    const paramsUrl = hashTools.toUrl(pageId, '.json');
+    const paramsUrl = hashTools.toUrl(pageId, config.site.dataExt);
 
+    // Prmises for page & params
     const pagePromise = fileLoader.load(pageUrl);
     const paramsPromise = fileLoader.load(paramsUrl);
 
@@ -68,12 +96,16 @@ const PageLoader_proto = /** @lends PageLoader.prototype */{
     return new Promise((resolve, reject) => {
 
       // Use `all` for independent params load...
-      // Don't use catching error for params file!
       Promise.all([paramsPromise, pagePromise])
+
+        // Fetch params on success...
         .then((args) => {
           const [params] = args;
           Object.assign(data.params, params);
         })
+
+        // Don't catching error for params file!
+        .catch((err) => {})
       ;
 
       // Load page data with failure control...
@@ -91,11 +123,11 @@ const PageLoader_proto = /** @lends PageLoader.prototype */{
 
         // Error!
         .catch(err => {
+          Object.assign(err, { error : 'pageLoadError' }, data);
           console.error(err);
           /*DEBUG*/debugger;
           reject(err);
         })
-
       ;
 
     })
@@ -113,7 +145,6 @@ const PageLoader_proto = /** @lends PageLoader.prototype */{
       //   /*DEBUG*/debugger;
       //   return Promise.reject(err);
       // })
-
     ;
 
   },/*}}}*/
@@ -121,4 +152,3 @@ const PageLoader_proto = /** @lends PageLoader.prototype */{
 };
 
 export default inherit(Object, PageLoader_proto);
-

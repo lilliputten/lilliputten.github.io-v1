@@ -176,12 +176,20 @@ const hashTools = {
 
   },/*}}}*/
 
-  /** isDefaultHash ** {{{
+  /** fromPageId ** {{{ Get hash for pageId
+   * @param {String} pageId
+   * @return {String} hash
+   */
+  fromPageId : function (pageId) {
+    return '#!' + pageId;
+  },/*}}}*/
+
+  /** isDefaultHash ** {{{ Is hash for default page?
    * @param {String} hash - Hash (#!/dir/page)
    * @return {Boolean}
    */
   isDefaultHash : function (hash) {
-    return hash === '#!' + config.site.defaultPage;
+    return hash === this.fromPageId(config.site.defaultPage);
   },/*}}}*/
 
 };

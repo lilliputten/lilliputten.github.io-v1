@@ -17,6 +17,9 @@ const config_site = /** @lends config.site */ {
   /** Default site page extension */
   defaultExt : '.md',
 
+  /** Default page params file extension */
+  dataExt : '.json',
+
   /** Default site extensions to strip from url */
   defaultExts : ['.md', '.json'],
 
