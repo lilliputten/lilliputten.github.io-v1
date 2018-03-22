@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reactTools DOM match snapshot 1`] = `
+<TestWrapper>
+  <div
+    className="TestWrapper"
+    style={Object {}}
+  >
+    <Test>
+      <div
+        className="Test"
+        style={Object {}}
+      >
+        <Bem
+          block="Button"
+          tag="button"
+        >
+          <button
+            className="Button"
+          >
+            <Bem
+              elem="Text"
+            >
+              <div
+                className="Button-Text"
+              >
+                Go!
+              </div>
+            </Bem>
+          </button>
+        </Bem>
+      </div>
+    </Test>
+  </div>
+</TestWrapper>
+`;

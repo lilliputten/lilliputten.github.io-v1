@@ -1,7 +1,7 @@
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 
-import fileLoader from './fileLoader'
+import fileLoader from '../fileLoader'
 
 const mock = new MockAdapter(axios);
 

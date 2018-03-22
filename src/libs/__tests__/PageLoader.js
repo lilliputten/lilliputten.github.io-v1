@@ -4,7 +4,7 @@ import MockAdapter from 'axios-mock-adapter'
 import config from 'config'
 import hashTools from 'libs/hashTools'
 
-import PageLoader from './PageLoader'
+import PageLoader from '../PageLoader'
 
 const pageLoader = new PageLoader();
 

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`config match snapshot 1`] = `
+Object {
+  "DEBUG": "test",
+  "hotMode": false,
+  "site": Object {
+    "dataExt": ".json",
+    "defaultExt": ".md",
+    "defaultExts": Array [
+      ".md",
+      ".json",
+    ],
+    "defaultIndex": "index",
+    "defaultPage": "test/test",
+    "rootPrefix": "/site",
+  },
+  "startTime": 1520000000000,
+  "testMode": true,
+}
+`;

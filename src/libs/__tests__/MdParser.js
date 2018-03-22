@@ -1,5 +1,5 @@
 // const MdParser = require('./MdParser').default;
-import MdParser from './MdParser'
+import MdParser from '../MdParser'
 
 const parser = new MdParser();
 

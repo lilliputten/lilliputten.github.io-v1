@@ -16,6 +16,10 @@
 .env.test.local
 .env.production.local
 
+# jest folders
+!__tests__
+!__snapshots__
+
 # gvim sessions
 *.session
 

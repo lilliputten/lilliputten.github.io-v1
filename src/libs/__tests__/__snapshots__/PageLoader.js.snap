@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageLoader load page with content only snapshot 1`] = `
+Object {
+  "body": "page content",
+  "html": "<p>page content</p>
+",
+  "params": Object {
+    "pageId": "test/test",
+    "pageUrl": "/site/test/test.md",
+    "paramsUrl": "/site/test/test.json",
+  },
+}
+`;
+
+exports[`PageLoader load page with params snapshot 1`] = `
+Object {
+  "body": "page content",
+  "html": "<p>page content</p>
+",
+  "params": Object {
+    "pageId": "test/test",
+    "pageUrl": "/site/test/test.md",
+    "paramsUrl": "/site/test/test.json",
+    "test": "ok",
+  },
+}
+`;
