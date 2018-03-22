@@ -39,21 +39,26 @@ describe('PageLoader', () => {
       const pageUrl = hashTools.toUrl(pageHash, config.site.defaultExt);
       const paramsUrl = hashTools.toUrl(pageHash, config.site.dataExt);
 
-      // Mocks...
-      mock.onGet(pageUrl).reply(200, pageBody);
-      mock.onGet(paramsUrl).reply(404);
-
       // To store loaded page data
       let pageResult;
 
-      // Load page...
+      /** beforeAll ** {{{ */
       beforeAll(() => {
-        const promise = pageLoader.load(pageId);
-        promise.then((result) => {
-          pageResult = result;
-        });
-        return promise;
-      })
+
+        // Set mocks...
+        mock.onAny(pageUrl).reply(200, pageBody);
+        mock.onAny(paramsUrl).reply(404);
+
+        // Load file, set result for analyzing, return promise
+        return pageLoader.load(pageId).then(result => (pageResult = result));
+
+      })/*}}}*/
+      /** afterAll ** {{{ */
+      afterAll(() => {
+
+        mock.reset();
+
+      })/*}}}*/
 
       it('snapshot', () => {
         expect(pageResult).toMatchSnapshot();
@@ -86,23 +91,28 @@ describe('PageLoader', () => {
       const pageUrl = hashTools.toUrl(pageHash, config.site.defaultExt);
       const paramsUrl = hashTools.toUrl(pageHash, config.site.dataExt);
       const paramsBody = '{"test":"ok"}';
-      const paramsData = { test : 'ok' };
-
-      // Mocks...
-      mock.onGet(pageUrl).reply(200, pageBody);
-      mock.onGet(paramsUrl).reply(200, paramsBody);
+      const paramsData = JSON.parse(paramsBody); // { test : 'ok' };
 
       // To store loaded page data
       let pageResult;
 
-      // Load page...
+      /** beforeAll ** {{{ */
       beforeAll(() => {
-        const promise = pageLoader.load(pageId);
-        promise.then((result) => {
-          pageResult = result;
-        });
-        return promise;
-      })
+
+        // Set mocks...
+        mock.onAny(pageUrl).reply(200, pageBody);
+        mock.onAny(paramsUrl).reply(200, paramsBody);
+
+        // Load file, set result for analyzing, return promise
+        return pageLoader.load(pageId).then(result => (pageResult = result));
+
+      })/*}}}*/
+      /** afterAll ** {{{ */
+      afterAll(() => {
+
+        mock.reset();
+
+      })/*}}}*/
 
       it('snapshot', () => {
         expect(pageResult).toMatchSnapshot();

@@ -30,8 +30,8 @@ describe('App', () => {
   // const paramsData = { test : 'ok' };
 
   // Default page mocks...
-  mock.onGet(pageUrl).reply(200, pageBody);
-  mock.onGet(paramsUrl).reply(200, paramsBody);
+  mock.onAny(pageUrl).reply(200, pageBody);
+  mock.onAny(paramsUrl).reply(200, paramsBody);
 
   beforeAll(() => {
     appWrapper = mount(

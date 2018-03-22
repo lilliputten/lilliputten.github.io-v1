@@ -99,13 +99,13 @@ const PageLoader_proto = /** @lends PageLoader.prototype */{
       Promise.all([paramsPromise, pagePromise])
 
         // Fetch params on success...
-        .then((args) => {
+        .then(args => {
           const [params] = args;
           Object.assign(data.params, params);
         })
 
         // Don't catching error for params file!
-        .catch((err) => {})
+        .catch(() => {})
       ;
 
       // Load page data with failure control...

@@ -7,32 +7,49 @@ const mock = new MockAdapter(axios);
 
 describe('fileLoader', () => {
 
+  /*{{{*/describe('getOptionsObject', () => {
+
+    const url = '/test';
+
+    it('url -> options object ({ url })', () => {
+      expect(fileLoader.getOptionsObject(url)).toEqual({ url });
+    })
+
+  })/*}}}*/
+
   /*{{{*/describe('load', () => {
 
-    const url = '/test'
-    const urlData = 'test response'
+    const url = '/test';
+    const urlData = 'test response';
+    const failUrl = '/testFail';
 
-    mock.onGet(url).reply(200, urlData);
+    /** beforeAll ** {{{ */
+    beforeAll(() => {
+
+      // Set mocks
+      mock.onAny(url).reply(200, urlData);
+      mock.onAny(failUrl).reply(404);
+
+    })/*}}}*/
+    /** afterAll ** {{{ */
+    afterAll(() => {
+
+      // Reset mocks
+      mock.reset();
+
+    })/*}}}*/
 
     it('must load content', (done) => {
       return fileLoader.load(url)
-        .then(data => {
-          expect(data).toEqual(urlData);
-          done();
-        })
+        .then(data => expect(data).toEqual(urlData))
+        .then(done)
       ;
     })
 
-    const failUrl = '/testFail'
-
-    mock.onGet(failUrl).reply(404);
-
     it('must fail', (done) => {
       return fileLoader.load(failUrl)
-        .catch(err => {
-          expect(err.response.status).toBe(404);
-          done();
-        })
+        .catch(err => expect(err.response.status).toBe(404))
+        .then(done)
       ;
     })
 
