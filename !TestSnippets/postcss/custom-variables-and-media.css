@@ -1,0 +1,7 @@
+
+@custom-media --small-device (max-width: 480px))
+
+:root {
+  --primary-color: blue;
+  --gutter: 30px;
+}

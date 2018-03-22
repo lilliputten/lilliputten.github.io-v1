@@ -3,77 +3,30 @@
  * @see README
  */
 
+const postcss = require('./src/config/postcss');
+
 // Override...
-
-const StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
-
 module.exports = function override(config, env) {
 
-  /** Add/extend style loader ** {{{ */
-
-  let
-    oneOf = config.module.rules[1].oneOf,
-    // styleLoader = oneOf[2],
-    // postcssLoader = styleLoader.use[2],
-    // See examples in:
-    // - `node_modules/react-scripts/config/webpack.config.dev.js`
-    // - `node_modules/react-scripts/config/webpack.config.prod.js`
-    ssLoader = {
-      test : /\.(css|sss)$/,
-      // test : /\.sss$/,
-      use : [
-        require.resolve('style-loader'),
-        {
-          loader : require.resolve('css-loader'),
-          options : { importLoaders : 1 },
-        },
-        {
-          loader : require.resolve('postcss-loader'),
-          options : {
-            ident : 'postcss', // 'postcss_sss',
-            // parser : 'sugarss', // XXX!
-            // plugins : postcssLoader.plugins,
-            plugins : () => [
-              /*
-               * See plugins list: https://github.com/postcss/postcss/blob/master/docs/plugins.md
-               * TODO:
-               * - postcss-opacity
-               * - postcss-color-function // https://github.com/postcss/postcss-color-function
-               * - *alpha*
-               */
-              require('postcss-flexbugs-fixes'),
-              require('postcss-nested')(), // https://github.com/postcss/postcss-nested
-              require('postcss-utilities')(), // https://github.com/ismamz/postcss-utilities
-              require('autoprefixer')({
-                browsers : [
-                  '>1%',
-                  'last 4 versions',
-                  'Firefox ESR',
-                  'not ie < 9', // React doesn't support IE8 anyway
-                ],
-                flexbox : 'no-2009',
-              }),
-            ],
-          },
-        },
-      ],
-    }
-  ;
-
-  // Replace default postcss with SugarSS
-  oneOf[2] = ssLoader;
-  // // Append SugarSS
-  // oneOf.push(ssLoader);
-
-/*}}}*/
-
-  /** Add bem-loader in Babel scope ** {{{*/
+  /*
+   * styleLoader = oneOf[2],
+   * postcssLoader = styleLoader.use[2],
+   * See examples in:
+   * - `node_modules/react-scripts/config/webpack.config.dev.js`
+   * - `node_modules/react-scripts/config/webpack.config.prod.js`
+  */
   let rules = config.module.rules;
   let rules1 = rules[1];
-  let babelLoader = rules1.oneOf[1];
-  rules1.oneOf[1] = {
-    test : babelLoader.test,
-    include : babelLoader.include,
+  let oneOf = rules1.oneOf;
+
+  /** Extend bem-loader in Babel scope [1] ** {{{*/
+
+  let oldBabelLoader = oneOf[1];
+
+  /** babelLoader ** {{{ */
+  let babelLoader = {
+    test : oldBabelLoader.test,
+    include : oldBabelLoader.include,
     use : [
       {
         loader : require.resolve('webpack-bem-loader'),
@@ -82,8 +35,8 @@ module.exports = function override(config, env) {
         }
       },
       {
-        loader : babelLoader.loader,
-        options : Object.assign({}, babelLoader.options, {
+        loader : oldBabelLoader.loader,
+        options : Object.assign({}, oldBabelLoader.options, {
           presets : [['es2015', {
             loose : true,
           }], 'react'],
@@ -95,16 +48,62 @@ module.exports = function override(config, env) {
             //     './src/blocks',
             //   ]
             // }],
-            // 'webpack-stats-plugin',
-            // new StatsWriterPlugin(),
-            // new StatsWriterPlugin({
-            //   filename: 'stats.json', // Default
-            // }),
           ],
         })
       }
     ]
-  };
+  };/*}}}*/
+
+  oneOf[1] = babelLoader;
+
+  /*}}}*/
+
+  /** Extend style loader [2] ** {{{*/
+
+  // eslint-disable-next-line
+  let oldCssLoader = oneOf[2]; // Sample of using old `cssLoader` value
+
+  /** cssLoader ** {{{ */
+  let cssLoader = {
+    test : /\.css$/,
+    exclude: /\.config.css$/,
+    use : [
+      require.resolve('style-loader'),
+      {
+        loader : require.resolve('css-loader'),
+        options : { importLoaders : 1 },
+      },
+      {
+        loader : require.resolve('postcss-loader'),
+        options : {
+          ident : 'postcss',
+          parser : 'postcss-scss',
+          plugins : () => [
+            // autoprefixer included in cssnext
+            require('postcss-cssnext')({
+              /**
+               * NOTE: See:
+               * - `src/config/css.js`
+               * - `src/config/postcss.js`
+               */
+              features: postcss.cssnextFeatures,
+            }),
+            require('postcss-simple-vars'), // https://github.com/postcss/postcss-simple-vars
+            // require('postcss-color-alpha'), // https://github.com/avanes/postcss-color-alpha
+            // require('postcss-color-function'), // https://github.com/postcss/postcss-color-function // To delete?
+            require('postcss-color-mod-function'), // https://github.com/jonathantneal/postcss-color-mod-function
+            require('postcss-flexbugs-fixes'), // https://github.com/luisrudge/postcss-flexbugs-fixes
+            require('postcss-nested'), // https://github.com/postcss/postcss-nested
+            require('postcss-utilities'), // https://github.com/ismamz/postcss-utilities
+            // https://ismamz.github.io/postcss-utilities/docs#clear-fix
+          ],
+        },
+      },
+    ],
+  };/*}}}*/
+
+  oneOf[2] = cssLoader;
+
   /*}}}*/
 
   return config;
