@@ -1,6 +1,6 @@
 // SKIP!vim: ft=scss
 
-@import "variables.css";
+@import 'variables.css';
 
 $localVarColor: magenta;
 
