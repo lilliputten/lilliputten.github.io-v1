@@ -1,9 +1,11 @@
 import React from 'react'
 import { declMod } from 'bem-react-core'
 import { Bem } from 'bem-react-core';
-// import TodoTextInput from './TodoTextInput'
+import config from 'config'
 
-export default declMod(function(){ return this.state.mode === 'loading' }, {
+export default declMod(function(){
+  return this.state.mode === config.site.loadingMode
+}, {
 
   block : 'View',
 
@@ -18,5 +20,4 @@ export default declMod(function(){ return this.state.mode === 'loading' }, {
   },
 
 });
-
 

@@ -9,66 +9,18 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { decl, Bem } from 'bem-react-core';
 import { connect } from 'react-redux'
-import reactTools from 'libs/reactTools'
-import hashTools from 'libs/hashTools'
-import jquery from 'jquery'
+// import reactTools from 'libs/reactTools'
+// import hashTools from 'libs/hashTools'
+// import jquery from 'jquery'
 
 import 'e:ContentWrapper'
+
+// import 'm:rawhtml'
 
 const __Content_proto = /** @lends View-Content.prototype */{
 
   block: 'View',
   elem: 'Content',
-
-  /** componentDidMount ** {{{ */
-  componentDidMount() {
-    this.__base.apply(this, arguments);
-    this.onContentPlaced();
-  },/*}}}*/
-
-  // /** componentDidUpdate ** {{{ */
-  // componentDidUpdate() {
-  //   this.__base.apply(this, arguments);
-  //   this.onContentPlaced();
-  // },/*}}}*/
-
-  /** onLinkClick ** {{{ Event on link clicked */
-  onLinkClick(e) {
-
-    // Try to get hash from link...
-    const link = e.currentTarget;
-    const url = reactTools.getRelativeUrl(link.href);
-    const hash = hashTools.fromUrl(url);
-
-    // If default hash, set empty
-    if (hashTools.isDefaultHash(hash)) {
-      hashTools.setToWindow('');
-      return false;
-    }
-
-    // DEBUG
-    console.log('View-Content:onLinkClick', link, '->', url, '->', hash);
-
-    // If correct hash...
-    if (hashTools.isCorrectHash(hash)) {
-      // See hash handler in `:hashChange`
-      hashTools.setToWindow(hash);
-      return false;
-    }
-
-    return true;
-
-  },/*}}}*/
-
-  /** onContentPlaced ** {{{ When content created or updated */
-  onContentPlaced() {
-    const dom = reactTools.getComponentDom(this._wrapper);
-    // Initializing events on all links in wrapper...
-    jquery(dom).find('a')
-      .off('click')
-      .on('click', this.onLinkClick.bind(this))
-    ;
-  },/*}}}*/
 
   /** content ** {{{ */
   content() {
@@ -78,7 +30,7 @@ const __Content_proto = /** @lends View-Content.prototype */{
         <Bem
           elem="ContentWrapper"
           ref={(node) => { this._wrapper = node; }}
-          dangerouslySetInnerHTML={{ __html: this.props.html }}
+          dangerouslySetInnerHTML={{ __html: this.props.html || '' }}
         />
       </Fragment>
     );
@@ -93,7 +45,7 @@ const __Content_static = /** @lends View-Content */{
   propTypes: {
     dispatch : PropTypes.func.isRequired,
     page : PropTypes.string.isRequired,
-    html : PropTypes.string.isRequired,
+    html : PropTypes.string,
   },
 
 };/*}}}*/

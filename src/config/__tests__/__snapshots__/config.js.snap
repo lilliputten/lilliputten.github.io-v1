@@ -3,6 +3,10 @@
 exports[`config match snapshot 1`] = `
 Object {
   "DEBUG": "test",
+  "css": Object {
+    "testGlobalColor": "orange",
+    "testViewportWidth": 300,
+  },
   "hotMode": false,
   "site": Object {
     "dataExt": ".json",
@@ -12,7 +16,10 @@ Object {
       ".json",
     ],
     "defaultIndex": "index",
-    "defaultPage": "test/test",
+    "defaultMode": "default",
+    "defaultPage": "default",
+    "loadPageParams": false,
+    "loadingMode": "loading",
     "rootPrefix": "/site",
   },
   "startTime": 1520000000000,

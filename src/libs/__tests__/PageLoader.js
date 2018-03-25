@@ -83,7 +83,7 @@ describe('PageLoader', () => {
 
     })/*}}}*/
 
-    /*{{{*/describe('page with params', () => {
+    /*{{{ CONDITIONAL: */config.site.loadPageParams && describe('page with params', () => {
 
       // Page...
       const pageId = 'test/test';

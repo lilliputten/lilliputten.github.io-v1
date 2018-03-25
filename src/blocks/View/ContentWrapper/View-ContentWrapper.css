@@ -1,6 +1,6 @@
-// SKIP!vim: ft=scss
+// vim: ft=scss
 
-@import 'variables.css';
+@import './variables.css';
 
 $localVarColor: magenta;
 
@@ -15,16 +15,16 @@ $localVarColor: magenta;
 .View {
   &-ContentWrapper {
     padding: 10px;
-    @media (--testViewport) {
-      color: green;
-      color: $localVarColor; // magenta
-      color: var(--rootColor); // pink
-      color: var(--localColor); // green
-      color: var(--testGlobalColor); // orange
-      color: var(--includedColor); // red
-      color: color-mod( var(--testGlobalColor) blend(black 20%) ); // @see https://github.com/jonathantneal/postcss-color-mod-function
-      color: color-mod( var(--testGlobalColor) alpha(50%) ); // @see https://github.com/jonathantneal/postcss-color-mod-function
-      opacity: .5;
-    }
+    // @media (--testViewport) {
+    //   color: green;
+    //   color: $localVarColor; // magenta
+    //   color: var(--rootColor); // pink
+    //   color: var(--localColor); // green
+    //   color: var(--testGlobalColor); // orange
+    //   color: var(--includedColor); // red
+    //   color: color-mod( var(--testGlobalColor) blend(black 20%) ); // @see https://github.com/jonathantneal/postcss-color-mod-function
+    //   color: color-mod( var(--testGlobalColor) alpha(50%) ); // @see https://github.com/jonathantneal/postcss-color-mod-function
+    //   opacity: .5;
+    // }
   }
 }

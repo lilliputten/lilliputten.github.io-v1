@@ -1,12 +1,16 @@
 /**
- * @see [timarney/react-app-rewired : Override create-react-app webpack configs without ejecting](https://github.com/timarney/react-app-rewired)
+ * @see [timarney/react-app-rewired: Override create-react-app webpack configs without ejecting](https://github.com/timarney/react-app-rewired)
  * @see README
  */
 
 const postcss = require('./src/config/postcss');
 
+const fs = require('fs');
+
 // Override...
 module.exports = function override(config, env) {
+
+  fs.writeFile('.webpack-config-export-before.json', JSON.stringify(config, null, 2));
 
   /*
    * styleLoader = oneOf[2],
@@ -25,22 +29,22 @@ module.exports = function override(config, env) {
 
   /** babelLoader ** {{{ */
   let babelLoader = {
-    test : oldBabelLoader.test,
-    include : oldBabelLoader.include,
-    use : [
+    test: oldBabelLoader.test,
+    include: oldBabelLoader.include,
+    use: [
       {
-        loader : require.resolve('webpack-bem-loader'),
-        options : {
-          techs : ['js', 'css'],
+        loader: require.resolve('webpack-bem-loader'),
+        options: {
+          techs: ['js', 'css'],
         }
       },
       {
-        loader : oldBabelLoader.loader,
-        options : Object.assign({}, oldBabelLoader.options, {
-          presets : [['es2015', {
-            loose : true,
+        loader: oldBabelLoader.loader,
+        options: Object.assign({}, oldBabelLoader.options, {
+          presets: [['es2015', {
+            loose: true,
           }], 'react'],
-          plugins : [
+          plugins: [
             'transform-object-rest-spread',
             // ['bem-import', {
             //   'levels': [
@@ -65,20 +69,24 @@ module.exports = function override(config, env) {
 
   /** cssLoader ** {{{ */
   let cssLoader = {
-    test : /\.css$/,
-    exclude: /\.config.css$/,
-    use : [
+    test: /\.css$/,
+    // exclude: /\.config.css$/,
+    use: [
       require.resolve('style-loader'),
-      {
-        loader : require.resolve('css-loader'),
-        options : { importLoaders : 1 },
-      },
-      {
-        loader : require.resolve('postcss-loader'),
-        options : {
-          ident : 'postcss',
-          parser : 'postcss-scss',
-          plugins : () => [
+      /** css-loader ** {{{*/{
+        loader: require.resolve('css-loader'),
+        options: {
+          importLoaders: 1,
+          // modules: true,
+          // localIdentName: '[name]_[local]_[hash:base64:5]',
+        },
+      },/*}}}*/
+      /** postcss-loader ** {{{*/{
+        loader: require.resolve('postcss-loader'),
+        options: {
+          ident: 'postcss',
+          parser: 'postcss-scss',
+          plugins: () => [
             // autoprefixer included in cssnext
             require('postcss-cssnext')({
               /**
@@ -98,13 +106,15 @@ module.exports = function override(config, env) {
             // https://ismamz.github.io/postcss-utilities/docs#clear-fix
           ],
         },
-      },
+      },/*}}}*/
     ],
   };/*}}}*/
 
   oneOf[2] = cssLoader;
 
   /*}}}*/
+
+  fs.writeFile('.webpack-config-export-after.json', JSON.stringify(config, null, 2));
 
   return config;
 

@@ -11,7 +11,12 @@ import hashTools from 'libs/hashTools'
 
 import App from 'b:App'
 
+import configureStore from 'redux/configureStore'
+
 const mock = new MockAdapter(axios);
+
+const initialState = window.REDUX_INITIAL_STATE || {};
+const store = configureStore(initialState);
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -35,7 +40,7 @@ describe('App', () => {
 
   beforeAll(() => {
     appWrapper = mount(
-      <App />
+      <App store={store} />
     );
     app = appWrapper.instance();
   })
@@ -56,10 +61,6 @@ describe('App', () => {
 
   it('is instance of React.Component', () => {
     expect(app).toBeInstanceOf(React.Component);
-  })
-
-  it('contains testMethod', () => {
-    expect(app.testMethod).toBeInstanceOf(Function);
   })
 
 })

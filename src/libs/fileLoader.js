@@ -39,16 +39,20 @@ const fileLoader = {
 
   /** load ** {{{ Load file from url or options
    * @param {String|Object} url
+   * @param {Object} [options] - Paramters
+   * @param {Truthy} [options.skipCheck] - Skip check prefetch.
    * @return {Promise}
    */
-  load : function (url) {
+  load : function (url, options={}) {
 
-    // Create universal options object from url
-    const options = this.getOptionsObject(url);
+    // Create universal opts object from url
+    const opts = this.getOptionsObject(url);
+
+    // skipCheck = config.site.skipPageParams
 
     // Make request
-    return this.check(options)
-      .then(res => axios(options))
+    return ( options.skipCheck ? Promise.resolve('skipCheck') : this.check(opts) )
+      .then(res => axios(opts))
       .then(res => res.data)
     ;
 

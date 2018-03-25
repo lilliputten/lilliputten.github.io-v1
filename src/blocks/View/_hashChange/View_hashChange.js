@@ -8,6 +8,7 @@
 
 import { declMod } from 'bem-react-core'
 import hashTools from 'libs/hashTools'
+import config from 'config'
 
 import { setPage } from 'redux/actions/pageActions'
 
@@ -15,17 +16,26 @@ const _hashChange_proto = /** @lends View_hashChange.prototype */{
 
   block : 'View',
 
-  /** handleHashChange ** {{{ Set pageId if hash changed */
+  /** componentWillMount ** {{{ */
+  componentWillMount() {
+
+    this.__base.apply(this, arguments);
+
+    this.handleHashChange();
+
+  },/*}}}*/
+
+  /** handleHashChange ** {{{ Set page if hash changed */
   handleHashChange() {
 
     const hash = hashTools.getFromWindow();
-    const pageId = hashTools.getPageId(hash);
+    const page = hashTools.getPageId(hash) || config.site.defaultPage;
 
     // DEBUG
-    console.log('View:hashChange:handleHashChange', hash, '->', pageId);
+    console.log('View:hashChange:handleHashChange', hash, '->', page);
 
-    if (pageId != null) {
-      this.props.dispatch(setPage(pageId));
+    if (page != null) {
+      this.props.dispatch(setPage(page));
     }
 
   },/*}}}*/
@@ -54,5 +64,5 @@ const _hashChange_proto = /** @lends View_hashChange.prototype */{
 }
 
 export default declMod(function(){
-  return this.props.mods.hashChange
+  return this.props.hashChange
 }, _hashChange_proto);

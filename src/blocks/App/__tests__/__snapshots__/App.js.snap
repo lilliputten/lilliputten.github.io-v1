@@ -1,64 +1,87 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App match snapshot 1`] = `
-<App>
-  <div
-    className="App"
-    style={Object {}}
-  >
-    <App-Header>
-      <header
-        className="App-Header"
-        style={Object {}}
-      >
-        <Bem
-          alt="logo"
-          elem="Logo"
-          src="App-Logo.svg"
-          tag="img"
-        >
-          <img
-            alt="logo"
-            className="App-Logo"
-            src="App-Logo.svg"
-          />
-        </Bem>
-        <Bem
-          elem="Title"
-          tag="h1"
-        >
-          <h1
-            className="App-Title"
-          >
-            Welcome to React
-          </h1>
-        </Bem>
-      </header>
-    </App-Header>
-    <Connect(View)
-      mods={
-        Object {
-          "hashChange": true,
-        }
+<Connect(App)
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <App
+    dispatch={[Function]}
+    page="default"
+    store={
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
       }
-      store={
-        Object {
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
           "dispatch": [Function],
           "getState": [Function],
           "replaceReducer": [Function],
           "subscribe": [Function],
           Symbol(observable): [Function],
-        }
+        },
+        "unsubscribe": [Function],
       }
+    }
+  >
+    <div
+      className="App App_page_default"
+      style={Object {}}
     >
-      <View
-        dispatch={[Function]}
-        mods={
-          Object {
-            "hashChange": true,
-          }
-        }
-        page="test/test"
+      <App-Header>
+        <header
+          className="App-Header"
+          style={Object {}}
+        >
+          <Bem
+            alt="logo"
+            elem="Logo"
+            src="App-Logo.svg"
+            tag="img"
+          >
+            <img
+              alt="logo"
+              className="App-Logo"
+              src="App-Logo.svg"
+            />
+          </Bem>
+          <Bem
+            elem="Title"
+            tag="h1"
+          >
+            <h1
+              className="App-Title"
+            >
+              Welcome to React
+            </h1>
+          </Bem>
+        </header>
+      </App-Header>
+      <Connect(View)
+        clickHandle={true}
+        hashChange={true}
+        loadPage={true}
         store={
           Object {
             "dispatch": [Function],
@@ -68,44 +91,64 @@ exports[`App match snapshot 1`] = `
             Symbol(observable): [Function],
           }
         }
-        storeSubscription={
-          Subscription {
-            "listeners": Object {
-              "clear": [Function],
-              "get": [Function],
-              "notify": [Function],
-              "subscribe": [Function],
-            },
-            "onStateChange": [Function],
-            "parentSub": undefined,
-            "store": Object {
+      >
+        <View
+          clickHandle={true}
+          dispatch={[Function]}
+          hashChange={true}
+          loadPage={true}
+          page="default"
+          store={
+            Object {
               "dispatch": [Function],
               "getState": [Function],
               "replaceReducer": [Function],
               "subscribe": [Function],
               Symbol(observable): [Function],
-            },
-            "unsubscribe": [Function],
+            }
           }
-        }
-      >
-        <div
-          className="View View_hashChange View_mode_loading"
-          style={Object {}}
+          storeSubscription={
+            Subscription {
+              "listeners": Object {
+                "clear": [Function],
+                "get": [Function],
+                "notify": [Function],
+                "subscribe": [Function],
+              },
+              "onStateChange": [Function],
+              "parentSub": undefined,
+              "store": Object {
+                "dispatch": [Function],
+                "getState": [Function],
+                "replaceReducer": [Function],
+                "subscribe": [Function],
+                Symbol(observable): [Function],
+              },
+              "unsubscribe": [Function],
+            }
+          }
         >
-          <Bem
-            elem="Status"
-            tag="p"
+          <div
+            className="View View_mode_default"
+            style={Object {}}
           >
-            <p
-              className="View-Status"
-            >
-              Loading...
-            </p>
-          </Bem>
-        </div>
-      </View>
-    </Connect(View)>
-  </div>
-</App>
+            <View-ContentWrapper>
+              <div
+                className="View-ContentWrapper"
+                style={Object {}}
+              >
+                Root content 
+                <a
+                  href="#!test/test"
+                >
+                  test
+                </a>
+              </div>
+            </View-ContentWrapper>
+          </div>
+        </View>
+      </Connect(View)>
+    </div>
+  </App>
+</Connect(App)>
 `;

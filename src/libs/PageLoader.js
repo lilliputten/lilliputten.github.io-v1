@@ -86,7 +86,7 @@ const PageLoader_proto = /** @lends PageLoader.prototype */{
 
     // Prmises for page & params
     const pagePromise = fileLoader.load(pageUrl);
-    const paramsPromise = fileLoader.load(paramsUrl);
+    const paramsPromise = config.site.loadPageParams && fileLoader.load(paramsUrl);
 
     // Resulting page object
     let data = {
@@ -96,7 +96,7 @@ const PageLoader_proto = /** @lends PageLoader.prototype */{
     return new Promise((resolve, reject) => {
 
       // Use `all` for independent params load...
-      Promise.all([paramsPromise, pagePromise])
+      config.site.loadPageParams && Promise.all([paramsPromise, pagePromise])
 
         // Fetch params on success...
         .then(args => {

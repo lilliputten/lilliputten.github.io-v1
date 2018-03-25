@@ -6,7 +6,7 @@
  */
 
 import React, { Fragment } from 'react';
-import { declMod/* , Bem */ } from 'bem-react-core'
+import { declMod } from 'bem-react-core'
 
 import Content from 'e:Content'
 
@@ -20,9 +20,9 @@ const _mode_ready = /** @lends View_mode_ready.prototype */ {
     return (
       <Fragment>
         <Content
+          rawhtml html={this.state.html}
           store={this.props.store}
           page={this.props.page}
-          html={this.state.html}
           attributes={this.state.attributes}
         />
       </Fragment>
@@ -32,6 +32,5 @@ const _mode_ready = /** @lends View_mode_ready.prototype */ {
 
 }
 
-export default declMod(function(){ return this.state.mode === 'ready' }, _mode_ready);
-
+export default declMod(function(){ return this.state && this.state.mode === 'ready' }, _mode_ready);
 

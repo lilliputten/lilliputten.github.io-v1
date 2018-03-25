@@ -2,6 +2,8 @@
 
 ( <% extra tag content %> )
 
+[Root](#!)
+
 [Test 2](/site/test/test2.md)
 
 [Test 2 hash](#!test/test2)

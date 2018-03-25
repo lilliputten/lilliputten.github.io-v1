@@ -165,7 +165,7 @@ const hashTools = {
       }
       if (this.isCorrectHash(urlOrHash)) {
         const pageId = this.toPageId(urlOrHash);
-        if (pageId === config.site.defaultPage) {
+        if (!pageId || pageId === config.site.defaultPage) {
           return '';
         }
         return pageId;
