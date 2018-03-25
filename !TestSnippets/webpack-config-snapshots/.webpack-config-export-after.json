@@ -1,14 +1,14 @@
 {
-  "bail": true,
-  "devtool": "source-map",
+  "devtool": "cheap-module-source-map",
   "entry": [
     "D:\\Work\\github-pages\\lilliputten.github.io\\node_modules\\react-scripts\\config\\polyfills.js",
+    "D:\\Work\\github-pages\\lilliputten.github.io\\node_modules\\react-dev-utils\\webpackHotDevClient.js",
     "D:\\Work\\github-pages\\lilliputten.github.io\\src\\index.js"
   ],
   "output": {
-    "path": "D:\\Work\\github-pages\\lilliputten.github.io\\build",
-    "filename": "static/js/[name].[chunkhash:8].js",
-    "chunkFilename": "static/js/[name].[chunkhash:8].chunk.js",
+    "pathinfo": true,
+    "filename": "static/js/bundle.js",
+    "chunkFilename": "static/js/[name].chunk.js",
     "publicPath": "/"
   },
   "resolve": {
@@ -100,7 +100,7 @@
                     ],
                     "react"
                   ],
-                  "compact": true,
+                  "cacheDirectory": true,
                   "plugins": [
                     "transform-object-rest-spread"
                   ]
@@ -128,12 +128,12 @@
             ]
           },
           {
-            "loader": "D:\\Work\\github-pages\\lilliputten.github.io\\node_modules\\file-loader\\dist\\cjs.js",
             "exclude": [
               {},
               {},
               {}
             ],
+            "loader": "D:\\Work\\github-pages\\lilliputten.github.io\\node_modules\\file-loader\\dist\\cjs.js",
             "options": {
               "name": "static/media/[name].[hash:8].[ext]"
             }
@@ -145,7 +145,7 @@
   "plugins": [
     {
       "replacements": {
-        "NODE_ENV": "production",
+        "NODE_ENV": "development",
         "PUBLIC_URL": ""
       }
     },
@@ -157,18 +157,7 @@
         "inject": true,
         "compile": true,
         "favicon": false,
-        "minify": {
-          "removeComments": true,
-          "collapseWhitespace": true,
-          "removeRedundantAttributes": true,
-          "useShortDoctype": true,
-          "removeEmptyAttributes": true,
-          "removeStyleLinkTypeAttributes": true,
-          "keepClosingSlash": true,
-          "minifyJS": true,
-          "minifyCSS": true,
-          "minifyURLs": true
-        },
+        "minify": false,
         "cache": true,
         "showErrors": true,
         "chunks": "all",
@@ -178,69 +167,29 @@
       }
     },
     {
+      "options": {}
+    },
+    {
       "definitions": {
         "process.env": {
-          "NODE_ENV": "\"production\"",
+          "NODE_ENV": "\"development\"",
           "PUBLIC_URL": "\"\""
         }
       }
     },
     {
-      "options": {
-        "compress": {
-          "warnings": false,
-          "comparisons": false
-        },
-        "mangle": {
-          "safari10": true
-        },
-        "output": {
-          "comments": false,
-          "ascii_only": true
-        },
-        "sourceMap": true
-      }
+      "options": {},
+      "fullBuildTimeout": 200,
+      "requestTimeout": 10000
     },
     {
-      "filename": "static/css/[name].[contenthash:8].css",
-      "id": 1,
-      "options": {}
+      "options": {},
+      "pathCache": {},
+      "fsOperations": 0,
+      "primed": false
     },
     {
-      "opts": {
-        "basePath": "",
-        "publicPath": "",
-        "fileName": "asset-manifest.json",
-        "stripSrc": null,
-        "transformExtensions": {},
-        "writeToFileEmit": false,
-        "cache": null,
-        "seed": null,
-        "filter": null,
-        "map": null,
-        "reduce": null
-      }
-    },
-    {
-      "config": {},
-      "options": {
-        "cacheId": "sw-precache-webpack-plugin",
-        "filename": "service-worker.js",
-        "importScripts": [],
-        "staticFileGlobsIgnorePatterns": [
-          {},
-          {}
-        ],
-        "mergeStaticsConfig": false,
-        "minify": true,
-        "dontCacheBustUrlsMatching": {},
-        "navigateFallback": "/index.html",
-        "navigateFallbackWhitelist": [
-          {}
-        ]
-      },
-      "overrides": {},
-      "warnings": []
+      "nodeModulesPath": "D:\\Work\\github-pages\\lilliputten.github.io\\node_modules"
     },
     {
       "resourceRegExp": {},
@@ -253,5 +202,8 @@
     "net": "empty",
     "tls": "empty",
     "child_process": "empty"
+  },
+  "performance": {
+    "hints": false
   }
 }

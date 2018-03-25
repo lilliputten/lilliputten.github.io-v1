@@ -10,7 +10,8 @@ const fs = require('fs');
 // Override...
 module.exports = function override(config, env) {
 
-  fs.writeFile('.webpack-config-export-before.json', JSON.stringify(config, null, 2));
+  // Writing config snapshot before overrides.
+  // fs.writeFile('.webpack-config-export-before.json', JSON.stringify(config, null, 2));
 
   /*
    * styleLoader = oneOf[2],
@@ -114,7 +115,8 @@ module.exports = function override(config, env) {
 
   /*}}}*/
 
-  fs.writeFile('.webpack-config-export-after.json', JSON.stringify(config, null, 2));
+  // Writing config snapshot after overrides.
+  // fs.writeFile('.webpack-config-export-after.json', JSON.stringify(config, null, 2));
 
   return config;
 
