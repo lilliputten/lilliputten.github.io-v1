@@ -68,7 +68,9 @@ const _clickHandle_proto = /** @lends View_clickHandle.prototype */{
 
   },/*}}}*/
 
-  /** getInternalLinks ** {{{ */
+  /** getInternalLinks ** {{{ Scan created content for link elements
+   * @return {JQueryCollection}
+   */
   getInternalLinks(){
     const domElem = this._wrapper || this;
     const dom = reactTools.getComponentDom(domElem);

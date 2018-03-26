@@ -1,24 +1,21 @@
 /**
- * @module App
+ * @module Header
  * @author lilliputten <lilliputten@yandex.ru>
- * @since 2018.01.28, 23:51
- * @version 2018.03.26, 21:03
+ * @since 2018.03.26, 20:00
+ * @version 2018.03.26, 20:58
  */
 
-import React, { Fragment } from 'react'
 import { decl } from 'bem-react-core'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import pageMapper from 'redux/mappers/pageMapper'
 
 // import config from 'config'
 
-import Header from 'b:Header'
-import View from 'b:View'
+const Header_proto = /** @lends Header.prototype */{
 
-const App_proto = /** @lends App.prototype */{
-
-  block: 'App',
+  block: 'Header',
 
   /** getPageState ** {{{ Page state object */
   getPageState(){
@@ -32,10 +29,9 @@ const App_proto = /** @lends App.prototype */{
   /** willInit ** {{{ */
   willInit() {
 
-    const pageState = this.getPageState();
-
-    // Initial state
-    this.state = {...pageState};
+    this.state = {
+      mode: this.props.mode, // config.site.defaultMode,
+    };
 
     // Subscribe to store for page changing... (Correct redux method to update?)
     this.props.store.subscribe(this.storeEvent.bind(this));
@@ -45,7 +41,8 @@ const App_proto = /** @lends App.prototype */{
   /** storeEvent ** {{{ Store state changed event */
   storeEvent() {
     const pageState = this.getPageState();
-    this.setState(pageState);
+    const mode = pageState.mode;
+    this.setState({mode});
   },/*}}}*/
 
   /** mods ** {{{ Modifiers... */
@@ -57,17 +54,18 @@ const App_proto = /** @lends App.prototype */{
     };
   },/*}}}*/
 
-  /** content ** {{{ */
-  content() {
-    return (
-      <Fragment>
-        <Header mode={this.state.mode} store={this.props.store} />
-        <View loadPage hashChange clickHandle mode={this.state.mode} store={this.props.store} />
-      </Fragment>
-    );
-  },/*}}}*/
+}
 
-};
+/** Header_static ** {{{ */
+const Header_static = /* @lends Header */{
 
-export default decl(App_proto, connect(pageMapper));
+  propTypes: {
+    dispatch: PropTypes.func.isRequired,
+    mode: PropTypes.string.isRequired,
+    // page: PropTypes.string,
+  },
+
+}/*}}}*/
+
+export default decl(Header_proto, Header_static, connect(pageMapper));
 

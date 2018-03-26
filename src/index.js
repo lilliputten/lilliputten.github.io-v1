@@ -5,6 +5,8 @@ import configureStore from 'redux/configureStore'
 
 import registerServiceWorker from './registerServiceWorker';
 
+// import config from 'config'
+
 import 'b:Page';
 import App from 'b:App';
 

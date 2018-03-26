@@ -28,6 +28,7 @@ const _hashChange_proto = /** @lends View_hashChange.prototype */{
   /** handleHashChange ** {{{ Set page if hash changed */
   handleHashChange() {
 
+    // Get hash & page from window...
     const hash = hashTools.getFromWindow();
     const page = hashTools.getPageId(hash) || config.site.defaultPage;
 

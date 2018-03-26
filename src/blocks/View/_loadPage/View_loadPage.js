@@ -3,7 +3,7 @@
  * @overview Working with page location hash
  * @author lilliputten <lilliputten@yandex.ru>
  * @since 2018.03.13, 01:30
- * @version 2018.03.20, 00:19
+ * @version 2018.03.26, 21:03
  */
 
 import { declMod } from 'bem-react-core'
@@ -15,6 +15,15 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
 
   block : 'View',
 
+  /** getPageState ** {{{ Page state object */
+  getPageState(){
+
+    const store = this.props.store;
+    const state = store && store.getState();
+    return state && state.page;
+
+  },/*}}}*/
+
   /** willInit ** {{{ */
   willInit() {
 
@@ -23,19 +32,28 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
     // Create page loader
     this.pageLoader = new PageLoader();
 
-    // Default or custom page?
-    const isDefault = (this.props.page === config.site.defaultPage);
-    this.state = {
-      mode: isDefault ? config.site.defaultMode : config.site.loadingMode,
+    const pageState = this.getPageState();
+
+    // Initial state
+    this.state = {...pageState};
+
+    // Subscribe to store for page changing... (Correct redux method to update?)
+    this.props.store.subscribe(this.storeEvent.bind(this));
+
+  },/*}}}*/
+
+  /** storeEvent ** {{{ Store state changed event */
+  storeEvent() {
+    const pageState = this.getPageState();
+    const page = pageState.page || config.site.defaultPage;
+    this.placePage(page);
+  },/*}}}*/
+
+  /** mods ** {{{ Modifiers... */
+  mods(self) {
+    return { ...self.mods,
+      mode: this.state.mode,
     };
-
-    // ??? Subscribe to store for page changing... (Correct redux method to update?)
-    this.props.store.subscribe(() => {
-      const state = this.props.store.getState();
-      const page = state.page.page || config.site.defaultPage;
-      this.placePage(page);
-    });
-
   },/*}}}*/
 
   /** defaultPage ** {{{ Place default page
@@ -60,7 +78,7 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
       .then(data => {
         this.setState({
           page: page,
-          mode: 'ready',
+          mode: 'content',
           attributes: data.attributes,
           html: data.html,
         });
@@ -86,8 +104,7 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
     console.log('View:placePage', page);
 
     const isDefault = (page === config.site.defaultPage);
-    const promise = isDefault ? this.defaultPage(page):
-                                          this.loadPage(page);
+    const promise = isDefault ? this.defaultPage(page) : this.loadPage(page);
 
     // Load or resolve page data...
     promise

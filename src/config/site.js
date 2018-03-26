@@ -27,6 +27,7 @@ const config_site = /** @lends config.site */ {
 
   // Default modes...
   defaultMode: 'default',
+  contentMode: 'content',
   loadingMode: 'loading',
 
   // To load page data (usually smth like `*.json`)
