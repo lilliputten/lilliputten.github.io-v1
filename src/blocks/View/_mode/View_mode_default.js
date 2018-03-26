@@ -10,7 +10,10 @@ import { declMod } from 'bem-react-core'
 
 import config from 'config'
 
-import ContentWrapper from 'e:ContentWrapper'
+import 'e:ContentWrapper'
+// import ContentWrapper from 'e:ContentWrapper'
+
+import Default from 'b:Default'
 
 const _mode_default = /** @lends View_mode_default.prototype */ {
 
@@ -21,9 +24,9 @@ const _mode_default = /** @lends View_mode_default.prototype */ {
 
     return (
       <Fragment>
-        <ContentWrapper mode="default">
+        <Default mix={{ block: 'View', elem: 'ContentWrapper', mods: {mode: 'default'} }}>
           Root content <a href="#!test/test">test</a>
-        </ContentWrapper>
+        </Default>
       </Fragment>
     );
 

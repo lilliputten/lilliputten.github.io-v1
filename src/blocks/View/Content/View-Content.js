@@ -18,6 +18,15 @@ const __Content_proto = /** @lends View-Content.prototype */{
   block: 'View',
   elem: 'Content',
 
+  /** mods ** {{{ Modifiers... */
+  mods(self) {
+    const mode = this.props.mode;
+    return {
+      ...self.mods,
+      mode,
+    };
+  },/*}}}*/
+
   /** content ** {{{ */
   content() {
 
@@ -25,6 +34,8 @@ const __Content_proto = /** @lends View-Content.prototype */{
       <Fragment>
         <Bem
           elem="ContentWrapper"
+          mode={this.props.mode}
+          mods={{mode: this.props.mode}}
           ref={(node) => { this._wrapper = node; }}
           dangerouslySetInnerHTML={{ __html: this.props.html || '' }}
         />

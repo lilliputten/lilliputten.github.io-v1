@@ -12,12 +12,13 @@ const __ContentWrapper_proto = /** @lends View-ContentWrapper.prototype */{
   block: 'View',
   elem: 'ContentWrapper',
 
-  /** mods ** {{{ Modifiers... */
-  mods(self) {
-    return { ...self.mods,
-      mode: this.props.mode,
-    };
-  },/*}}}*/
+  // /** mods ** {{{ Modifiers... */
+  // mods(self) {
+  //   debugger;
+  //   return { ...self.mods,
+  //     mode: this.props.mode,
+  //   };
+  // },/*}}}*/
 
 }
 

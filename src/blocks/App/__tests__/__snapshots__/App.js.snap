@@ -157,11 +157,19 @@ exports[`App match snapshot 1`] = `
             className="View View_mode_default"
             style={Object {}}
           >
-            <View-ContentWrapper
-              mode="default"
+            <Default
+              mix={
+                Object {
+                  "block": "View",
+                  "elem": "ContentWrapper",
+                  "mods": Object {
+                    "mode": "default",
+                  },
+                }
+              }
             >
               <div
-                className="View-ContentWrapper View-ContentWrapper_mode_default"
+                className="Default View-ContentWrapper View-ContentWrapper_mode_default"
                 style={Object {}}
               >
                 Root content 
@@ -171,7 +179,7 @@ exports[`App match snapshot 1`] = `
                   test
                 </a>
               </div>
-            </View-ContentWrapper>
+            </Default>
           </div>
         </View>
       </Connect(View)>
