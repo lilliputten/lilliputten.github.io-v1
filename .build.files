@@ -6,8 +6,6 @@ build/manifest.json
 build/service-worker.js
 build/static
 build/static/js
-build/static/js/main.6ce0ecf6.js
-build/static/js/main.6ce0ecf6.js.map
-build/static/media
-build/static/media/App-Logo.49f98c8e.svg
+build/static/js/main.a8ae9a4d.js
+build/static/js/main.a8ae9a4d.js.map
 build/stats.json
