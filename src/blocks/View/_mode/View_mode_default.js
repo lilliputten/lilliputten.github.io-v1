@@ -21,7 +21,7 @@ const _mode_default = /** @lends View_mode_default.prototype */ {
 
     return (
       <Fragment>
-        <ContentWrapper>
+        <ContentWrapper mode="default">
           Root content <a href="#!test/test">test</a>
         </ContentWrapper>
       </Fragment>

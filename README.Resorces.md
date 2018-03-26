@@ -1,6 +1,6 @@
 
 Project
-=======
+-------
 
 Core files:
 
@@ -8,25 +8,13 @@ Core files:
 - [App-Header](src/blocks/App/Header/App-Header.js)
 - [View](src/blocks/View/View.js)
 
-Run command:
-
-- `npm run -s start`
-- `node-debug node_modules/react-app-rewired/scripts/start.js`
-- `node-debug node_modules/react-app-rewired/scripts/build.js`
-- `node node_modules/react-app-rewired/bin/index start`
-- `node-debug node_modules/react-app-rewired/bin/index start` (???)
-
-Config templates:
-
-- `node_modules/react-scripts/config/`
-
 Samples:
 
 - `/Work/bem-tests/bem-react-core/tests`
 - `/Work/bem-react/redux-todomvc/src/components`
 
 Resources
-=========
+---------
 
 bem-react-components:
 
@@ -91,7 +79,6 @@ bem-tools:
 - [bem-tools/bem-tools-create: bem create command](https://github.com/bem-tools/bem-tools-create)
 - `npm i -g bem-tools-core bem-tools-create`
 - [bem-tools / Toolbox / BEM](https://en.bem.info/toolbox/bem-tools/)
-- TODO: Trace `templateFolder` in `node-debug C:\Users\Miheev\AppData\Roaming\npm\node_modules\bem-tools-core\index.js create xx__el`
 - TODO: Try to use editorconfig tab values?
 
 Events:

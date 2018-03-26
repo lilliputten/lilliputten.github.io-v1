@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`View_loadPage base default state: default state 1`] = `
+Object {
+  "mode": "default",
+  "page": "default",
+}
+`;
+
+exports[`View_loadPage base props snapshot: instance.props 1`] = `
+Object {
+  "dispatch": [Function],
+  "loadPage": true,
+  "page": "default",
+  "store": Object {
+    "dispatch": [Function],
+    "getState": [Function],
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+    Symbol(observable): [Function],
+  },
+  "storeSubscription": Subscription {
+    "listeners": Object {
+      "clear": [Function],
+      "get": [Function],
+      "notify": [Function],
+      "subscribe": [Function],
+    },
+    "onStateChange": [Function],
+    "parentSub": undefined,
+    "store": Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    },
+    "unsubscribe": [Function],
+  },
+}
+`;
+
+exports[`View_loadPage base state snapshot: instance.state 1`] = `
+Object {
+  "mode": "default",
+  "page": "default",
+}
+`;
+
+exports[`View_loadPage base wrapper snapshot: wrapper 1`] = `
+<Connect(View)
+  loadPage={true}
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <View
+    dispatch={[Function]}
+    loadPage={true}
+    page="default"
+    store={
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <div
+      className="View View_mode_default"
+      style={Object {}}
+    >
+      <View-ContentWrapper
+        mode="default"
+      >
+        <div
+          className="View-ContentWrapper View-ContentWrapper_mode_default"
+          style={Object {}}
+        >
+          Root content 
+          <a
+            href="#!test/test"
+          >
+            test
+          </a>
+        </div>
+      </View-ContentWrapper>
+    </div>
+  </View>
+</Connect(View)>
+`;
+
+exports[`View_loadPage getPageState snapshot: getPageState 1`] = `
+Object {
+  "mode": "default",
+  "page": "default",
+}
+`;
+
+exports[`View_loadPage loadPage returns page data: loadPage result 1`] = `
+Object {
+  "body": "page content",
+  "html": "<p>page content</p>
+",
+  "params": Object {
+    "pageId": "test/testPage",
+    "pageUrl": "/site/test/testPage.md",
+    "paramsUrl": "/site/test/testPage.json",
+  },
+}
+`;
+
+exports[`View_loadPage loadPage returns page data: state after load 1`] = `
+Object {
+  "html": "<p>page content</p>
+",
+  "mode": "content",
+  "page": "test/testPage",
+  "params": Object {
+    "pageId": "test/testPage",
+    "pageUrl": "/site/test/testPage.md",
+    "paramsUrl": "/site/test/testPage.json",
+  },
+}
+`;

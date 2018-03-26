@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`View base wrapper snapshot: wrapper 1`] = `
+<Connect(View)
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <View
+    dispatch={[Function]}
+    page="default"
+    store={
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <div
+      className="View"
+      style={Object {}}
+    >
+      <View-ContentWrapper
+        mode="default"
+      >
+        <div
+          className="View-ContentWrapper View-ContentWrapper_mode_default"
+          style={Object {}}
+        >
+          Root content 
+          <a
+            href="#!test/test"
+          >
+            test
+          </a>
+        </div>
+      </View-ContentWrapper>
+    </div>
+  </View>
+</Connect(View)>
+`;

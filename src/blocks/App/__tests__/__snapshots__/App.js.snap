@@ -46,42 +46,66 @@ exports[`App match snapshot 1`] = `
     }
   >
     <div
-      className="App App_page_default"
+      className="App App_mode_default"
       style={Object {}}
     >
-      <App-Header>
-        <header
-          className="App-Header"
-          style={Object {}}
+      <Connect(Header)
+        mode="default"
+        store={
+          Object {
+            "dispatch": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+            Symbol(observable): [Function],
+          }
+        }
+      >
+        <Header
+          dispatch={[Function]}
+          mode="default"
+          page="default"
+          store={
+            Object {
+              "dispatch": [Function],
+              "getState": [Function],
+              "replaceReducer": [Function],
+              "subscribe": [Function],
+              Symbol(observable): [Function],
+            }
+          }
+          storeSubscription={
+            Subscription {
+              "listeners": Object {
+                "clear": [Function],
+                "get": [Function],
+                "notify": [Function],
+                "subscribe": [Function],
+              },
+              "onStateChange": [Function],
+              "parentSub": undefined,
+              "store": Object {
+                "dispatch": [Function],
+                "getState": [Function],
+                "replaceReducer": [Function],
+                "subscribe": [Function],
+                Symbol(observable): [Function],
+              },
+              "unsubscribe": [Function],
+            }
+          }
         >
-          <Bem
-            alt="logo"
-            elem="Logo"
-            src="App-Logo.svg"
-            tag="img"
-          >
-            <img
-              alt="logo"
-              className="App-Logo"
-              src="App-Logo.svg"
-            />
-          </Bem>
-          <Bem
-            elem="Title"
-            tag="h1"
-          >
-            <h1
-              className="App-Title"
-            >
-              Welcome to React
-            </h1>
-          </Bem>
-        </header>
-      </App-Header>
+          <div
+            className="Header Header_mode_default"
+            style={Object {}}
+          />
+        </Header>
+      </Connect(Header)>
       <Connect(View)
         clickHandle={true}
         hashChange={true}
         loadPage={true}
+        mode="default"
         store={
           Object {
             "dispatch": [Function],
@@ -97,6 +121,7 @@ exports[`App match snapshot 1`] = `
           dispatch={[Function]}
           hashChange={true}
           loadPage={true}
+          mode="default"
           page="default"
           store={
             Object {
@@ -132,9 +157,11 @@ exports[`App match snapshot 1`] = `
             className="View View_mode_default"
             style={Object {}}
           >
-            <View-ContentWrapper>
+            <View-ContentWrapper
+              mode="default"
+            >
               <div
-                className="View-ContentWrapper"
+                className="View-ContentWrapper View-ContentWrapper_mode_default"
                 style={Object {}}
               >
                 Root content 

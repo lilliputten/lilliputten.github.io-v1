@@ -69,7 +69,7 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
   },/*}}}*/
 
   /** loadPage ** {{{ Load custom page
-   * @param {String} [page] - Url to show
+   * @param {String} [page] - Page id
    * @return {Promise}
    */
   loadPage(page) {
@@ -79,10 +79,10 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
         this.setState({
           page: page,
           mode: 'content',
-          attributes: data.attributes,
+          params: data.params,
           html: data.html,
         });
-        return {status: 'pageLoaded', page, data};
+        return data;
       })
     ;
   },/*}}}*/

@@ -9,6 +9,7 @@ Object {
   },
   "hotMode": false,
   "site": Object {
+    "contentMode": "content",
     "dataExt": ".json",
     "defaultExt": ".md",
     "defaultExts": Array [

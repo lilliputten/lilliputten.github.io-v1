@@ -20,10 +20,11 @@ const _mode_content = /** @lends View_mode_content.prototype */ {
     return (
       <Fragment>
         <Content
+          mode="content"
           rawhtml html={this.state.html}
           store={this.props.store}
           page={this.props.page}
-          attributes={this.state.attributes}
+          params={this.state.params}
         />
       </Fragment>
     );

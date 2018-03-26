@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
 import { declMod } from 'bem-react-core'
 import { Bem } from 'bem-react-core';
-// import TodoTextInput from './TodoTextInput'
 
-export default declMod(function(){ return this.state.mode === 'error' }, {
+export default declMod(function(){ return this.state && this.state.mode === 'error' }, {
 
   block : 'View',
 
@@ -14,7 +13,7 @@ export default declMod(function(){ return this.state.mode === 'error' }, {
 
     return (
       <Fragment>
-        <Bem elem="ContentWrapper">
+        <Bem elem="ContentWrapper" mode="error">
           <Bem ref={(node) => { this._content = node; }} elem="Error" tag="p">{error}</Bem>
         </Bem>
       </Fragment>
