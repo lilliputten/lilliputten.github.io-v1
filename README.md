@@ -37,5 +37,5 @@ Generated resurces (build, make):
 
 ## See also:
 
-- [Resources collection](README.Resorces.md)
+- [Resources collection](README.Resources.md)
 
