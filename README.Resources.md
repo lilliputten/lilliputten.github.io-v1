@@ -33,13 +33,29 @@ UI:
 - [Third-Party Libraries - Ant Design](http://beta.ant.design/docs/react/recommendation)
 - [Material-UI](http://www.material-ui.com/)
 
-React-static:
+React-static (old):
 
 - [wix/react-templates: Light weight templates for react](https://github.com/wix/react-templates)
 - [hello-react-templates sample](https://github.com/wix/hello-react-templates/tree/master/src)
 - [iansinnott/react-static-boilerplate: A boilerplate for building static sites with Webpack 2, React and React Router](https://github.com/iansinnott/react-static-boilerplate)
 - [react-static-webpack-plugin](https://www.npmjs.com/package/react-static-webpack-plugin)
 - [How we switched our template rendering engine to React](https://medium.com/@Pinterest_Engineering/how-we-switched-our-template-rendering-engine-to-react-a799a3d540b0)
+
+Static generators:
+
+- [gatsbyjs/gatsby: Blazing fast static site generator for React](https://github.com/gatsbyjs/gatsby)
+- [Create Static Sites With Webpack](https://dev.to/kayis/create-static-sites-with-webpack)
+- [markdalgleish/static-site-generator-webpack-plugin: Minimal, unopinionated static site generator powered by webpack](https://github.com/markdalgleish/static-site-generator-webpack-plugin)
+
+Serverside static:
+
+- [reactjs/express-react-views: This is an Express view engine which renders React components on server. It renders static markup and *does not* support mounting those views on the client.](https://github.com/reactjs/express-react-views)
+
+General:
+
+- [На освоение React мне потребовалась всего неделя, а чем вы хуже? — CSS-LIVE](http://css-live.ru/articles/na-osvoenie-react-mne-potrebovalas-vsego-nedelya-a-chem-vy-xuzhe.html)
+- [9 полезных советов для тех, кто начинает знакомство с React.js](https://tproger.ru/translations/9-useful-tips-react/)
+
 
 Markdown:
 

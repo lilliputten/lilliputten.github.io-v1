@@ -5,7 +5,7 @@
 
 const postcss = require('./src/config/postcss');
 
-const fs = require('fs');
+// const fs = require('fs');
 
 // Override...
 module.exports = function override(config, env) {
