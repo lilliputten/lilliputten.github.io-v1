@@ -15,6 +15,11 @@ Project sources:
 - [Static site content](site/)
 - [Templates & other static stuff](public/)
 
+Blocks:
+
+- `src/blocks/App/App.js`
+- `src/blocks/View/View.js`
+
 NPM commands:
 
 - `start`

@@ -1,21 +1,24 @@
 /**
- * @module Header
+ * @module Navbar
  * @author lilliputten <lilliputten@yandex.ru>
  * @since 2018.03.26, 20:00
  * @version 2018.03.26, 20:58
  */
 
-import { decl } from 'bem-react-core'
+import React, { Fragment } from 'react'
+import { decl, Bem } from 'bem-react-core'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import pageMapper from 'redux/mappers/pageMapper'
 
+import 'e:Logo'
+
 // import config from 'config'
 
-const Header_proto = /** @lends Header.prototype */{
+const Navbar_proto = /** @lends Navbar.prototype */{
 
-  block: 'Header',
+  block: 'Navbar',
 
   /** getPageState ** {{{ Page state object */
   getPageState(){
@@ -54,10 +57,19 @@ const Header_proto = /** @lends Header.prototype */{
     };
   },/*}}}*/
 
+  /** content ** {{{ */
+  content() {
+    return (
+      <Fragment>
+        Navbar <a href="#!">Root</a> test: <a href="#!test/test">test</a>...
+      </Fragment>
+    );
+  },/*}}}*/
+
 }
 
-/** Header_static ** {{{ */
-const Header_static = /* @lends Header */{
+/** Navbar_static ** {{{ */
+const Navbar_static = /* @lends Navbar */{
 
   propTypes: {
     dispatch: PropTypes.func.isRequired,
@@ -67,5 +79,5 @@ const Header_static = /* @lends Header */{
 
 }/*}}}*/
 
-export default decl(Header_proto, Header_static, connect(pageMapper));
+export default decl(Navbar_proto, Navbar_static, connect(pageMapper));
 

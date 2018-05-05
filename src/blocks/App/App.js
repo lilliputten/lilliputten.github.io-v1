@@ -13,7 +13,7 @@ import pageMapper from 'redux/mappers/pageMapper'
 
 // import config from 'config'
 
-import Header from 'b:Header'
+import Navbar from 'b:Navbar'
 import View from 'b:View'
 
 const App_proto = /** @lends App.prototype */{
@@ -61,7 +61,7 @@ const App_proto = /** @lends App.prototype */{
   content() {
     return (
       <Fragment>
-        <Header mode={this.state.mode} store={this.props.store} />
+        <Navbar mode={this.state.mode} store={this.props.store} />
         <View loadPage hashChange clickHandle mode={this.state.mode} store={this.props.store} />
       </Fragment>
     );

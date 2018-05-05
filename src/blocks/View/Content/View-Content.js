@@ -7,13 +7,13 @@
 
 import React, { Fragment } from 'react'
 // import PropTypes from 'prop-types'
-import { decl, Bem } from 'bem-react-core';
+import { decl, Bem } from 'bem-react-core'
 
 import 'e:ContentWrapper'
 
 // import 'm:rawhtml' // TODO?
 
-const __Content_proto = /** @lends View-Content.prototype */{
+const __Content_proto = /** @lends View-Content.prototype */ {
 
   block: 'View',
   elem: 'Content',

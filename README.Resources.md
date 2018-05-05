@@ -225,3 +225,9 @@ gitpages samples:
 
 - `https://github.com/ilyar/ilyar.github.io`
 
+Design samples:
+
+-[Semplice - Designers best kept secret.](https://www.semplice.com/)
+-[infinite imaginations | UX Developer](https://www.infiniteimaginations.co/)
+
+
