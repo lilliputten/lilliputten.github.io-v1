@@ -1,0 +1,8 @@
+// vim: ft=scss
+
+.Navbar {
+  &-Menu {
+    // border: 1px solid blue;
+    flex: auto;
+  }
+}

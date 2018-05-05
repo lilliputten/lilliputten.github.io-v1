@@ -6,10 +6,10 @@
  */
 
 import React, { Fragment } from 'react';
-import { declMod/* , Bem */ } from 'bem-react-core'
+import { declMod/* , Bem */ } from 'bem-react-core';
 
-// import Content from 'e:Content'
-import ContentRaw from 'e:ContentRaw'
+// import Content from 'e:Content';
+import ContentRaw from 'e:ContentRaw';
 
 const _mode_default = /** @lends View_mode_default.prototype */ {
 

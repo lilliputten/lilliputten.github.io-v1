@@ -1,17 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-import axios from 'axios'
-import MockAdapter from 'axios-mock-adapter'
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
 
-import Enzyme, { mount/* , shallow */ } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import Enzyme, { mount/* , shallow */ } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-import config from 'config'
-import hashTools from 'libs/hashTools'
+import config from 'config';
+import hashTools from 'libs/hashTools';
 
-import App from 'b:App'
+import App from 'b:App';
 
-import configureStore from 'redux/configureStore'
+import configureStore from 'redux/configureStore';
 
 const mock = new MockAdapter(axios);
 

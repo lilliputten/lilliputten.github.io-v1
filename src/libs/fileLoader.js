@@ -5,7 +5,7 @@
  * @version 2018.03.11, 20:32
  */
 
-import axios from 'axios'
+import axios from 'axios';
 
 const fileLoader = {
 

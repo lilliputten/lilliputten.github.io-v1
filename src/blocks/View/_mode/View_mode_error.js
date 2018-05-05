@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { declMod } from 'bem-react-core'
+import { declMod } from 'bem-react-core';
 import { Bem } from 'bem-react-core';
 
 export default declMod(function(){ return this.state && this.state.mode === 'error' }, {

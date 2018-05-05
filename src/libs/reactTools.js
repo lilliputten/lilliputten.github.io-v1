@@ -11,9 +11,9 @@
  *
  */
 
-import React from 'react'
-import ReactDom from 'react-dom'
-import jquery from 'jquery'
+import React from 'react';
+import ReactDom from 'react-dom';
+import jquery from 'jquery';
 
 const isArray = Array.isArray
 

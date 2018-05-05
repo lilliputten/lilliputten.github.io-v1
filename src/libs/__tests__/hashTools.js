@@ -1,7 +1,7 @@
 
-import config from 'config'
+import config from 'config';
 
-import hashTools from '../hashTools'
+import hashTools from '../hashTools';
 
 describe('hashTools', () => {
 

@@ -5,9 +5,9 @@
  * @version 2018.03.26, 20:58
  */
 
-import { SET_PAGE } from 'redux/actions/pageActions'
-import config from 'config'
-import hashTools from 'libs/hashTools'
+import { SET_PAGE } from 'redux/actions/pageActions';
+import config from 'config';
+import hashTools from 'libs/hashTools';
 
 function getModeForPage (page) {
   return (page === config.site.defaultPage) ? config.site.defaultMode: config.site.contentMode;

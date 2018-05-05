@@ -6,11 +6,11 @@
  * @version 2018.03.20, 00:19
  */
 
-import { declMod } from 'bem-react-core'
-import hashTools from 'libs/hashTools'
-import config from 'config'
+import { declMod } from 'bem-react-core';
+import hashTools from 'libs/hashTools';
+import config from 'config';
 
-import { setPage } from 'redux/actions/pageActions'
+import { setPage } from 'redux/actions/pageActions';
 
 const _hashChange_proto = /** @lends View_hashChange.prototype */{
 

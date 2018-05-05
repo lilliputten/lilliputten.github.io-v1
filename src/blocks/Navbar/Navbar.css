@@ -1,4 +1,6 @@
 // vim: ft=scss
 
 .Navbar {
+  display: flex;
+  flex-direction: row;
 }

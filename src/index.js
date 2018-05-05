@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import configureStore from 'redux/configureStore'
+import configureStore from 'redux/configureStore';
 
 import registerServiceWorker from './registerServiceWorker';
 
-// import config from 'config'
+// import config from 'config';
 
 import 'b:Page';
 import App from 'b:App';

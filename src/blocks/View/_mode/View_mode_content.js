@@ -6,9 +6,9 @@
  */
 
 import React, { Fragment } from 'react';
-import { declMod } from 'bem-react-core'
+import { declMod } from 'bem-react-core';
 
-import Content from 'e:Content'
+import Content from 'e:Content';
 
 const _mode_content = /** @lends View_mode_content.prototype */ {
 

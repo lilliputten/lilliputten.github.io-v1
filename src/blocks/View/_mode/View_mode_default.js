@@ -6,14 +6,14 @@
  */
 
 import React, { Fragment } from 'react';
-import { declMod } from 'bem-react-core'
+import { declMod } from 'bem-react-core';
 
-import config from 'config'
+import config from 'config';
 
-import 'e:ContentWrapper'
-// import ContentWrapper from 'e:ContentWrapper'
+import 'e:ContentWrapper';
+// import ContentWrapper from 'e:ContentWrapper';
 
-import Default from 'b:Default'
+import Default from 'b:Default';
 
 const _mode_default = /** @lends View_mode_default.prototype */ {
 

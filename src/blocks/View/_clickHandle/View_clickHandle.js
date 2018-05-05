@@ -6,12 +6,12 @@
  * @version 2018.03.20, 00:19
  */
 
-import { declMod } from 'bem-react-core'
+import { declMod } from 'bem-react-core';
 
-// import { setPage } from 'redux/actions/pageActions'
-import reactTools from 'libs/reactTools'
-import hashTools from 'libs/hashTools'
-import jquery from 'jquery'
+// import { setPage } from 'redux/actions/pageActions';
+import reactTools from 'libs/reactTools';
+import hashTools from 'libs/hashTools';
+import jquery from 'jquery';
 
 const _clickHandle_proto = /** @lends View_clickHandle.prototype */{
 

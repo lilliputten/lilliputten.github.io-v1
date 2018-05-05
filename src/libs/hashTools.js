@@ -5,7 +5,7 @@
  * @version 2018.03.11, 20:32
  */
 
-import config from 'config'
+import config from 'config';
 
 const hashTools = {
 

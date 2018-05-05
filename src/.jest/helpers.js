@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme'
+import { shallow } from 'enzyme';
 
 export function block(blockName) {
   return node => shallow(node).find(`.${blockName}`);

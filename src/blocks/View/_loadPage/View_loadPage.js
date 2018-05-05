@@ -6,10 +6,10 @@
  * @version 2018.03.26, 21:03
  */
 
-import { declMod } from 'bem-react-core'
+import { declMod } from 'bem-react-core';
 
-import config from 'config'
-import PageLoader from 'libs/PageLoader'
+import config from 'config';
+import PageLoader from 'libs/PageLoader';
 
 const _loadPage_proto = /** @lends View_loadPage.prototype */{
 

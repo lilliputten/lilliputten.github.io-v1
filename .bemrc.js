@@ -12,7 +12,8 @@ module.exports = {
           },
           techs: ['js', 'css'],
           templates: {
-            js: '.bem/templates/js.js'
+            js: '.bem/templates/js.js',
+            css: '.bem/templates/css.js',
           }
         }
       }

@@ -6,12 +6,12 @@
  * @version 2018.03.11, 21:44
  */
 
-import inherit from 'inherit'
-import config from 'config'
-import fileLoader from 'libs/fileLoader'
-import MdParser from 'libs/MdParser'
-import hashTools from 'libs/hashTools'
-import reactTools from 'libs/reactTools'
+import inherit from 'inherit';
+import config from 'config';
+import fileLoader from 'libs/fileLoader';
+import MdParser from 'libs/MdParser';
+import hashTools from 'libs/hashTools';
+import reactTools from 'libs/reactTools';
 
 const PageLoader_proto = /** @lends PageLoader.prototype */{
 

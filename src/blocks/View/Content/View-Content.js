@@ -5,13 +5,13 @@
  * @version 2018.03.26, 20:58
  */
 
-import React, { Fragment } from 'react'
-// import PropTypes from 'prop-types'
-import { decl, Bem } from 'bem-react-core'
+import React, { Fragment } from 'react';
+// import PropTypes from 'prop-types';
+import { decl, Bem } from 'bem-react-core';
 
-import 'e:ContentWrapper'
+import 'e:ContentWrapper';
 
-// import 'm:rawhtml' // TODO?
+// import 'm:rawhtml' // TODO?;
 
 const __Content_proto = /** @lends View-Content.prototype */ {
 

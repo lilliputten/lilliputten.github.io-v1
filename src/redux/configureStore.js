@@ -5,10 +5,10 @@
  * @version 2018.03.19, 23:52
  */
 
-import config from 'config'
-import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
-import thunk from 'redux-thunk'
-import pageReducer from './reducers/pageReducer'
+import config from 'config';
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import pageReducer from './reducers/pageReducer';
 
 const rootReducer = combineReducers({
   page : pageReducer

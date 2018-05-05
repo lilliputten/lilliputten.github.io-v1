@@ -5,16 +5,17 @@
  * @version 2018.03.26, 20:58
  */
 
-import React, { Fragment } from 'react'
-import { decl, Bem } from 'bem-react-core'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React, { Fragment } from 'react';
+import { decl, Bem } from 'bem-react-core';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-import pageMapper from 'redux/mappers/pageMapper'
+import pageMapper from 'redux/mappers/pageMapper';
 
-import 'e:Logo'
+import 'e:Logo';
+import 'e:Menu';
 
-// import config from 'config'
+// import config from 'config';
 
 const Navbar_proto = /** @lends Navbar.prototype */{
 
@@ -61,7 +62,8 @@ const Navbar_proto = /** @lends Navbar.prototype */{
   content() {
     return (
       <Fragment>
-        Navbar <a href="#!">Root</a> test: <a href="#!test/test">test</a>...
+        <Bem elem="Logo">Logo</Bem>
+        <Bem elem="Menu">Menu</Bem>
       </Fragment>
     );
   },/*}}}*/

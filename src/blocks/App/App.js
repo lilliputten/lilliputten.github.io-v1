@@ -5,16 +5,16 @@
  * @version 2018.03.26, 21:03
  */
 
-import React, { Fragment } from 'react'
-import { decl } from 'bem-react-core'
-import { connect } from 'react-redux'
+import React, { Fragment } from 'react';
+import { decl } from 'bem-react-core';
+import { connect } from 'react-redux';
 
-import pageMapper from 'redux/mappers/pageMapper'
+import pageMapper from 'redux/mappers/pageMapper';
 
-// import config from 'config'
+// import config from 'config';
 
-import Navbar from 'b:Navbar'
-import View from 'b:View'
+import Navbar from 'b:Navbar';
+import View from 'b:View';
 
 const App_proto = /** @lends App.prototype */{
 

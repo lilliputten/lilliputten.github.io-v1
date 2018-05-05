@@ -6,12 +6,12 @@
  * @version 2018.03.11, 21:44
  */
 
-import inherit from 'inherit'
+import inherit from 'inherit';
 
-// import FrontMatter from 'front-matter'
-import Markdown from 'markdown-it'
+// import FrontMatter from 'front-matter';
+import Markdown from 'markdown-it';
 
-import ExtraPlugin from 'libs/markdown/extra-tags-plugin'
+import ExtraPlugin from 'libs/markdown/extra-tags-plugin';
 
 // var hljs = require('highlight.js'); // https://highlightjs.org/
 // var hljsPlugin = require('markdown-it-highlight').default;

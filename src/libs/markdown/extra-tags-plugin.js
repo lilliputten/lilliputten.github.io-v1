@@ -10,7 +10,7 @@
  */
 
 // Escaping html entities utility
-// import utils from './utils'
+// import utils from './utils';
 const utils = require('./utils');
 
 // Unique id counter

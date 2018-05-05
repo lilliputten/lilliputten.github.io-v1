@@ -1,23 +1,23 @@
-import React from 'react'
+import React from 'react';
 
 // import { block, getClassNames } from '.jest/helpers';
 
-// import axios from 'axios'
-// import MockAdapter from 'axios-mock-adapter'
+// import axios from 'axios';
+// import MockAdapter from 'axios-mock-adapter';
 
-import reactTools from 'libs/reactTools'
+import reactTools from 'libs/reactTools';
 
-import Enzyme from 'enzyme'
-import {mount} from 'enzyme'
-// import {shallow} from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import Enzyme from 'enzyme';
+import {mount} from 'enzyme';
+// import {shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-// import config from 'config'
-// import hashTools from 'libs/hashTools'
+// import config from 'config';
+// import hashTools from 'libs/hashTools';
 
-import View from 'b:View'
+import View from 'b:View';
 
-import configureStore from 'redux/configureStore'
+import configureStore from 'redux/configureStore';
 
 // const mock = new MockAdapter(axios);
 

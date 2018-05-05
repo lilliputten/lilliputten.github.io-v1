@@ -5,19 +5,19 @@
  * @version 2018.03.26, 21:03
  */
 
-import { decl } from 'bem-react-core'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import { decl } from 'bem-react-core';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-import pageMapper from 'redux/mappers/pageMapper'
+import pageMapper from 'redux/mappers/pageMapper';
 
-// import config from 'config'
+// import config from 'config';
 
-import 'm:mode=default|content|loading|error'
+import 'm:mode=default|content|loading|error';
 
-import 'm:loadPage'
-import 'm:hashChange'
-import 'm:clickHandle'
+import 'm:loadPage';
+import 'm:hashChange';
+import 'm:clickHandle';
 
 const View_proto = /** @lends View.prototype */{
 

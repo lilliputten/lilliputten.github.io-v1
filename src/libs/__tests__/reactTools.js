@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react'
-import { decl, Bem } from 'bem-react-core'
+import React, { Fragment } from 'react';
+import { decl, Bem } from 'bem-react-core';
 
-import Enzyme, { mount/* , shallow */ } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import Enzyme, { mount/* , shallow */ } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-import reactTools from 'libs/reactTools'
+import reactTools from 'libs/reactTools';
 
 Enzyme.configure({ adapter: new Adapter() })
 
