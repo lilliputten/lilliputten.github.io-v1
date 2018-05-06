@@ -49,7 +49,7 @@ exports[`App match snapshot 1`] = `
       className="App App_mode_default"
       style={Object {}}
     >
-      <Connect(Header)
+      <Connect(Navbar)
         mode="default"
         store={
           Object {
@@ -61,7 +61,7 @@ exports[`App match snapshot 1`] = `
           }
         }
       >
-        <Header
+        <Navbar
           dispatch={[Function]}
           mode="default"
           page="default"
@@ -96,11 +96,30 @@ exports[`App match snapshot 1`] = `
           }
         >
           <div
-            className="Header Header_mode_default"
+            className="Navbar Navbar_mode_default"
             style={Object {}}
-          />
-        </Header>
-      </Connect(Header)>
+          >
+            <Bem
+              elem="Logo"
+            >
+              <div
+                className="Navbar-Logo"
+              >
+                Logo
+              </div>
+            </Bem>
+            <Bem
+              elem="Menu"
+            >
+              <div
+                className="Navbar-Menu"
+              >
+                Menu
+              </div>
+            </Bem>
+          </div>
+        </Navbar>
+      </Connect(Navbar)>
       <Connect(View)
         clickHandle={true}
         hashChange={true}

@@ -15,6 +15,7 @@ import pageMapper from 'redux/mappers/pageMapper';
 
 import Navbar from 'b:Navbar';
 import View from 'b:View';
+import Footer from 'b:Footer';
 
 const App_proto = /** @lends App.prototype */{
 
@@ -63,6 +64,7 @@ const App_proto = /** @lends App.prototype */{
       <Fragment>
         <Navbar mode={this.state.mode} store={this.props.store} />
         <View loadPage hashChange clickHandle mode={this.state.mode} store={this.props.store} />
+        <Footer mode={this.state.mode} store={this.props.store} />
       </Fragment>
     );
   },/*}}}*/
