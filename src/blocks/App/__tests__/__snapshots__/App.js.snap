@@ -202,6 +202,25 @@ exports[`App match snapshot 1`] = `
           </div>
         </View>
       </Connect(View)>
+      <Footer
+        mode="default"
+        store={
+          Object {
+            "dispatch": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+            Symbol(observable): [Function],
+          }
+        }
+      >
+        <div
+          className="Footer Footer_mode_default"
+          style={Object {}}
+        >
+          Footer
+        </div>
+      </Footer>
     </div>
   </App>
 </Connect(App)>

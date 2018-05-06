@@ -93,7 +93,6 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "update": "npm update -s --save --dev --save-dev",
     "inject": "( test -d build && find build > .build.files && cp -Rvf build/* . ) || echo No build folder!",
     "reinject": "npm run clean-inject && npm run inject",
     "stats": "webpack-bundle-analyzer -m static -r build/stats.html build/stats.json",
@@ -107,6 +106,7 @@
     "test-update-snapshots": "npm run test -- --updateSnapshot",
     "test-clear-cache": "npm run test -- --clearCache",
     "create": "bem create",
+    "update": "npm update -s --save --dev --save-dev",
     "--eject--": "react-scripts eject"
   }
 }
