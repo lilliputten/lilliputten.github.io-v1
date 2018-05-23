@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import pageMapper from 'redux/mappers/pageMapper';
 
 import 'e:Logo';
-import 'e:Menu';
+import Menu from 'e:Menu';
 
 // import config from 'config';
 
@@ -63,7 +63,7 @@ const Navbar_proto = /** @lends Navbar.prototype */{
     return (
       <Fragment>
         <Bem elem="Logo">Logo</Bem>
-        <Bem elem="Menu">Menu</Bem>
+        <Menu/>
       </Fragment>
     );
   },/*}}}*/

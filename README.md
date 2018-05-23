@@ -29,16 +29,18 @@ NPM commands:
 
 Generated resurces (build, make):
 
-- `build/`
-- `static/`
-- `.build.files`
-- `.webpack*`
-- `asset-manifest.json`
-- `favicon.ico`
-- `index.html`
-- `manifest.json`
-- `service-worker.js`
-- `stats.json`
+```
+build/
+static/
+.build.files
+.webpack*
+asset-manifest.json
+favicon.ico
+index.html
+manifest.json
+service-worker.js
+stats.json
+```
 
 ## See also:
 

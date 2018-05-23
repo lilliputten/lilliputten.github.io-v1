@@ -1,0 +1,8 @@
+// vim: ft=scss
+
+.Navbar {
+  &-MenuItem {
+    display: inline-block;
+    margin: 2px 4px;
+  }
+}

@@ -33,6 +33,13 @@ const config_site = /** @lends config.site */ {
   // To load page data (usually smth like `*.json`)
   loadPageParams: false,
 
+  /** mainMenu ** {{{
+   */
+  mainMenu: [
+    { url: '#!about', text: 'About' },
+    { url: '#!contacts', text: 'Contacts' },
+  ],/*}}}*/
+
 };
 
 export default config_site;
