@@ -29,6 +29,10 @@ const config_site = /** @lends config.site */ {
   defaultMode: 'default',
   contentMode: 'content',
   loadingMode: 'loading',
+  // unloadingMode: 'unloading',
+
+  // Page loading delay (ms)
+  loadingDelay: 300,
 
   // To load page data (usually smth like `*.json`)
   loadPageParams: false,
@@ -37,6 +41,7 @@ const config_site = /** @lends config.site */ {
    */
   mainMenu: [
     { url: '#!about', text: 'About' },
+    { url: '#!projects', text: 'Projects' },
     { url: '#!contacts', text: 'Contacts' },
   ],/*}}}*/
 

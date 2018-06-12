@@ -1,8 +1,11 @@
 // vim: ft=scss
 
+$topMargin: 5px;
+
 .Navbar {
   &-MenuItem {
     display: inline-block;
-    margin: 2px 4px;
+    margin: $topMargin 4px;
+    line-height: resolve( var(--NavbarHeight) - 10 )px;
   }
 }

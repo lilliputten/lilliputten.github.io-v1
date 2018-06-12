@@ -1,4 +1,8 @@
 // vim: ft=scss
 
 .Footer {
+
+  background-color: var(--pageBgColor);
+  z-index: 10;
+
 }

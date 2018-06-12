@@ -5,6 +5,8 @@
 
 const postcss = require('./src/config/postcss');
 
+// console.log('Config initialized!'); // DEBUG
+
 // const fs = require('fs');
 
 // Override...
@@ -102,7 +104,9 @@ module.exports = function override(config, env) {
             // require('postcss-color-function'), // https://github.com/postcss/postcss-color-function // To delete?
             require('postcss-color-mod-function'), // https://github.com/jonathantneal/postcss-color-mod-function
             require('postcss-flexbugs-fixes'), // https://github.com/luisrudge/postcss-flexbugs-fixes
+            require('postcss-nested-ancestors'), // https://github.com/toomuchdesign/postcss-nested-ancestors
             require('postcss-nested'), // https://github.com/postcss/postcss-nested
+            require('postcss-math'), // https://github.com/shauns/postcss-math
             require('postcss-utilities'), // https://github.com/ismamz/postcss-utilities
             // https://ismamz.github.io/postcss-utilities/docs#clear-fix
           ],

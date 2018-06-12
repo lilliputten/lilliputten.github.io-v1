@@ -1,0 +1,12 @@
+// vim: ft=scss
+
+.App-Spinner {
+  position: fixed;
+  opacity: .5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  &Img {
+    width: 50%;
+  }
+}

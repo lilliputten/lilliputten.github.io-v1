@@ -1,5 +1,35 @@
+// vim: ft=scss
+
+// Full-height layout
+// .View-ContentWrapper, // _mode_default
+html,
+body,
+#root,
+.App {
+  height: 100%;
+  position: relative;
+  background-color: var(--pageBgColor);
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: var(--baseFontFamily);
+  font-size: var(--baseFontSize)px;
+  // font-size: calc(var(--baseFontSize) + 4)px; // DEBUG
+  // font-size: resolve( var(--baseFontSize) + 2)px; // DEBUG
+  color: var(--defaultTextColor);
 }
+
+a {
+  color: var(--defaultLinkColor);
+  &:hover {
+      color: var(--defaultHoveredLinkColor);
+  }
+  // ???
+  &:visited {
+      // color: var(--defaultHoveredLinkColor);
+      opacity: .8;
+  }
+}
+

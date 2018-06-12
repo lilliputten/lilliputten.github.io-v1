@@ -8,12 +8,13 @@ $localVarColor: magenta;
   --rootColor: pink; // Define variable in root scope
 }
 
-.View {
+:View {
   --localColor: #00ff00; // Define variable in specified scope
 }
 
 .View {
   &-ContentWrapper {
+    width: 100%;
     padding: 10px;
     // @media (--testViewport) {
     //   color: green;

@@ -6,20 +6,13 @@
  */
 
 import React, { Fragment } from 'react';
-import { decl/* , Bem */ } from 'bem-react-core';
-import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
-
-// import pageMapper from 'redux/mappers/pageMapper';
-
-// import 'e:Logo';
-// import 'e:MenuItem';
+import { decl } from 'bem-react-core';
 
 import config from 'config';
 
-const mainMenu = config.site.mainMenu;
-
 import MenuItem from 'e:MenuItem';
+
+const mainMenu = config.site.mainMenu;
 
 const __Menu_proto = /** @lends Navbar-Menu.prototype */{
 
@@ -72,17 +65,6 @@ const __Menu_proto = /** @lends Navbar-Menu.prototype */{
   },/*}}}*/
 
 }
-
-// /** __Menu_static ** {{{ */
-// const __Menu_static = /** @lends Navbar-Menu */ {
-//
-//   propTypes: {
-//     dispatch: PropTypes.func.isRequired,
-//     mode: PropTypes.string.isRequired,
-//     // page: PropTypes.string,
-//   },
-//
-// }/*}}}*/
 
 export default decl(__Menu_proto);
 

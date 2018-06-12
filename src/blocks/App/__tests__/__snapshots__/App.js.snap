@@ -108,15 +108,39 @@ exports[`App match snapshot 1`] = `
                 Logo
               </div>
             </Bem>
-            <Bem
-              elem="Menu"
-            >
+            <Navbar-Menu>
               <div
                 className="Navbar-Menu"
+                style={Object {}}
               >
-                Menu
+                <Navbar-MenuItem
+                  key="#!about"
+                  text="About"
+                  url="#!about"
+                >
+                  <a
+                    className="Navbar-MenuItem"
+                    href="#!about"
+                    style={Object {}}
+                  >
+                    About
+                  </a>
+                </Navbar-MenuItem>
+                <Navbar-MenuItem
+                  key="#!contacts"
+                  text="Contacts"
+                  url="#!contacts"
+                >
+                  <a
+                    className="Navbar-MenuItem"
+                    href="#!contacts"
+                    style={Object {}}
+                  >
+                    Contacts
+                  </a>
+                </Navbar-MenuItem>
               </div>
-            </Bem>
+            </Navbar-Menu>
           </div>
         </Navbar>
       </Connect(Navbar)>

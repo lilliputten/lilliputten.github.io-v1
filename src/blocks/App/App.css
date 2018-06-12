@@ -1,9 +1,12 @@
 // vim: ft=scss
 
 .App {
-  // display: flex;
-  // flex-direction: row;
+
+  display: flex;
+  flex-direction: column;
   // align-items: center;
+
+  // OLD code (from bem-react sample)...
   &-Header {
     text-align: center;
   }

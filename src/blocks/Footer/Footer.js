@@ -57,7 +57,7 @@ const Footer = /** @lends Footer.prototype */ {
   content() {
     return (
       <Fragment>
-        Footer
+        ...
       </Fragment>
     );
   },/*}}}*/

@@ -8,12 +8,20 @@
 
 const css = require('./css');
 
+/** isNumberLike ** {{{ Is variable number-like?
+ * @param {*} v
+ * @return {Boolean}
+ */
+function isNumberLike (v) {
+  return ( typeof v === 'number' || ( v !== '' && !isNaN(v) ) );
+}/*}}}*/
+
 /** size ** {{{ Convert js numbers to css dimensions
  * @param {*} v
  * @return {String}
  */
 function size (v) {
-  if ( typeof v === 'number' || !isNaN(v) ) {
+  if ( isNumberLike(v) ) {
     v = String(v) + 'px';
   }
   return String(v);
@@ -30,10 +38,17 @@ const cssFeatures = {
     // appendVariables: true, // https://github.com/postcss/postcss-custom-properties#appendvariables
     // preserve: true, // DONTUSE!!! // https://github.com/postcss/postcss-custom-properties#preserve
 
-    variables : Object.keys(css).reduce((result, key) => {
-      result[key] = size(css[key]);
+    variables : css, /* Object.keys(css).reduce((result, key) => {
+      var v = css[key];
+      result[key] = v;
+      // console.log('--', key, ':', v); // DEBUG
+      // if ( isNumberLike(v) ) {
+      //   v = String(v);
+      //   result[key + 'Px'] = size(v);
+      //   result[key + 'Percent'] = v + '%';
+      // }
       return result;
-    }, {}),
+    }, {}), */
 
   },
 
@@ -41,6 +56,7 @@ const cssFeatures = {
   customMedia: {
     extensions: {
 
+      // TODO?
       testViewport: '(min-width: ' + size(css.testViewportWidth) + ')',
 
     },

@@ -21,6 +21,16 @@ Object {
     "defaultPage": "default",
     "loadPageParams": false,
     "loadingMode": "loading",
+    "mainMenu": Array [
+      Object {
+        "text": "About",
+        "url": "#!about",
+      },
+      Object {
+        "text": "Contacts",
+        "url": "#!contacts",
+      },
+    ],
     "rootPrefix": "/site",
   },
   "startTime": 1520000000000,

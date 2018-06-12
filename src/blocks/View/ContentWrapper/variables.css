@@ -1,9 +1,6 @@
 
 $blue: #056ef0; // Local variable
 
-.View {
-  &-ContentWrapper {
-    /* background-color: $blue; // Background color from local defined color */
-  }
+:View {
   --includedColor: #ff0000; // Exported variable
 }

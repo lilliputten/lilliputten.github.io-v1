@@ -13,6 +13,7 @@ import pageMapper from 'redux/mappers/pageMapper';
 
 // import config from 'config';
 
+import Spinner from 'e:Spinner';
 import Navbar from 'b:Navbar';
 import View from 'b:View';
 import Footer from 'b:Footer';
@@ -58,10 +59,17 @@ const App_proto = /** @lends App.prototype */{
     };
   },/*}}}*/
 
+  // /** attrs ** {{{
+  //  */
+  // attrs() {
+  //   return { style: { border: '1px solid red' } };
+  // },/*}}}*/
+
   /** content ** {{{ */
   content() {
     return (
       <Fragment>
+        <Spinner/>
         <Navbar mode={this.state.mode} store={this.props.store} />
         <View loadPage hashChange clickHandle mode={this.state.mode} store={this.props.store} />
         <Footer mode={this.state.mode} store={this.props.store} />

@@ -10,6 +10,7 @@ import { declMod } from 'bem-react-core';
 
 import config from 'config';
 import PageLoader from 'libs/PageLoader';
+import reactTools from 'libs/reactTools';
 
 const _loadPage_proto = /** @lends View_loadPage.prototype */{
 
@@ -56,37 +57,6 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
     };
   },/*}}}*/
 
-  /** defaultPage ** {{{ Place default page
-   * @param {String} [page] - Url to show
-   * @return {Promise}
-   */
-  defaultPage(page) {
-    this.setState({
-      page: page,
-      mode: config.site.defaultMode,
-    });
-    return Promise.resolve({status: 'defaultPage', page});
-  },/*}}}*/
-
-  /** loadPage ** {{{ Load custom page
-   * @param {String} [page] - Page id
-   * @return {Promise}
-   */
-  loadPage(page) {
-    return this.pageLoader.resolve(page)
-      // Set page data...
-      .then(data => {
-        this.setState({
-          page: page,
-          mode: 'content',
-          params: data.params,
-          html: data.html,
-        });
-        return data;
-      })
-    ;
-  },/*}}}*/
-
   /** placePage ** {{{ Update page content on url changing
    * @param {String} [page] - Url to show
    * @return {Promise}
@@ -97,23 +67,49 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
       page = this.props.page; // page || config.site.defaultPage;
     }
 
+    const isDefault = (page === config.site.defaultPage);
+
     // Mode: loading
     this.setState({ mode: config.site.loadingMode });
 
-    // DEBUG
-    console.log('View:placePage', page);
+    // First delay -> loading...
+    let promises = [reactTools.delay(config.site.loadingDelay, {status: 'loading'})];
 
-    const isDefault = (page === config.site.defaultPage);
-    const promise = isDefault ? this.defaultPage(page) : this.loadPage(page);
+    // // DEBUG
+    // console.log('View:placePage', page);
+    // debugger;
 
-    // Load or resolve page data...
-    promise
+    if ( !isDefault ) {
+      // Load or fetch cached page content
+      promises.push(this.pageLoader.resolve(page));
+    }
 
-      // DEBUG!
-      // .then(data => {
-      //   debugger;
-      //   return data;
-      // })
+    // Wait for delay and load/fetch content for regular pages...
+    const resultPromise = Promise.all(promises)
+
+      // Successful loading...
+      .then(([delayResult, data]) => {
+
+        // If regular page...
+        if ( !isDefault && data ) {
+          this.setState({
+            page: page,
+            mode: config.site.contentMode,
+            params: data.params,
+            html: data.html,
+          });
+          return {status: config.site.contentMode, ...data, page};
+        }
+        // ...Else if main (default) page...
+        else {
+          this.setState({
+            page: page,
+            mode: config.site.defaultMode,
+          });
+          return {status: config.site.defaultMode, page};
+        }
+
+      })
 
       // Error...
       .catch(err => {
@@ -124,7 +120,10 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
           error: err,
         });
       })
+
     ;
+
+    return resultPromise;
 
   },/*}}}*/
 

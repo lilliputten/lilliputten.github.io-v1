@@ -1,4 +1,14 @@
 // vim: ft=scss
 
-.Navbar-Logo {
+.Navbar {
+  &-Logo {
+    &Img {
+      width: 200px;
+    }
+    &Link {
+      &:hover {
+        opacity: .8;
+      }
+    }
+  }
 }

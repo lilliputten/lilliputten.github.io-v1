@@ -2,7 +2,13 @@
 
 .Navbar {
   &-Menu {
+    // white-space: nowrap;
+    overflow: hidden;
     // border: 1px solid blue;
     flex: auto;
+    // // DEMO
+    // ^&_mode_default & {
+    //   // border: 1px solid red;
+    // }
   }
 }

@@ -1,0 +1,35 @@
+// vim: ft=scss
+
+.View {
+
+  flex: auto;
+
+  display: flex;
+
+  // Top margin for contant page by default
+  margin-top: var(--NavbarHeight)px;
+  transition: opacity .3s ease-out, margin-top .75s ease-out;
+
+  background-color: var(--pageBgColor);
+  z-index: 5;
+
+  opacity: 0;
+
+  // &_mode_loading,
+  &_mode_default,
+  &_mode_content,
+  &_mode_error {
+    opacity: 1;
+  }
+
+  &_mode_unloading {
+    opacity: .2;
+  }
+
+  &_mode_default,
+  &_mode_loading {
+    margin-top: 0;
+  }
+
+  // cubic-bezier(.29, 1.01, 1, -0.68);
+}

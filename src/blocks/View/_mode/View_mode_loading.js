@@ -14,7 +14,6 @@ export default declMod(function(){
     return (
       <Bem elem="ContentWrapper" mode="loading">
         <Bem ref={(node) => { this._content = node; }} elem="Status" tag="p">
-          Loading...
         </Bem>
       </Bem>
     );
