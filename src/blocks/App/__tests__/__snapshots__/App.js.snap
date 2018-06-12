@@ -49,6 +49,25 @@ exports[`App match snapshot 1`] = `
       className="App App_mode_default"
       style={Object {}}
     >
+      <App-Spinner>
+        <div
+          className="App-Spinner"
+          style={Object {}}
+        >
+          <Bem
+            alt="Loading..."
+            elem="SpinnerImg"
+            src="spinner-dots.gif"
+            tag="img"
+          >
+            <img
+              alt="Loading..."
+              className="App-SpinnerImg"
+              src="spinner-dots.gif"
+            />
+          </Bem>
+        </div>
+      </App-Spinner>
       <Connect(Navbar)
         mode="default"
         store={
@@ -99,15 +118,36 @@ exports[`App match snapshot 1`] = `
             className="Navbar Navbar_mode_default"
             style={Object {}}
           >
-            <Bem
-              elem="Logo"
-            >
+            <Navbar-Logo>
               <div
                 className="Navbar-Logo"
+                style={Object {}}
               >
-                Logo
+                <Bem
+                  elem="LogoLink"
+                  href="#!"
+                  tag="a"
+                >
+                  <a
+                    className="Navbar-LogoLink"
+                    href="#!"
+                  >
+                    <Bem
+                      alt="logo"
+                      elem="LogoImg"
+                      src="Logo.svg"
+                      tag="img"
+                    >
+                      <img
+                        alt="logo"
+                        className="Navbar-LogoImg"
+                        src="Logo.svg"
+                      />
+                    </Bem>
+                  </a>
+                </Bem>
               </div>
-            </Bem>
+            </Navbar-Logo>
             <Navbar-Menu>
               <div
                 className="Navbar-Menu"
@@ -124,6 +164,19 @@ exports[`App match snapshot 1`] = `
                     style={Object {}}
                   >
                     About
+                  </a>
+                </Navbar-MenuItem>
+                <Navbar-MenuItem
+                  key="#!projects"
+                  text="Projects"
+                  url="#!projects"
+                >
+                  <a
+                    className="Navbar-MenuItem"
+                    href="#!projects"
+                    style={Object {}}
+                  >
+                    Projects
                   </a>
                 </Navbar-MenuItem>
                 <Navbar-MenuItem
@@ -197,32 +250,27 @@ exports[`App match snapshot 1`] = `
           }
         >
           <div
-            className="View View_mode_default"
+            className="View View_mode_loading"
             style={Object {}}
           >
-            <Default
-              mix={
-                Object {
-                  "block": "View",
-                  "elem": "ContentWrapper",
-                  "mods": Object {
-                    "mode": "default",
-                  },
-                }
-              }
+            <Bem
+              elem="ContentWrapper"
+              mode="loading"
             >
               <div
-                className="Default View-ContentWrapper View-ContentWrapper_mode_default"
-                style={Object {}}
+                className="View-ContentWrapper"
+                mode="loading"
               >
-                Root content 
-                <a
-                  href="#!test/test"
+                <Bem
+                  elem="Status"
+                  tag="p"
                 >
-                  test
-                </a>
+                  <p
+                    className="View-Status"
+                  />
+                </Bem>
               </div>
-            </Default>
+            </Bem>
           </div>
         </View>
       </Connect(View)>
@@ -242,7 +290,7 @@ exports[`App match snapshot 1`] = `
           className="Footer Footer_mode_default"
           style={Object {}}
         >
-          Footer
+          ...
         </div>
       </Footer>
     </div>

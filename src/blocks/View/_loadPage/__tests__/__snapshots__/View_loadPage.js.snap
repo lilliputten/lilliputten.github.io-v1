@@ -132,30 +132,3 @@ Object {
   "page": "default",
 }
 `;
-
-exports[`View_loadPage loadPage returns page data: loadPage result 1`] = `
-Object {
-  "body": "page content",
-  "html": "<p>page content</p>
-",
-  "params": Object {
-    "pageId": "test/testPage",
-    "pageUrl": "/site/test/testPage.md",
-    "paramsUrl": "/site/test/testPage.json",
-  },
-}
-`;
-
-exports[`View_loadPage loadPage returns page data: state after load 1`] = `
-Object {
-  "html": "<p>page content</p>
-",
-  "mode": "content",
-  "page": "test/testPage",
-  "params": Object {
-    "pageId": "test/testPage",
-    "pageUrl": "/site/test/testPage.md",
-    "paramsUrl": "/site/test/testPage.json",
-  },
-}
-`;

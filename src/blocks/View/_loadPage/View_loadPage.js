@@ -75,10 +75,6 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
     // First delay -> loading...
     let promises = [reactTools.delay(config.site.loadingDelay, {status: 'loading'})];
 
-    // // DEBUG
-    // console.log('View:placePage', page);
-    // debugger;
-
     if ( !isDefault ) {
       // Load or fetch cached page content
       promises.push(this.pageLoader.resolve(page));

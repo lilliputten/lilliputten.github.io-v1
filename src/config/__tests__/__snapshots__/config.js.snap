@@ -4,6 +4,13 @@ exports[`config match snapshot 1`] = `
 Object {
   "DEBUG": "test",
   "css": Object {
+    "NavbarHeight": 50,
+    "baseFontFamily": "\\"Helvetica Neue\\", Helvetica, Arial, sans-serif",
+    "baseFontSize": 14,
+    "defaultHoveredLinkColor": "#f10",
+    "defaultLinkColor": "#c10",
+    "defaultTextColor": "#333",
+    "pageBgColor": "#fff",
     "testGlobalColor": "orange",
     "testViewportWidth": 300,
   },
@@ -20,11 +27,16 @@ Object {
     "defaultMode": "default",
     "defaultPage": "default",
     "loadPageParams": false,
+    "loadingDelay": 300,
     "loadingMode": "loading",
     "mainMenu": Array [
       Object {
         "text": "About",
         "url": "#!about",
+      },
+      Object {
+        "text": "Projects",
+        "url": "#!projects",
       },
       Object {
         "text": "Contacts",

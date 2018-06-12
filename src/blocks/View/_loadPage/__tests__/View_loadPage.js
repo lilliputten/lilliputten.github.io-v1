@@ -87,54 +87,54 @@ describe('View_loadPage', () => {
 
   })/*}}}*/
 
-  /*{{{*/describe('loadPage', () => {
-
-    // Mocking `pageLoader` axios request
-    const pageId = 'test/testPage';
-    const pageHash = hashTools.fromPageId(pageId);
-    const pageUrl = hashTools.toUrl(pageHash, config.site.defaultExt);
-    const pageBody = 'page content';
-    const pageHtml = '<p>' + pageBody + '</p>\n';
-
-    /** beforeAll ** {{{ */
-    beforeAll(() => {
-
-      // Set mocks...
-      mock.onAny(pageUrl).reply(200, pageBody);
-
-    })/*}}}*/
-    /** afterAll ** {{{ */
-    afterAll(() => {
-
-      mock.reset();
-
-    })/*}}}*/
-
-
-    it('is method', () => {
-      expect(typeof instance.loadPage).toBe('function');
-    })
-
-    it('returns page data', (done) => {
-      instance.loadPage(pageId)
-        .then(result => {
-          expect(typeof result).toBe('object');
-          expect(result).toMatchSnapshot('loadPage result');
-          expect(result.body).toBe(pageBody);
-          expect(result.html).toBe(pageHtml);
-          expect(typeof result.params).toBe('object');
-          expect(result.params.pageId).toBe(pageId);
-
-          expect(instance.state).toMatchSnapshot('state after load');
-          expect(instance.state.mode).toBe(config.site.contentMode);
-          expect(instance.state.page).toBe(pageId);
-          // expect(wrapper).toMatchSnapshot('wrapper after load');
-        })
-        .then(done)
-        .catch(done)
-    })
-
-  })/*}}}*/
+  // ??? TODO: Make testable subroutines?
+  // /*{{{*/describe('loadPage', () => {
+  //
+  //   // Mocking `pageLoader` axios request
+  //   const pageId = 'test/testPage';
+  //   const pageHash = hashTools.fromPageId(pageId);
+  //   const pageUrl = hashTools.toUrl(pageHash, config.site.defaultExt);
+  //   const pageBody = 'page content';
+  //   const pageHtml = '<p>' + pageBody + '</p>\n';
+  //
+  //   /** beforeAll ** {{{ */
+  //   beforeAll(() => {
+  //
+  //     // Set mocks...
+  //     mock.onAny(pageUrl).reply(200, pageBody);
+  //
+  //   })/*}}}*/
+  //   /** afterAll ** {{{ */
+  //   afterAll(() => {
+  //
+  //     mock.reset();
+  //
+  //   })/*}}}*/
+  //
+  //   it('is method', () => {
+  //     expect(typeof instance.loadPage).toBe('function');
+  //   })
+  //
+  //   it('returns page data', (done) => {
+  //     instance.loadPage(pageId)
+  //       .then(result => {
+  //         expect(typeof result).toBe('object');
+  //         expect(result).toMatchSnapshot('loadPage result');
+  //         expect(result.body).toBe(pageBody);
+  //         expect(result.html).toBe(pageHtml);
+  //         expect(typeof result.params).toBe('object');
+  //         expect(result.params.pageId).toBe(pageId);
+  //
+  //         expect(instance.state).toMatchSnapshot('state after load');
+  //         expect(instance.state.mode).toBe(config.site.contentMode);
+  //         expect(instance.state.page).toBe(pageId);
+  //         // expect(wrapper).toMatchSnapshot('wrapper after load');
+  //       })
+  //       .then(done)
+  //       .catch(done)
+  //   })
+  //
+  // })/*}}}*/
 
 })
 
