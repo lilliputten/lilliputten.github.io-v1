@@ -28,7 +28,7 @@ module.exports = function ({ block, elem, mod={} }) {
   const entityName = getEntityName({ block, elem, mod });
 
   // Module content...
-  return `\/\/ vim: ft=scss
+  return `\/\/ vim: ft=stylus
 
 .${entityName} {
 }
