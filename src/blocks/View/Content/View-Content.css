@@ -1,2 +1,7 @@
-.View-Content {
+// vim: ft=scss
+
+.View {
+  &-Content {
+    border: 1px
+  }
 }

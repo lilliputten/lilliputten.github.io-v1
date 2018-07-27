@@ -228,7 +228,10 @@ gitpages samples:
 
 Design samples:
 
--[Semplice - Designers best kept secret.](https://www.semplice.com/)
--[infinite imaginations | UX Developer](https://www.infiniteimaginations.co/)
+- [Semplice - Designers best kept secret.](https://www.semplice.com/)
+- [infinite imaginations | UX Developer](https://www.infiniteimaginations.co/)
+- [jose lorenzo - We Love Paper](https://joselorenzodesign.com/we-love-paper)
 
+Animation/grid/bootstrap:
 
+- [React Transition Group](http://reactcommunity.org/react-transition-group/css-transition/)

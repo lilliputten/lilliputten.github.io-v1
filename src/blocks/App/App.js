@@ -18,6 +18,8 @@ import Navbar from 'b:Navbar';
 import View from 'b:View';
 import Footer from 'b:Footer';
 
+// import { CSSTransition } from 'react-transition-group';
+
 const App_proto = /** @lends App.prototype */{
 
   block: 'App',
@@ -53,9 +55,13 @@ const App_proto = /** @lends App.prototype */{
   /** mods ** {{{ Modifiers... */
   mods(self) {
     const mode = this.state.mode;
+    const status = this.state.status;
+    const wasReady = this.state.wasReady;
     return {
       ...self.mods,
       mode,
+      status,
+      wasReady,
     };
   },/*}}}*/
 

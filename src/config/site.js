@@ -26,13 +26,18 @@ const config_site = /** @lends config.site */ {
   defaultPage: 'default',
 
   // Default modes...
+  initialMode: 'initial',
   defaultMode: 'default',
   contentMode: 'content',
   loadingMode: 'loading',
   // unloadingMode: 'unloading',
 
+  emptyStatus: 'empty',
+  loadingStatus: 'loading',
+  readyStatus: 'ready',
+
   // Page loading delay (ms)
-  loadingDelay: 300,
+  loadingDelay: 0,
 
   // To load page data (usually smth like `*.json`)
   loadPageParams: false,

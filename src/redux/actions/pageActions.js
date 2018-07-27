@@ -5,8 +5,12 @@
  * @version 2018.03.19, 02:53
  */
 
+export const SET_STATUS = 'SET_STATUS';
 export const SET_PAGE = 'SET_PAGE';
 
+export function setStatus(status) {
+  return { type : SET_STATUS, status };
+}
 export function setPage(page) {
   return { type : SET_PAGE, page };
 }

@@ -10,11 +10,26 @@
 
   height: var(--NavbarHeight)px;
 
+  // Animations...
+  transition: opacity 1s, top .5s ease-out; // cubic-bezier(.29, 1.01, 1, -0.68);
+  // transition-delay: 1s;
+
+  opacity: 0;
+  pointer-events: none;
+
+  .App_wasReady.App_status_loading & {
+    opacity: .25;
+    pointer-events: none;
+  }
+
+  .App_wasReady & {
+    pointer-events: all;
+    opacity: 1;
+  }
+
   // Position: default at page top
-  // position: absolute;
   position: fixed;
   width: 100%;
   top: 0;
-  // Position animation
-  transition: top .5s ease-out; // cubic-bezier(.29, 1.01, 1, -0.68);
+
 }

@@ -12,6 +12,8 @@ import config from 'config';
 import PageLoader from 'libs/PageLoader';
 import reactTools from 'libs/reactTools';
 
+import { setStatus } from 'redux/actions/pageActions';
+
 const _loadPage_proto = /** @lends View_loadPage.prototype */{
 
   block : 'View',
@@ -45,15 +47,27 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
 
   /** storeEvent ** {{{ Store state changed event */
   storeEvent() {
+
     const pageState = this.getPageState();
     const page = pageState.page || config.site.defaultPage;
-    this.placePage(page);
+    const status = pageState.status;
+
+    // Set status
+    this.setState({status});
+
+    // If another page...
+    if (page !== this.state.loadedPage && status !== config.site.loadingStatus) {
+      // ...place page...
+      this.placePage(page);
+    }
+
   },/*}}}*/
 
   /** mods ** {{{ Modifiers... */
   mods(self) {
     return { ...self.mods,
       mode: this.state.mode,
+      status: this.state.status,
     };
   },/*}}}*/
 
@@ -70,7 +84,7 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
     const isDefault = (page === config.site.defaultPage);
 
     // Mode: loading
-    this.setState({ mode: config.site.loadingMode });
+    this.setState({mode: config.site.loadingMode, status: config.site.loadingStatus});
 
     // First delay -> loading...
     let promises = [reactTools.delay(config.site.loadingDelay, {status: 'loading'})];
@@ -79,6 +93,8 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
       // Load or fetch cached page content
       promises.push(this.pageLoader.resolve(page));
     }
+
+    this.props.dispatch(setStatus(config.site.loadingStatus));
 
     // Wait for delay and load/fetch content for regular pages...
     const resultPromise = Promise.all(promises)
@@ -90,7 +106,9 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
         if ( !isDefault && data ) {
           this.setState({
             page: page,
+            loadedPage: page,
             mode: config.site.contentMode,
+            // status: config.site.readyStatus,
             params: data.params,
             html: data.html,
           });
@@ -100,7 +118,9 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
         else {
           this.setState({
             page: page,
+            loadedPage: page,
             mode: config.site.defaultMode,
+            // status: config.site.readyStatus,
           });
           return {status: config.site.defaultMode, page};
         }
@@ -113,8 +133,13 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
         /*DEBUG*/debugger;
         this.setState({
           mode: 'error',
+          // status: config.site.readyStatus,
           error: err,
         });
+      })
+
+      .finally(() => {
+        this.props.dispatch(setStatus(config.site.readyStatus));
       })
 
     ;
