@@ -11,6 +11,8 @@ import inherit from 'inherit';
 // import FrontMatter from 'front-matter';
 import Markdown from 'markdown-it';
 
+// [markdown-it/markdown-it](https://github.com/markdown-it/markdown-it)
+// See also: [README](../../README.Resources.md)
 import ExtraPlugin from 'libs/markdown/extra-tags-plugin';
 
 // var hljs = require('highlight.js'); // https://highlightjs.org/
@@ -32,7 +34,7 @@ const MdParser_proto = /** @lends MdParser.prototype */{
 
       this.__base && this.__base(...arguments);
 
-      this.mdParser = Markdown({
+      const parser = this.mdParser = Markdown({
           typographer : true,
           quotes : '«»‘’',
           // highlight: function (str, lang) {
@@ -46,6 +48,19 @@ const MdParser_proto = /** @lends MdParser.prototype */{
         })
         .use(extraPlugin)
       ;
+
+      // Extending h1 titles (for animation purposes)...
+      parser.renderer.rules.heading_open = (tokens, idx) => {
+        const item = tokens[idx];
+        const nextItem = tokens[idx + 1];
+        // Trying to find parsed content...
+        const content = (nextItem.children && nextItem.children[0] && nextItem.children[0].content) || nextItem.content;
+        return '<' + item.tag + ' class="title title_' + item.tag + '"><div class="title-inset" data-text="' + parser.utils.escapeHtml(content) + '">';
+      };
+      parser.renderer.rules.heading_close = (tokens, idx) => {
+        const item = tokens[idx];
+        return '</div class="title-inset"></' + item.tag + '>';
+      };
 
   },/*}}}*/
 

@@ -5,7 +5,11 @@ $topMargin: 5px;
 .Navbar {
   &-MenuItem {
     display: inline-block;
-    margin: $topMargin 4px;
+    margin: $topMargin 8px;
     line-height: resolve( var(--NavbarHeight) - 10 )px;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

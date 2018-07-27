@@ -1,3 +1,5 @@
+// vim: ft=stylus
+
 .App-Logo {
   animation: App-Logo-Spin infinite 20s linear;
   height: 80px;
@@ -12,4 +14,3 @@
   }
 }
 
-// vim: ft=stylus

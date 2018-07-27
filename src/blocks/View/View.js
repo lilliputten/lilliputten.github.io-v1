@@ -31,7 +31,7 @@ const View_static = /* @lends View */{
   propTypes: {
     dispatch: PropTypes.func.isRequired,
     page: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired,
+    // status: PropTypes.string.isRequired,
   },
 
 }/*}}}*/

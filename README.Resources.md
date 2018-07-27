@@ -64,13 +64,23 @@ Markdown:
 - [remarkable/parser.md at master · jonschlinkert/remarkable](https://github.com/jonschlinkert/remarkable/blob/master/docs/parser.md)
 - [remarkable/plugins.md at master · jonschlinkert/remarkable](https://github.com/jonschlinkert/remarkable/blob/master/docs/plugins.md)
 - [lwhiteley/remarkable-codegroup: remarkable plugin to put code blocks into groups](https://github.com/lwhiteley/remarkable-codegroup)
+
+Markdown-it:
+
 - [markdown-it/markdown-it: Markdown parser, done right. 100% CommonMark support, extensions, syntax plugins & high speed](https://github.com/markdown-it/markdown-it)
 - [rlidwka/markdown-it-regexp: make simple markdown-it plugins easier](https://github.com/rlidwka/markdown-it-regexp)
+- [posva/markdown-it-custom-block: Handle custom blocks transformations for markdown-it](https://github.com/posva/markdown-it-custom-block)
+- [markdown-it/markdown-it-container: Fenced container plugin for markdown-it markdown parser](https://github.com/markdown-it/markdown-it-container)
+
+Other markdown engines:
 
 - [markedjs/marked: A markdown parser and compiler. Built for speed.](https://github.com/markedjs/marked)
 - [marked/Using_Advanced](https://github.com/markedjs/marked/blob/master/USING_ADVANCED.md)
 - [marked/Using_Pro](https://github.com/markedjs/marked/blob/master/USING_PRO.md)
 - `!TestPackages/node_modules/markdown-parse/index.js`
+
+
+Markdown highlighters:
 
 - [isagalaev/highlight.js: Javascript syntax highlighter](https://github.com/isagalaev/highlight.js/)
 - [markdown-it-highlight](https://www.npmjs.com/package/markdown-it-highlight)

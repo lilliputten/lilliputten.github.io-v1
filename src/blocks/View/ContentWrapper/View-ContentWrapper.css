@@ -1,5 +1,7 @@
 // vim: ft=stylus
 
+// {{{ DEBUG
+
 @import './variables.css';
 
 $localVarColor: magenta;
@@ -12,10 +14,15 @@ $localVarColor: magenta;
   --localColor: #00ff00; // Define variable in specified scope
 }
 
+// }}} DEBUG
+
 .View {
   &-ContentWrapper {
+
     width: 100%;
     padding: 10px;
+
+    // {{{ DEBUG
     // @media (--testViewport) {
     //   color: green;
     //   color: $localVarColor; // magenta
@@ -27,5 +34,13 @@ $localVarColor: magenta;
     //   color: color-mod( var(--testGlobalColor) alpha(50%) ); // @see https://github.com/jonathantneal/postcss-color-mod-function
     //   opacity: .5;
     // }
+    // }}}
+
+    // Content elements...
+
+    h1 {
+      color: var(--defaultLinkColor);
+    }
+
   }
 }
