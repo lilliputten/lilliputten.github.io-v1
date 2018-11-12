@@ -30,11 +30,13 @@ const config_site = /** @lends config.site */ {
   defaultMode: 'default',
   contentMode: 'content',
   loadingMode: 'loading',
+  errorMode: 'error',
   // unloadingMode: 'unloading',
 
   emptyStatus: 'empty',
   loadingStatus: 'loading',
   readyStatus: 'ready',
+  // errorStatus: 'error',
 
   // Page loading delay (ms)
   loadingDelay: 0,
@@ -45,9 +47,10 @@ const config_site = /** @lends config.site */ {
   /** mainMenu ** {{{
    */
   mainMenu: [
-    { url: '#!about', text: 'About' },
-    { url: '#!projects', text: 'Projects' },
-    { url: '#!contacts', text: 'Contacts' },
+    // { url: '#!error', text: 'Error' },
+    { url: '#!About', text: 'About' },
+    { url: '#!Projects/', text: 'Projects' },
+    { url: '#!Contacts', text: 'Contacts' },
   ],/*}}}*/
 
 };
