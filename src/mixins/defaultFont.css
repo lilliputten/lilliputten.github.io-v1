@@ -1,0 +1,7 @@
+@define-mixin defaultFont {
+  font-family: $(defaultFontFamily);
+  font-size: $(defaultFontSize)px;
+  font-weight: $(defaultFontWeight);
+  line-height: $(defaultLineHeight); // 1.5 ??? too loose? (from mdbootstrap)
+  color: $(defaultTextColor);
+}
