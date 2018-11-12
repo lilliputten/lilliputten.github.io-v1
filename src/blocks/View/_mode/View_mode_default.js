@@ -22,10 +22,10 @@ const _mode_default = /** @lends View_mode_default.prototype */ {
   /** content ** {{{ */
   content() {
 
+    //      Root content <a href="#!test/test">test</a>
     return (
       <Fragment>
         <Default mix={{ block: 'View', elem: 'ContentWrapper', mods: {mode: 'default'} }}>
-          Root content <a href="#!test/test">test</a>
         </Default>
       </Fragment>
     );

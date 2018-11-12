@@ -45,30 +45,31 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
 
   },/*}}}*/
 
-  /** storeEvent ** {{{ Store state changed event */
-  storeEvent() {
-
-    const pageState = this.getPageState();
-    const page = pageState.page || config.site.defaultPage;
-    const status = pageState.status;
-
-    // Set status
-    this.setState({status});
-
-    // If another page...
-    if (page !== this.state.loadedPage && status !== config.site.loadingStatus) {
-      // ...place page...
-      this.placePage(page);
-    }
-
-  },/*}}}*/
-
   /** mods ** {{{ Modifiers... */
   mods(self) {
     return { ...self.mods,
       mode: this.state.mode,
       status: this.state.status,
     };
+  },/*}}}*/
+
+  /** storeEvent ** {{{ Store state changed event */
+  storeEvent() {
+
+    const pageState = this.getPageState();
+    const page = pageState.page || config.site.defaultPage;
+    // const mode = pageState.mode;
+    const status = pageState.status;
+
+    // Set status
+    this.setState({status});
+
+    // If another page & not loading...
+    if (page !== this.state.loadedPage && status !== config.site.loadingStatus) {
+      // ...place page...
+      this.placePage(page);
+    }
+
   },/*}}}*/
 
   /** placePage ** {{{ Update page content on url changing
@@ -132,8 +133,10 @@ const _loadPage_proto = /** @lends View_loadPage.prototype */{
         console.error(err);
         /*DEBUG*/debugger;
         this.setState({
-          mode: 'error',
-          // status: config.site.readyStatus,
+          page: page,
+          loadedPage: page,
+          mode: config.site.errorMode,
+          status: config.site.readyStatus,
           error: err,
         });
       })
