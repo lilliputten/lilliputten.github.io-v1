@@ -1,3 +1,0 @@
-# ExDentis web site
-
-TODO

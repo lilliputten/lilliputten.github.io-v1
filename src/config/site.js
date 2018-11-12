@@ -6,6 +6,8 @@
  * @version 2018.03.18, 22:10
  */
 
+const galleryRoot = 'https://res.cloudinary.com/lilliputten/image/upload/';
+
 const config_site = /** @lends config.site */ {
 
   /** Site content root url prefix */
@@ -40,6 +42,10 @@ const config_site = /** @lends config.site */ {
 
   // Page loading delay (ms)
   loadingDelay: 0,
+
+  galleryRoot,
+  galleryThumbMask: `${galleryRoot}c_thumb,w_200,h_200,g_face/v1542040058/{url}`,
+  galleryImageMask: `${galleryRoot}v1542040058/{url}`,
 
   // To load page data (usually smth like `*.json`)
   loadPageParams: false,
