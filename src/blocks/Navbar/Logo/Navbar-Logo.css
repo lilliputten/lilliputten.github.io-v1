@@ -7,11 +7,15 @@
     text-align: center;
 
     &Img {
-      width: 200px;
+      width: 250px;
     }
     &Link {
+      // &:visited {
+      //   opacity: 1;
+      // }
+      transition: .2s opacity;
       &:hover {
-        opacity: .8;
+        opacity: .6;
       }
     }
   }

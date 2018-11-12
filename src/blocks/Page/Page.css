@@ -8,30 +8,31 @@ body,
 .App {
   height: 100%;
   position: relative;
-  background-color: var(--pageBgColor);
+  background-color: $(pageBgColor);
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--baseFontFamily);
-  font-size: var(--baseFontSize)px;
-  // font-size: calc(var(--baseFontSize) + 4)px; // DEBUG
-  // font-size: resolve( var(--baseFontSize) + 2)px; // DEBUG
-  color: var(--defaultTextColor);
+  @mixin defaultFont;
+  // font-family: $(defaultFontFamily);
+  // font-size: $(defaultFontSize)px;
+  // // font-size: calc($(defaultFontSize) + 4)px; // DEBUG
+  // // font-size: resolve( $(defaultFontSize) + 2)px; // DEBUG
+  // color: $(defaultTextColor);
 }
 
 // Default links...
 
 a {
-  color: var(--defaultLinkColor);
+  color: $(defaultLinkColor);
   &:hover {
-      color: var(--defaultHoveredLinkColor);
+      color: $(defaultHoveredLinkColor);
   }
   // ???
-  &:visited {
-      // color: var(--defaultHoveredLinkColor);
-      opacity: .8;
-  }
+  // &:visited {
+  //     // color: $(defaultHoveredLinkColor);
+  //     opacity: .8;
+  // }
 }
 

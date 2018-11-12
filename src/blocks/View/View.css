@@ -7,10 +7,10 @@
   display: flex;
 
   // Top margin for contant page by default
-  margin-top: var(--NavbarHeight)px;
+  margin-top: $(NavbarHeight)px;
   transition: opacity .3s ease-out, margin-top .75s ease-out;
 
-  background-color: var(--pageBgColor);
+  background-color: $(pageBgColor);
   z-index: 5;
 
   opacity: 0;

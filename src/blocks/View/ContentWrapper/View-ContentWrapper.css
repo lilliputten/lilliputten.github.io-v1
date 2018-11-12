@@ -20,18 +20,18 @@ $localVarColor: magenta;
   &-ContentWrapper {
 
     width: 100%;
-    padding: 10px;
+    padding: 15px;
 
     // {{{ DEBUG
     // @media (--testViewport) {
     //   color: green;
     //   color: $localVarColor; // magenta
-    //   color: var(--rootColor); // pink
-    //   color: var(--localColor); // green
-    //   color: var(--testGlobalColor); // orange
-    //   color: var(--includedColor); // red
-    //   color: color-mod( var(--testGlobalColor) blend(black 20%) ); // @see https://github.com/jonathantneal/postcss-color-mod-function
-    //   color: color-mod( var(--testGlobalColor) alpha(50%) ); // @see https://github.com/jonathantneal/postcss-color-mod-function
+    //   color: $(rootColor); // pink
+    //   color: $(localColor); // green
+    //   color: $(testGlobalColor); // orange
+    //   color: $(includedColor); // red
+    //   color: color-mod( $(testGlobalColor) blend(black 20%) ); // @see https://github.com/jonathantneal/postcss-color-mod-function
+    //   color: color-mod( $(testGlobalColor) alpha(50%) ); // @see https://github.com/jonathantneal/postcss-color-mod-function
     //   opacity: .5;
     // }
     // }}}
@@ -39,7 +39,8 @@ $localVarColor: magenta;
     // Content elements...
 
     h1 {
-      color: var(--defaultLinkColor);
+      // color: $(defaultLinkColor);
+      @mixin titleFont;
     }
 
   }

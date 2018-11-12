@@ -2,7 +2,7 @@
 
 .Footer {
 
-  background-color: var(--pageBgColor);
+  background-color: $(pageBgColor);
   z-index: 10;
 
 }

@@ -1,12 +1,12 @@
 // vim: ft=stylus
 
-$topMargin: 5px;
+$topMargin: 15px;
 
 .Navbar {
   &-MenuItem {
     display: inline-block;
     margin: $topMargin 8px;
-    line-height: resolve( var(--NavbarHeight) - 10 )px;
+    line-height: resolve( $(NavbarHeight) - 10 )px;
     text-decoration: none;
     &:hover {
       text-decoration: underline;

@@ -6,8 +6,12 @@
  * @version 2018.03.22, 23:41
  */
 
+const primaryColor = '#c10';
+
 /** cssVariables ** {{{ */
 const cssVariables = {
+
+  primaryColor,
 
   // DEBUG...
 
@@ -17,16 +21,21 @@ const cssVariables = {
 
   // Fonts...
 
-  baseFontSize: 14,
+  defaultFontSize: 16,
 
-  baseFontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+  defaultFontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+  defaultFontWeight: 400,
+  defaultLineHeight: 1.5, // 1.5 ??? too loose? (from mdbootstrap)
+
+  defaultTitleFontSize: 28,
+  defaultTitleFontWeight: 300,
 
   // Page...
 
   pageBgColor: '#fff',
 
   defaultTextColor: '#333',
-  defaultLinkColor: '#c10',
+  defaultLinkColor: primaryColor,
   defaultHoveredLinkColor: '#f10',
 
   // Navbar...
