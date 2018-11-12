@@ -1,7 +1,7 @@
 #!/sbin/sh
 # @overview Patch utility script
 # @since 2018.02.23, 23:35
-# @version 2018.03.14, 13:44
+# @version 2018.10.01, 02:42
 
 # Test for config file existing
 PATCHCONFIG="./patch-config.sh"
@@ -16,6 +16,7 @@ fi
 # Importing from config variables:
 #   - ROOTCD: Root path for looking up in folders tree
 #   - PATCHCD: Path relative to ROOT -- working path
+#   - PRECMD: Command to run after all patches applied
 #   - POSTCMD: Command to run after all patches applied
 
 # Root path from config
@@ -60,6 +61,17 @@ fi
 # Cd to working path
 echo "Working in $WORKPATH"
 cd "$WORKPATH"
+
+if [ ! -z "$PRECMD" ]; then
+    echo "Precmd applying: $PRECMD"
+    eval $PRECMD || PRECMDFAIL=1
+    if [ $PRECMDFAIL ]; then
+        echo "Precmd failed!"
+        exit 1
+    else
+        echo "Precmd applied"
+    fi
+fi
 
 # Patching file
 for NAME in $DIFFS; do

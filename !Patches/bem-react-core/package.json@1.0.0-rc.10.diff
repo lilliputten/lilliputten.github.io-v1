@@ -1,0 +1,11 @@
+--- package.json.orig	2018-11-12 21:37:31.618494100 +0300
++++ package.json	2018-11-12 21:38:25.225717700 +0300
+@@ -88,7 +88,7 @@
+       "git add"
+     ]
+   },
+-  "main": "dist/react.min.js",
++  "main": "dist/react.js",
+   "name": "bem-react-core",
+   "peerDependencies": {
+     "preact": "^8.2.6",

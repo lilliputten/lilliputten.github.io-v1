@@ -1,13 +1,16 @@
 #!/sbin/sh
-# @overview Apply all available patches
+# @overview Patch utility script
 # @since 2018.03.05, 00:00
-# @version 2018.03.05, 00:22
+# @version 2018.11.06, 04:39
 
-# Save source path
+SCRIPT_PATH=`dirname "$0"`
+SCRIPT_PATH=`realpath "$SCRIPT_PATH"`
+
+# Saving source path
 ORIGPATH=`pwd`
 
 # Scan all `patch-config`s...
-DIRS=`find_ . -name "patch-config.sh" \
+DIRS=`find_ . -name "patch-config*" \
   | sed 's/[\\]/\//g;s/\/[^\/]*$//g'`
 
 # Process all found folders...
@@ -15,6 +18,6 @@ for D in $DIRS; do
   echo ""
   echo "Processing $D..."
   cd "$D"
-  sh "$ORIGPATH/patch-tool-apply"
+  sh "$SCRIPT_PATH/patch-tool-apply"
   cd "$ORIGPATH"
 done

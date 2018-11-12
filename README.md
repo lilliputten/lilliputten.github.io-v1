@@ -15,6 +15,15 @@ Project sources:
 - [Static site content](site/)
 - [Templates & other static stuff](public/)
 
+Configuration & environment:
+
+- `package.json`
+- `config-overrides.js`
+- `.babelrc`
+- `.lvimrc`
+- `.bemrc.js`
+- `.eslintrc.js`
+
 Blocks:
 
 - `src/blocks/App/App.js`
@@ -22,10 +31,11 @@ Blocks:
 
 NPM commands:
 
-- `start`
+- `start` (`server`)
 - `lint`
 - `test`
 - `make`
+- `help`
 
 Generated resurces (build, make):
 

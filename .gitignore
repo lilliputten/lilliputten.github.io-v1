@@ -1,10 +1,29 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
-# archives
-\!ARC-*
-
 # dependencies
 /node_modules*
+
+# Temp etc...
+zia*
+*_
+*~
+node_modules/
+\!UNUSED/
+.DS_Store
+.idea/
+*.iml
+.project
+\!ARC*
+/*.docs
+/*.examples
+/*.specs
+/*.tests
+/*.sets
+/*.tmpl-specs
+
+# Archives
+
+!*.zip
 
 # testing
 /coverage

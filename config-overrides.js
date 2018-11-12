@@ -5,6 +5,43 @@
 
 const postcss = require('./src/config/postcss');
 
+/** Defines... ** {{{
+ */
+const
+
+  // Dependencies...
+  // fs = require('fs-extra'),
+  path = require('path'),// .posix,
+
+  srcRoot = process.cwd(), // .replace(/\\/g, '/'),
+  prjRoot = srcRoot.replace(/\\/g, '/'),
+
+  configCss = require('./src/config/css'),
+
+  // // Bem-project config
+  // bemrc = require('../.bemrc.js'),
+
+  // // Source levels
+  // srcLevels = Object.keys(bemrc.levels),
+  //
+  // /** systemLevels ** {{{ System-level levels
+  //  */
+  // systemLevels = [
+  //   { path: 'node_modules/bem-core/common.blocks', check: false },
+  //   { path: 'node_modules/bem-core/desktop.blocks', check: false },
+  //   { path: 'node_modules/bem-components/common.blocks', check: false },
+  //   { path: 'node_modules/bem-components/desktop.blocks', check: false },
+  //   { path: 'node_modules/bem-components/design/common.blocks', check: false },
+  //   { path: 'node_modules/bem-components/design/desktop.blocks', check: false },
+  // ],/*}}}*/
+  //
+  // // All project levels
+  // levels = systemLevels.concat(srcLevels),
+
+  isProd = (process.env.YENV === 'production')
+
+;/*}}}*/
+
 // console.log('Config initialized!'); // DEBUG
 
 // const fs = require('fs');
@@ -91,24 +128,40 @@ module.exports = function override(config, env) {
           parser: 'postcss-scss',
           plugins: () => [
             // autoprefixer included in cssnext
-            require('postcss-cssnext')({
-              /**
-               * NOTE: See:
-               * - `src/config/css.js`
-               * - `src/config/postcss.js`
-               */
-              features: postcss.cssnextFeatures,
+            // require('postcss-cssnext')({
+            //   /**
+            //    * NOTE: See:
+            //    * - `src/config/css.js`
+            //    * - `src/config/postcss.js`
+            //    */
+            //   features: postcss.cssnextFeatures,
+            // }),
+            require('postcss-import'),
+            require('postcss-mixins')({
+              mixinsDir: path.join(prjRoot, 'src', 'mixins'),
+            }), // https://github.com/postcss/postcss-mixins
+            require('postcss-each'),
+            require('postcss-for'),
+            // require('postcss-define-function'), // https://github.com/titancat/postcss-define-function
+            require('postcss-advanced-variables')({ // https://github.com/jonathantneal/postcss-advanced-variables
+              // unresolved: 'warn', // 'ignore',
+              variables: configCss,
             }),
             require('postcss-simple-vars'), // https://github.com/postcss/postcss-simple-vars
+            require('postcss-conditionals'), // Already used (scss?)
             // require('postcss-color-alpha'), // https://github.com/avanes/postcss-color-alpha
-            // require('postcss-color-function'), // https://github.com/postcss/postcss-color-function // To delete?
-            require('postcss-color-mod-function'), // https://github.com/jonathantneal/postcss-color-mod-function
+            require('postcss-color-function'), // https://github.com/postcss/postcss-color-function // To delete?
+            // require('postcss-color-mod-function'), // https://github.com/jonathantneal/postcss-color-mod-function
             require('postcss-flexbugs-fixes'), // https://github.com/luisrudge/postcss-flexbugs-fixes
             require('postcss-nested-ancestors'), // https://github.com/toomuchdesign/postcss-nested-ancestors
             require('postcss-nested'), // https://github.com/postcss/postcss-nested
-            require('postcss-math'), // https://github.com/shauns/postcss-math
+            require('postcss-calc'),
+            require('rebem-css'),
+            require('postcss-url')({ url: 'rebase' }),
+            // require('postcss-math'), // https://github.com/shauns/postcss-math
             require('postcss-utilities'), // https://github.com/ismamz/postcss-utilities
             // https://ismamz.github.io/postcss-utilities/docs#clear-fix
+            require('autoprefixer')(),
           ],
         },
       },/*}}}*/

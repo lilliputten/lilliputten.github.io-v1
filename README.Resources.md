@@ -28,10 +28,24 @@ Disable hot reload (temporary):
 UI:
 
 - [10 Best ReactJS UI Frameworks for rapid prototyping - Hashnode](https://hashnode.com/post/10-best-reactjs-ui-frameworks-for-rapid-prototyping-cit49tqx414z89c53equ4zc5k)
-- [https://react-bootstrap.github.io/getting-started/introduction/](https://react-bootstrap.github.io/getting-started/introduction/)
+- [react-bootstrap](https://react-bootstrap.github.io/getting-started/introduction/)
 - [Ant Design](http://beta.ant.design/)
 - [Third-Party Libraries - Ant Design](http://beta.ant.design/docs/react/recommendation)
 - [Material-UI](http://www.material-ui.com/)
+
+10 libs:
+
+- Material UI
+- React-Bootstrap
+- React-Foundation
+- Essence
+- React-MDL
+- Belle
+- Elemental-UI
+- MUI
+- grommet
+- React Toolbox
+- Ant Design of React
 
 React-static (old):
 
