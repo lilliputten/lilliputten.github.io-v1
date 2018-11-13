@@ -15,11 +15,6 @@ body {
   margin: 0;
   padding: 0;
   @mixin defaultFont;
-  // font-family: $(defaultFontFamily);
-  // font-size: $(defaultFontSize)px;
-  // // font-size: calc($(defaultFontSize) + 4)px; // DEBUG
-  // // font-size: resolve( $(defaultFontSize) + 2)px; // DEBUG
-  // color: $(defaultTextColor);
 }
 
 // Default links...

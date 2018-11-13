@@ -4,7 +4,13 @@
   &-Menu {
 
     overflow: hidden;
-    flex: 1;
+
+    text-align: center;
+
+    @media (min-width: $(NavBarTreshold)px) {
+      flex: 1;
+      text-align: left;
+    }
 
     // white-space: nowrap;
     // // DEMO

@@ -1,5 +1,4 @@
 build
-build/.index.html.swp
 build/asset-manifest.json
 build/favicon.ico
 build/index.html
@@ -7,7 +6,7 @@ build/manifest.json
 build/service-worker.js
 build/static
 build/static/js
-build/static/js/main.8f651f5a.js
-build/static/js/main.8f651f5a.js.map
+build/static/js/main.07cb9b29.js
+build/static/js/main.07cb9b29.js.map
 build/static/media
 build/static/media/Logo.ed08d0a8.svg

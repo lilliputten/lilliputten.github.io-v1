@@ -44,6 +44,11 @@ const App_proto = /** @lends App.prototype */{
     // Subscribe to store for page changing... (Correct redux method to update?)
     this.props.store.subscribe(this.storeEvent.bind(this));
 
+    // Initialize fancybox properties...
+    if (window.$ && window.$.fancybox) {
+      window.$.fancybox.defaults.hash = false;
+    }
+
   },/*}}}*/
 
   /** storeEvent ** {{{ Store state changed event */

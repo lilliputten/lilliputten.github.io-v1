@@ -148,6 +148,7 @@ Redux:
 Site:
 
 - [github.io](https://lilliputten.github.io)
+- [lilliputten.ru](http://lilliputten.ru/)
 
 Debug:
 
@@ -252,7 +253,7 @@ gitpages samples:
 
 Design samples:
 
-- [Semplice - Designers best kept secret.](https://www.semplice.com/)
+- [Semplice - Designers best kept secret](https://www.semplice.com/)
 - [infinite imaginations | UX Developer](https://www.infiniteimaginations.co/)
 - [jose lorenzo - We Love Paper](https://joselorenzodesign.com/we-love-paper)
 

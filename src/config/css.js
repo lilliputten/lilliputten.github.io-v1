@@ -7,6 +7,7 @@
  */
 
 const primaryColor = '#c10';
+const defaultFontSize = 16;
 
 /** cssVariables ** {{{ */
 const cssVariables = {
@@ -21,7 +22,13 @@ const cssVariables = {
 
   // Fonts...
 
-  defaultFontSize: 16,
+  defaultFontSize,
+  fontSize: defaultFontSize,
+  fontSizeSm: defaultFontSize - 2,
+  fontSizeXs: defaultFontSize - 4,
+  fontSizeLg: defaultFontSize + 2,
+  fontSizeXl: defaultFontSize + 4,
+  fontSizeXxl: defaultFontSize + 6,
 
   defaultFontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
   defaultFontWeight: 400,
@@ -41,6 +48,8 @@ const cssVariables = {
   // Navbar...
 
   NavbarHeight: 50,
+
+  NavBarTreshold: 600,
 
 };/*}}}*/
 

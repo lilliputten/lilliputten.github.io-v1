@@ -6,11 +6,12 @@
   z-index: 10;
 
   padding: 5px 0;
+  padding-top: 10px;
 
-  display: flex;
-  flex-direction: row;
-
-  height: $(NavbarHeight)px;
+  @media (min-width: $(NavBarTreshold)px) {
+    display: flex;
+    flex-direction: row;
+  }
 
   // Animations...
   transition: opacity 1s, top .5s ease-out; // cubic-bezier(.29, 1.01, 1, -0.68);
@@ -31,7 +32,7 @@
   }
 
   // Position: default at page top
-  position: fixed;
+  position: static;
   width: 100%;
   top: 0;
 

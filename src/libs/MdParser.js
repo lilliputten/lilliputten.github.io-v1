@@ -11,20 +11,83 @@ import inherit from 'inherit';
 // import FrontMatter from 'front-matter';
 import Markdown from 'markdown-it';
 
+import yaml from 'js-yaml';
+
+import config from 'config';
+
 // [markdown-it/markdown-it](https://github.com/markdown-it/markdown-it)
 // See also: [README](../../README.Resources.md)
-import ExtraPlugin from 'libs/markdown/extra-tags-plugin';
+import ExtraPluginCreator from 'libs/markdown/extra-tags-plugin';
+
+// import attrsPlugin from 'markdown-it-attrs';
+import decoratePlugin from 'markdown-it-decorate';
 
 // var hljs = require('highlight.js'); // https://highlightjs.org/
 // var hljsPlugin = require('markdown-it-highlight').default;
 
+/** parseExtraGallery ** {{{ Parse gallery items
+ * @param {Object} extra
+ * @param {Object} extra.data
+ * @param {Object[]} extra.data.items
+ * @param {String} extra.data.items[].url
+ * @param {String} extra.data.items[].caption
+ * @return {String}
+ */
+function parseExtraGallery (extra) {
+  const items = extra && extra.data && extra.data.items;
+  if (Array.isArray(items)) {
+    extra.content = items.map((item)=>{
+      const url = (typeof item === 'string') ? item : item.url;
+      const thumbUrl = config.site.galleryThumbMask.replace(/{url}/, url);
+      const imageUrl = config.site.galleryImageMask.replace(/{url}/, url);
+      const title = item.title || '';
+      return `<a data-fancybox="${extra.id}" href="${imageUrl}" data-caption="${title}" title="${title}"><img src="${thumbUrl}" alt="${title}" /></a>`;
+    }).join('\n');
+  }
+}/*}}}*/
+
 // TODO: Create parsers for custom tags...
-var extraPlugin = new ExtraPlugin((content, utils) => {
-  var extra = utils.escape(content);
-  return '<span class="extraTag">'
-     + '--' + extra + '--'
-     + '</span>'
-  ;
+var extraPlugin = new ExtraPluginCreator((content, utils) => {
+  const match = content.match(/^\s*@(\S+?)\b(?:[:](\S+))?\b([\S\s]*)$/m);
+  let extra = {
+    content: content,
+    type: 'extra',
+    tag: 'span',
+    // id: '',
+  };
+  if ( match) {
+    content = match[3];
+    Object.assign(extra, {
+      type: match[1],
+      id: match[2],
+      content: content.trim(),
+    });
+  }
+  // Check for parseable types...
+  if (extra.type === 'icon') {
+    extra.type = 'fa fa-' + extra.id;
+    if (extra.content) {
+      extra.type += ' ' + extra.content;
+    }
+    extra.content = '';
+    extra.id = '';
+  }
+  else if (extra.type === 'gallery') {
+    extra.data = yaml.safeLoad(content);
+    if (extra.type === 'gallery') {
+      parseExtraGallery(extra);
+    }
+    if (extra.data) {
+      Object.assign(extra, {
+        tag: extra.data.tag || extra.tag,
+        id: extra.data.id || extra.id,
+      });
+    }
+  }
+  else {
+    extra.content = utils.escape(extra.content);
+  }
+  return `<${extra.tag} class="${extra.type}" id="${extra.id}">${extra.content}</${extra.tag}>`;
 });
 
 const MdParser_proto = /** @lends MdParser.prototype */{
@@ -47,6 +110,8 @@ const MdParser_proto = /** @lends MdParser.prototype */{
           // },
         })
         .use(extraPlugin)
+        .use(decoratePlugin)
+        // .use(attrsPlugin)
       ;
 
       // Extending h1 titles (for animation purposes)...

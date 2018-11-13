@@ -13,6 +13,9 @@
 // import utils from './utils';
 const utils = require('./utils');
 
+const startTag = '{{{';
+const endTag = '}}}';
+
 // Unique id counter
 let uniqueCounter = 0;
 
@@ -62,16 +65,16 @@ class Plugin extends Function {
 
     const strPart = state.src.slice(state.pos);
 
-    const foundPos = strPart.indexOf('<%');
+    const foundPos = strPart.indexOf(startTag);
 
     if ( foundPos === -1 ) {
       return false;
     }
 
-    const startPos = foundPos + 2;
+    const startPos = foundPos + startTag.length;
 
-    const endPos = strPart.indexOf('%>', startPos);
-    const nextPos = endPos + 2;
+    const endPos = strPart.indexOf(endTag, startPos);
+    const nextPos = endPos + endTag.length;
 
     if ( endPos === -1 ) {
       return false;

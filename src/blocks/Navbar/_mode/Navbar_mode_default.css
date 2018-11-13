@@ -4,7 +4,9 @@
   &_mode {
     &_default {
       // Положение для главной страницы: посередине экрана
-      top: 48%;
+      top: 40%;
+      position: fixed;
+      // height: $(NavbarHeight)px;
     }
   }
 }

@@ -3,13 +3,19 @@
 .Navbar {
   &-Logo {
 
-    flex: 1;
     text-align: center;
+    margin-top: 3px;
+
+    @media (min-width: $(NavBarTreshold)px) {
+      flex: 1.5;
+    }
 
     &Img {
+      display: block;
       width: 250px;
     }
     &Link {
+      display: inline-block;
       // &:visited {
       //   opacity: 1;
       // }

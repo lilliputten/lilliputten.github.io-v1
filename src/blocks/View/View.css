@@ -4,10 +4,10 @@
 
   flex: auto;
 
-  display: flex;
+  // display: flex;
 
   // Top margin for contant page by default
-  margin-top: $(NavbarHeight)px;
+  // margin-top: $(NavbarHeight)px;
   transition: opacity .3s ease-out, margin-top .75s ease-out;
 
   background-color: $(pageBgColor);
