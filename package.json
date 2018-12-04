@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "lilliputten github pages site",
   "author": "lilliputten",
-  "homepage_": "https://lilliputten.github.io/",
+  "homepage_": "https://lilliputten.github.io-v1/",
   "main": "index.html",
   "license": "ISC",
   "private": true,
@@ -14,10 +14,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/lilliputten/lilliputten.github.io.git"
+    "url": "git+ssh://git@github.com/lilliputten/lilliputten.github.io-v1.git"
   },
   "bugs": {
-    "url": "https://github.com/lilliputten/lilliputten.github.io/issues"
+    "url": "https://github.com/lilliputten/lilliputten.github.io-v1/issues"
   },
   "dependencies": {
     "axios": "^0.18.0",
